@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Eye, Network, Cpu, Bot, Zap } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
+import { OTIcon } from '../components/OTIcon';
 import { fofUseCases } from '../content';
 
 const dependencySteps = [
-  { icon: '',  label: 'Asset Visibility',    desc: 'See every asset, every connection, every state',        color: '#F5A623' },
-  { icon: '', label: 'Operational Context', desc: 'Understand relationships and semantic meaning',           color: '#00A3E0' },
-  { icon: '', label: 'Digital Twins',        desc: 'Activate living models grown from operational truth',    color: '#005EB8' },
-  { icon: '', label: 'AI Intelligence',      desc: 'Predict, optimise, and simulate before acting',         color: '#6366F1' },
-  { icon: '', label: 'Autonomy',             desc: 'Self-healing systems with zero operator intervention',  color: '#12B3A8' },
+  { Icon: Eye,     label: 'Asset Visibility',    desc: 'See every asset, every connection, every state',       color: '#F5A623' },
+  { Icon: Network, label: 'Operational Context', desc: 'Understand relationships and semantic meaning',         color: '#00A3E0' },
+  { Icon: Cpu,     label: 'Digital Twins',        desc: 'Activate living models grown from operational truth',  color: '#005EB8' },
+  { Icon: Bot,     label: 'AI Intelligence',      desc: 'Predict, optimise, and simulate before acting',       color: '#6366F1' },
+  { Icon: Zap,     label: 'Autonomy',             desc: 'Self-healing systems with zero operator intervention', color: '#12B3A8' },
 ];
 
 export function SceneFactoryFuture() {
@@ -49,7 +51,9 @@ export function SceneFactoryFuture() {
                   className="glass rounded-2xl px-4 py-3 flex flex-col items-center gap-1 min-w-[110px]"
                   style={{ border: `2px solid ${step.color}30` }}
                 >
-                  <span className="text-2xl">{step.icon}</span>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${step.color}15` }}>
+                    <step.Icon size={18} color={step.color} strokeWidth={1.8} />
+                  </div>
                   <span className="text-xs font-bold text-center" style={{ color: step.color }}>{step.label}</span>
                   <span className="text-[10px] text-[#9CA3AF] text-center leading-tight hidden md:block">{step.desc}</span>
                 </motion.div>
@@ -106,8 +110,8 @@ export function SceneFactoryFuture() {
                     <div className="p-5">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-2xl shrink-0" style={{ background: `${uc.color}15` }}>
-                            {uc.icon}
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${uc.color}15` }}>
+                            <OTIcon name={uc.icon} size={20} color={uc.color} />
                           </div>
                           <div>
                             <div className="text-[10px] font-bold uppercase tracking-wide" style={{ color: uc.color }}>Use Case {uc.number}</div>

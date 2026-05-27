@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
+import { OTIcon } from '../components/OTIcon';
 import { fragmentationProblems, otNodes } from '../content';
 
 // Purdue Model: L4 Enterprise at TOP → L0 Field at BOTTOM (standard diagram orientation)
@@ -108,7 +109,9 @@ export function Scene1InvisibleFactory() {
                   }`}
                 >
                   <div className="flex items-start justify-between mb-2">
-                    <span className="text-2xl">{prob.icon}</span>
+                    <span className="flex items-center justify-center w-8 h-8 rounded-lg" style={{ background: prob.severity === 'critical' ? '#D6454520' : '#F5A62320' }}>
+                      <OTIcon name={prob.icon} size={16} color={prob.severity === 'critical' ? '#D64545' : '#F5A623'} />
+                    </span>
                     <span
                       className="text-xs font-bold px-2 py-0.5 rounded-full"
                       style={{

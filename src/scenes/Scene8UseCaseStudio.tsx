@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Radio, Cpu, Cloud, GitBranch, Zap, type LucideIcon } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 import { useCases } from '../content';
 import type { UseCase } from '../types';
@@ -13,12 +14,12 @@ const maturityColors = {
 function UseCaseFlow({ uc }: { uc: UseCase }) {
   const [activePhase, setActivePhase] = useState<string | null>(null);
 
-  const phases = [
-    { id: 'inputs', label: 'Sensor / Input', items: uc.inputs, color: '#003B73', icon: '' },
-    { id: 'edge', label: 'Edge Processing', items: uc.edgeProcessing, color: '#005EB8', icon: '' },
-    { id: 'cloud', label: 'Cloud Analytics', items: uc.cloudAnalytics, color: '#00A3E0', icon: '' },
-    { id: 'decision', label: 'Decision Logic', items: uc.decisionLogic, color: '#12B3A8', icon: '' },
-    { id: 'outcomes', label: 'Action / Outcome', items: uc.outcomes, color: '#F5A623', icon: '' },
+  const phases: { id: string; label: string; items: string[]; color: string; Icon: LucideIcon }[] = [
+    { id: 'inputs', label: 'Sensor / Input', items: uc.inputs, color: '#003B73', Icon: Radio },
+    { id: 'edge', label: 'Edge Processing', items: uc.edgeProcessing, color: '#005EB8', Icon: Cpu },
+    { id: 'cloud', label: 'Cloud Analytics', items: uc.cloudAnalytics, color: '#00A3E0', Icon: Cloud },
+    { id: 'decision', label: 'Decision Logic', items: uc.decisionLogic, color: '#12B3A8', Icon: GitBranch },
+    { id: 'outcomes', label: 'Action / Outcome', items: uc.outcomes, color: '#F5A623', Icon: Zap },
   ];
 
   return (
@@ -35,7 +36,9 @@ function UseCaseFlow({ uc }: { uc: UseCase }) {
                 minWidth: 90,
               }}
             >
-              <span className="text-xl mb-1">{phase.icon}</span>
+              <div className="mb-1">
+                <phase.Icon size={18} color={phase.color} strokeWidth={1.8} />
+              </div>
               <span className="text-[10px] font-semibold" style={{ color: phase.color }}>{phase.label}</span>
             </button>
             {i < phases.length - 1 && (

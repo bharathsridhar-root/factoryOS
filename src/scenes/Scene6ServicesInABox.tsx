@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
+import { OTIcon } from '../components/OTIcon';
 import { serviceCards } from '../content';
 import type { ServiceCard } from '../types';
 
@@ -44,7 +45,9 @@ function ServiceDetailModal({ service, onClose }: { service: ServiceCard; onClos
       >
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-4">
-            <div className="text-5xl">{service.icon}</div>
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(0,94,184,0.08)' }}>
+              <OTIcon name={service.icon} size={28} color="#005EB8" />
+            </div>
             <div>
               <h3 className="text-xl font-bold text-[#003B73]">{service.name}</h3>
               <span className="text-xs font-semibold px-2 py-1 rounded-full" style={{ background: 'rgba(0,94,184,0.1)', color: '#005EB8' }}>
@@ -199,7 +202,9 @@ export function Scene6ServicesInABox() {
                   className="w-full h-full glass rounded-2xl p-5 text-left card-lift flex flex-col"
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <span className="text-4xl">{service.icon}</span>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${maturityColors[service.maturityRequired]}12` }}>
+                      <OTIcon name={service.icon} size={20} color={maturityColors[service.maturityRequired]} />
+                    </div>
                     <span
                       className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                       style={{

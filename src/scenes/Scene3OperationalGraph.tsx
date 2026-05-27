@@ -1,18 +1,23 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Cpu, Monitor, Server, Users, Cloud, Radio, Database,
+  Network, Package, Shield, GitBranch, Zap, Clock, AlertTriangle,
+  type LucideIcon,
+} from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
 
-const graphNodes = [
-  { id: 'motor', label: 'Motor B-7', type: 'asset', x: 50, y: 45, icon: '', status: 'online', color: '#005EB8' },
-  { id: 'plc', label: 'PLC Line 3', type: 'plc', x: 25, y: 25, icon: '', status: 'online', color: '#00A3E0' },
-  { id: 'hmi', label: 'HMI Station', type: 'hmi', x: 75, y: 25, icon: '', status: 'warning', color: '#F5A623' },
-  { id: 'historian', label: 'PI Historian', type: 'server', x: 20, y: 70, icon: '', status: 'online', color: '#12B3A8' },
-  { id: 'mes', label: 'MES SAP', type: 'server', x: 80, y: 70, icon: '', status: 'online', color: '#003B73' },
-  { id: 'operator', label: 'Operator-J12', type: 'worker', x: 50, y: 80, icon: '', status: 'online', color: '#F5A623' },
-  { id: 'erp', label: 'ERP Oracle', type: 'cloud', x: 50, y: 10, icon: '', status: 'online', color: '#6B7E9E' },
-  { id: 'energy', label: 'Energy Meter', type: 'sensor', x: 10, y: 45, icon: '', status: 'online', color: '#12B3A8' },
-  { id: 'maintenance', label: 'Maint Records', type: 'data', x: 90, y: 45, icon: '', status: 'online', color: '#9CA3AF' },
+const graphNodes: { id: string; label: string; type: string; x: number; y: number; Icon: LucideIcon; status: string; color: string }[] = [
+  { id: 'motor',       label: 'Motor B-7',     type: 'asset',  x: 50, y: 45, Icon: Cpu,      status: 'online',   color: '#005EB8' },
+  { id: 'plc',         label: 'PLC Line 3',    type: 'plc',    x: 25, y: 25, Icon: Cpu,      status: 'online',   color: '#00A3E0' },
+  { id: 'hmi',         label: 'HMI Station',   type: 'hmi',    x: 75, y: 25, Icon: Monitor,  status: 'warning',  color: '#F5A623' },
+  { id: 'historian',   label: 'PI Historian',  type: 'server', x: 20, y: 70, Icon: Server,   status: 'online',   color: '#12B3A8' },
+  { id: 'mes',         label: 'MES SAP',       type: 'server', x: 80, y: 70, Icon: Server,   status: 'online',   color: '#003B73' },
+  { id: 'operator',    label: 'Operator-J12',  type: 'worker', x: 50, y: 80, Icon: Users,    status: 'online',   color: '#F5A623' },
+  { id: 'erp',         label: 'ERP Oracle',    type: 'cloud',  x: 50, y: 10, Icon: Cloud,    status: 'online',   color: '#6B7E9E' },
+  { id: 'energy',      label: 'Energy Meter',  type: 'sensor', x: 10, y: 45, Icon: Radio,    status: 'online',   color: '#12B3A8' },
+  { id: 'maintenance', label: 'Maint Records', type: 'data',   x: 90, y: 45, Icon: Database, status: 'online',   color: '#9CA3AF' },
 ];
 
 const edges = [
@@ -53,13 +58,13 @@ const nodeDetails: Record<string, {
   },
 };
 
-const technologies = [
-  { label: 'Unified Namespace', desc: 'Single semantic topic hierarchy for all OT data', icon: '', color: '#005EB8' },
-  { label: 'Asset Administration Shell', desc: 'IEC 63278 digital identity for every asset', icon: '', color: '#00A3E0' },
-  { label: 'OPC UA', desc: 'Secure, platform-independent data exchange', icon: '', color: '#12B3A8' },
-  { label: 'MQTT Sparkplug B', desc: 'Lightweight, stateful industrial messaging', icon: '', color: '#F5A623' },
-  { label: 'Digital Thread', desc: 'Continuous data lineage from design to disposal', icon: '', color: '#003B73' },
-  { label: 'Knowledge Graph', desc: 'Semantic relationship model of your operations', icon: '', color: '#9CA3AF' },
+const technologies: { label: string; desc: string; Icon: LucideIcon; color: string }[] = [
+  { label: 'Unified Namespace',          desc: 'Single semantic topic hierarchy for all OT data',  Icon: Network,    color: '#005EB8' },
+  { label: 'Asset Administration Shell', desc: 'IEC 63278 digital identity for every asset',        Icon: Package,    color: '#00A3E0' },
+  { label: 'OPC UA',                     desc: 'Secure, platform-independent data exchange',        Icon: Shield,     color: '#12B3A8' },
+  { label: 'MQTT Sparkplug B',           desc: 'Lightweight, stateful industrial messaging',        Icon: Radio,      color: '#F5A623' },
+  { label: 'Digital Thread',             desc: 'Continuous data lineage from design to disposal',   Icon: GitBranch,  color: '#003B73' },
+  { label: 'Knowledge Graph',            desc: 'Semantic relationship model of your operations',    Icon: Database,   color: '#9CA3AF' },
 ];
 
 export function Scene3OperationalGraph() {
@@ -162,7 +167,7 @@ export function Scene3OperationalGraph() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-sm"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm"
                     style={{
                       background: selectedNode === node.id ? node.color : 'white',
                       border: `2px solid ${node.color}40`,
@@ -171,7 +176,7 @@ export function Scene3OperationalGraph() {
                     animate={selectedNode === node.id ? { scale: [1, 1.05, 1] } : {}}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    {node.icon}
+                    <node.Icon size={16} color={selectedNode === node.id ? 'white' : node.color} strokeWidth={1.8} />
                   </motion.div>
                   <span className="text-[10px] font-semibold text-[#003B73] mt-1 whitespace-nowrap bg-white/80 px-1 rounded">
                     {node.label}
@@ -198,7 +203,7 @@ export function Scene3OperationalGraph() {
                   className="glass rounded-2xl p-6 h-full"
                 >
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="text-3xl">{graphNodes.find(n => n.id === selectedNode)?.icon}</span>
+                    {(() => { const n = graphNodes.find(n => n.id === selectedNode); return n ? <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${n.color}15` }}><n.Icon size={20} color={n.color} strokeWidth={1.8} /></div> : null; })()}
                     <div>
                       <div className="font-bold text-[#003B73]">{graphNodes.find(n => n.id === selectedNode)?.label}</div>
                       <div className="text-xs text-[#6B7E9E]">{graphNodes.find(n => n.id === selectedNode)?.type}</div>
@@ -217,14 +222,16 @@ export function Scene3OperationalGraph() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
-                      {[
-                        { label: 'Energy', value: details.energyKW, icon: '' },
-                        { label: 'Last Maint.', value: details.lastMaint, icon: '' },
-                        { label: 'Twin State', value: details.twinState, icon: '' },
-                        { label: 'CVEs', value: details.vulnerabilities.toString(), icon: '' },
-                      ].map(item => (
+                      {([
+                        { label: 'Energy',      value: details.energyKW,                       Icon: Zap,           color: '#F5A623' },
+                        { label: 'Last Maint.', value: details.lastMaint,                      Icon: Clock,         color: '#00A3E0' },
+                        { label: 'Twin State',  value: details.twinState,                      Icon: Cpu,           color: '#005EB8' },
+                        { label: 'CVEs',        value: details.vulnerabilities.toString(),      Icon: AlertTriangle, color: '#D64545' },
+                      ] as const).map(item => (
                         <div key={item.label} className="bg-[#EAF4FF] rounded-xl p-3">
-                          <div className="text-lg mb-1">{item.icon}</div>
+                          <div className="mb-1">
+                            <item.Icon size={16} color={item.color} strokeWidth={1.8} />
+                          </div>
                           <div className="text-xs text-[#6B7E9E]">{item.label}</div>
                           <div className="text-xs font-bold text-[#003B73] mt-0.5">{item.value}</div>
                         </div>
@@ -260,7 +267,9 @@ export function Scene3OperationalGraph() {
                         className="flex items-start gap-3 p-3 rounded-xl"
                         style={{ background: `${tech.color}08`, border: `1px solid ${tech.color}20` }}
                       >
-                        <span className="text-xl">{tech.icon}</span>
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${tech.color}15` }}>
+                          <tech.Icon size={16} color={tech.color} strokeWidth={1.8} />
+                        </div>
                         <div>
                           <div className="text-sm font-semibold" style={{ color: tech.color }}>{tech.label}</div>
                           <div className="text-xs text-[#6B7E9E] mt-0.5">{tech.desc}</div>

@@ -64,11 +64,11 @@ export const stakeholderProfiles = {
 };
 
 export const maturityJourney = [
-  { id: 'Fragmented', label: 'Fragmented', desc: 'Unknown assets, disconnected systems, zero visibility', color: '#D64545', icon: '' },
-  { id: 'Visible', label: 'Visible', desc: 'Asset discovery, topology mapping, protocol awareness', color: '#F5A623', icon: '' },
-  { id: 'Contextual', label: 'Contextual', desc: 'Semantic relationships, operational knowledge graph', color: '#00A3E0', icon: '' },
-  { id: 'Intelligent', label: 'Intelligent', desc: 'Digital twins, AI-assisted operations, predictive insights', color: '#005EB8', icon: '' },
-  { id: 'Autonomous', label: 'Autonomous', desc: 'Self-healing systems, autonomous orchestration, zero-touch', color: '#12B3A8', icon: '' },
+  { id: 'Fragmented', label: 'Fragmented', desc: 'Unknown assets, disconnected systems, zero visibility', color: '#D64545', icon: 'help-circle' },
+  { id: 'Visible', label: 'Visible', desc: 'Asset discovery, topology mapping, protocol awareness', color: '#F5A623', icon: 'eye' },
+  { id: 'Contextual', label: 'Contextual', desc: 'Semantic relationships, operational knowledge graph', color: '#00A3E0', icon: 'network' },
+  { id: 'Intelligent', label: 'Intelligent', desc: 'Digital twins, AI-assisted operations, predictive insights', color: '#005EB8', icon: 'cpu' },
+  { id: 'Autonomous', label: 'Autonomous', desc: 'Self-healing systems, autonomous orchestration, zero-touch', color: '#12B3A8', icon: 'bot' },
 ];
 
 // Purdue levels: L4 Enterprise at TOP (low y%), L0 Field at BOTTOM (high y%)
@@ -90,23 +90,23 @@ export const otNodes: OTNode[] = [
 ];
 
 export const serviceCards: ServiceCard[] = [
-  { id: 'connectivity', name: 'OT Connectivity Hub', category: 'Connectivity', description: 'Unified protocol translation - Modbus, OPC-UA, MQTT, EtherNet/IP, S7, HART bridged into a normalized data fabric.', icon: '', kpiImpact: ['Protocol Coverage', 'Data Latency', 'Integration Cost'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 70, cloudSplit: 30, twinIntegration: true },
-  { id: 'ot-security', name: 'OT Security Posture', category: 'Security', description: 'IEC 62443 compliant segmentation, passive deep-packet inspection, Zero Trust network access for OT environments.', icon: '', kpiImpact: ['Unknown Assets', 'Vulnerability Exposure', 'Compliance Score'], maturityRequired: 'Visible', deploymentComplexity: 'High', edgeSplit: 60, cloudSplit: 40, twinIntegration: false },
-  { id: 'asset-mgmt', name: 'OT Asset Management', category: 'Asset Visibility', description: 'Auto-discovery, fingerprinting, CMDB population, firmware tracking, and lifecycle governance for every OT asset.', icon: '', kpiImpact: ['Asset Coverage', 'Firmware Compliance', 'MTTR'], maturityRequired: 'Visible', deploymentComplexity: 'Low', edgeSplit: 40, cloudSplit: 60, twinIntegration: true },
-  { id: 'backup-recovery', name: 'OT Backup & Recovery', category: 'Backup & Recovery', description: 'Automated PLC/HMI configuration backup, version control, rapid restore for operational continuity.', icon: '', kpiImpact: ['RTO', 'Config Compliance', 'Recovery Success Rate'], maturityRequired: 'Visible', deploymentComplexity: 'Low', edgeSplit: 50, cloudSplit: 50, twinIntegration: false },
-  { id: 'pam', name: 'OT Privileged Access', category: 'PAM', description: 'Vendor-agnostic privileged access management with session recording, just-in-time access, and full audit trails.', icon: '', kpiImpact: ['Unauthorized Access', 'Audit Coverage', 'Vendor Risk'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 20, cloudSplit: 80, twinIntegration: false },
-  { id: 'ot-ad', name: 'OT Active Directory', category: 'OT Active Directory', description: 'Industrial identity services designed for OT - role-based access, machine identity, operational zones, workforce provisioning.', icon: '', kpiImpact: ['Identity Coverage', 'Zone Compliance', 'Provisioning Time'], maturityRequired: 'Contextual', deploymentComplexity: 'High', edgeSplit: 30, cloudSplit: 70, twinIntegration: false },
-  { id: 'monitoring', name: 'Centralized OT Monitoring', category: 'Monitoring', description: 'Real-time telemetry aggregation from all levels - Purdue L0-L4, anomaly detection, operational alerting.', icon: '', kpiImpact: ['MTTD', 'Alert Accuracy', 'Coverage Ratio'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 40, cloudSplit: 60, twinIntegration: true },
-  { id: 'patch-mgmt', name: 'OT Patch Management', category: 'Patch Management', description: 'Risk-aware patch scheduling that respects operational windows, validates firmware integrity, and maintains uptime.', icon: '', kpiImpact: ['Patch Compliance', 'CVE Exposure', 'Maintenance Cost'], maturityRequired: 'Contextual', deploymentComplexity: 'High', edgeSplit: 30, cloudSplit: 70, twinIntegration: false },
-  { id: 'remote-access', name: 'Secure Remote Access', category: 'Remote Access', description: 'Zero Trust remote access for OT with session recording, conditional access, and vendor isolation.', icon: '', kpiImpact: ['Vendor Incidents', 'Remote Efficiency', 'Compliance'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 20, cloudSplit: 80, twinIntegration: false },
-  { id: 'dpp', name: 'Digital Product Passport', category: 'DPP', description: 'Regulatory-grade digital product lifecycle tracking from raw material to end-of-life - EU DPP compliant.', icon: '', kpiImpact: ['Regulatory Compliance', 'Supply Chain Visibility', 'Carbon Traceability'], maturityRequired: 'Intelligent', deploymentComplexity: 'High', edgeSplit: 10, cloudSplit: 90, twinIntegration: true },
-  { id: 'sustainability', name: 'Sustainability Intelligence', category: 'Sustainability', description: 'Real-time Scope 1/2/3 emissions tracking, energy optimization, carbon twin simulation, ESG reporting.', icon: '', kpiImpact: ['Carbon Reduction', 'Energy Intensity', 'ESG Score'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 30, cloudSplit: 70, twinIntegration: true },
-  { id: 'predictive-maint', name: 'Predictive Maintenance', category: 'Predictive Maintenance', description: 'ML-based failure prediction using vibration, thermal, acoustic, and operational signatures at the asset level.', icon: '', kpiImpact: ['MTBF', 'Unplanned Downtime', 'Maintenance Cost'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 50, cloudSplit: 50, twinIntegration: true },
-  { id: 'ai-quality', name: 'AI Quality Inspection', category: 'AI Quality Inspection', description: 'Computer vision defect detection at line speed - zero sampling bias, full traceability, process correlation.', icon: '', kpiImpact: ['Defect Rate', 'Scrap Cost', 'Customer Returns'], maturityRequired: 'Intelligent', deploymentComplexity: 'High', edgeSplit: 80, cloudSplit: 20, twinIntegration: true },
-  { id: 'carbon-opt', name: 'Carbon Optimization Engine', category: 'Carbon Optimization', description: 'Closed-loop carbon control - real-time tracking, process optimization recommendations, offset intelligence.', icon: '', kpiImpact: ['Scope 1 Emissions', 'Energy Cost', 'Carbon Credits'], maturityRequired: 'Autonomous', deploymentComplexity: 'High', edgeSplit: 30, cloudSplit: 70, twinIntegration: true },
-  { id: 'root-cause', name: 'Root Cause Intelligence', category: 'Root Cause Intelligence', description: 'AI-driven causal analysis across the operational graph - correlates topology, telemetry, and maintenance history.', icon: '', kpiImpact: ['MTTR', 'Repeat Incidents', 'Investigation Cost'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 20, cloudSplit: 80, twinIntegration: true },
-  { id: 'factory-copilot', name: 'Factory Copilot', category: 'Factory Copilot', description: 'Conversational AI over your operational graph - query your factory in natural language, get contextual insights.', icon: '', kpiImpact: ['Decision Velocity', 'Operator Productivity', 'Knowledge Retention'], maturityRequired: 'Autonomous', deploymentComplexity: 'Medium', edgeSplit: 10, cloudSplit: 90, twinIntegration: true },
-  { id: 'worker-safety', name: 'Worker Safety Twin', category: 'Worker Safety Twin', description: 'Real-time ergonomic risk, environmental exposure, fatigue modeling, and proximity intelligence for workforce safety.', icon: '', kpiImpact: ['Safety Incidents', 'Compliance Cost', 'Worker Wellbeing'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 60, cloudSplit: 40, twinIntegration: true },
+  { id: 'connectivity', name: 'OT Connectivity Hub', category: 'Connectivity', description: 'Unified protocol translation - Modbus, OPC-UA, MQTT, EtherNet/IP, S7, HART bridged into a normalized data fabric.', icon: 'network', kpiImpact: ['Protocol Coverage', 'Data Latency', 'Integration Cost'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 70, cloudSplit: 30, twinIntegration: true },
+  { id: 'ot-security', name: 'OT Security Posture', category: 'Security', description: 'IEC 62443 compliant segmentation, passive deep-packet inspection, Zero Trust network access for OT environments.', icon: 'shield', kpiImpact: ['Unknown Assets', 'Vulnerability Exposure', 'Compliance Score'], maturityRequired: 'Visible', deploymentComplexity: 'High', edgeSplit: 60, cloudSplit: 40, twinIntegration: false },
+  { id: 'asset-mgmt', name: 'OT Asset Management', category: 'Asset Visibility', description: 'Auto-discovery, fingerprinting, CMDB population, firmware tracking, and lifecycle governance for every OT asset.', icon: 'search', kpiImpact: ['Asset Coverage', 'Firmware Compliance', 'MTTR'], maturityRequired: 'Visible', deploymentComplexity: 'Low', edgeSplit: 40, cloudSplit: 60, twinIntegration: true },
+  { id: 'backup-recovery', name: 'OT Backup & Recovery', category: 'Backup & Recovery', description: 'Automated PLC/HMI configuration backup, version control, rapid restore for operational continuity.', icon: 'database', kpiImpact: ['RTO', 'Config Compliance', 'Recovery Success Rate'], maturityRequired: 'Visible', deploymentComplexity: 'Low', edgeSplit: 50, cloudSplit: 50, twinIntegration: false },
+  { id: 'pam', name: 'OT Privileged Access', category: 'PAM', description: 'Vendor-agnostic privileged access management with session recording, just-in-time access, and full audit trails.', icon: 'lock', kpiImpact: ['Unauthorized Access', 'Audit Coverage', 'Vendor Risk'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 20, cloudSplit: 80, twinIntegration: false },
+  { id: 'ot-ad', name: 'OT Active Directory', category: 'OT Active Directory', description: 'Industrial identity services designed for OT - role-based access, machine identity, operational zones, workforce provisioning.', icon: 'users', kpiImpact: ['Identity Coverage', 'Zone Compliance', 'Provisioning Time'], maturityRequired: 'Contextual', deploymentComplexity: 'High', edgeSplit: 30, cloudSplit: 70, twinIntegration: false },
+  { id: 'monitoring', name: 'Centralized OT Monitoring', category: 'Monitoring', description: 'Real-time telemetry aggregation from all levels - Purdue L0-L4, anomaly detection, operational alerting.', icon: 'activity', kpiImpact: ['MTTD', 'Alert Accuracy', 'Coverage Ratio'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 40, cloudSplit: 60, twinIntegration: true },
+  { id: 'patch-mgmt', name: 'OT Patch Management', category: 'Patch Management', description: 'Risk-aware patch scheduling that respects operational windows, validates firmware integrity, and maintains uptime.', icon: 'clock', kpiImpact: ['Patch Compliance', 'CVE Exposure', 'Maintenance Cost'], maturityRequired: 'Contextual', deploymentComplexity: 'High', edgeSplit: 30, cloudSplit: 70, twinIntegration: false },
+  { id: 'remote-access', name: 'Secure Remote Access', category: 'Remote Access', description: 'Zero Trust remote access for OT with session recording, conditional access, and vendor isolation.', icon: 'globe', kpiImpact: ['Vendor Incidents', 'Remote Efficiency', 'Compliance'], maturityRequired: 'Visible', deploymentComplexity: 'Medium', edgeSplit: 20, cloudSplit: 80, twinIntegration: false },
+  { id: 'dpp', name: 'Digital Product Passport', category: 'DPP', description: 'Regulatory-grade digital product lifecycle tracking from raw material to end-of-life - EU DPP compliant.', icon: 'git-merge', kpiImpact: ['Regulatory Compliance', 'Supply Chain Visibility', 'Carbon Traceability'], maturityRequired: 'Intelligent', deploymentComplexity: 'High', edgeSplit: 10, cloudSplit: 90, twinIntegration: true },
+  { id: 'sustainability', name: 'Sustainability Intelligence', category: 'Sustainability', description: 'Real-time Scope 1/2/3 emissions tracking, energy optimization, carbon twin simulation, ESG reporting.', icon: 'leaf', kpiImpact: ['Carbon Reduction', 'Energy Intensity', 'ESG Score'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 30, cloudSplit: 70, twinIntegration: true },
+  { id: 'predictive-maint', name: 'Predictive Maintenance', category: 'Predictive Maintenance', description: 'ML-based failure prediction using vibration, thermal, acoustic, and operational signatures at the asset level.', icon: 'wrench', kpiImpact: ['MTBF', 'Unplanned Downtime', 'Maintenance Cost'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 50, cloudSplit: 50, twinIntegration: true },
+  { id: 'ai-quality', name: 'AI Quality Inspection', category: 'AI Quality Inspection', description: 'Computer vision defect detection at line speed - zero sampling bias, full traceability, process correlation.', icon: 'scan', kpiImpact: ['Defect Rate', 'Scrap Cost', 'Customer Returns'], maturityRequired: 'Intelligent', deploymentComplexity: 'High', edgeSplit: 80, cloudSplit: 20, twinIntegration: true },
+  { id: 'carbon-opt', name: 'Carbon Optimization Engine', category: 'Carbon Optimization', description: 'Closed-loop carbon control - real-time tracking, process optimization recommendations, offset intelligence.', icon: 'leaf', kpiImpact: ['Scope 1 Emissions', 'Energy Cost', 'Carbon Credits'], maturityRequired: 'Autonomous', deploymentComplexity: 'High', edgeSplit: 30, cloudSplit: 70, twinIntegration: true },
+  { id: 'root-cause', name: 'Root Cause Intelligence', category: 'Root Cause Intelligence', description: 'AI-driven causal analysis across the operational graph - correlates topology, telemetry, and maintenance history.', icon: 'git-branch', kpiImpact: ['MTTR', 'Repeat Incidents', 'Investigation Cost'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 20, cloudSplit: 80, twinIntegration: true },
+  { id: 'factory-copilot', name: 'Factory Copilot', category: 'Factory Copilot', description: 'Conversational AI over your operational graph - query your factory in natural language, get contextual insights.', icon: 'bot', kpiImpact: ['Decision Velocity', 'Operator Productivity', 'Knowledge Retention'], maturityRequired: 'Autonomous', deploymentComplexity: 'Medium', edgeSplit: 10, cloudSplit: 90, twinIntegration: true },
+  { id: 'worker-safety', name: 'Worker Safety Twin', category: 'Worker Safety Twin', description: 'Real-time ergonomic risk, environmental exposure, fatigue modeling, and proximity intelligence for workforce safety.', icon: 'users', kpiImpact: ['Safety Incidents', 'Compliance Cost', 'Worker Wellbeing'], maturityRequired: 'Intelligent', deploymentComplexity: 'Medium', edgeSplit: 60, cloudSplit: 40, twinIntegration: true },
 ];
 
 export const useCases: UseCase[] = [
@@ -274,35 +274,35 @@ export const cioKPIs: KPI[] = [
 ];
 
 export const fragmentationProblems = [
-  { id: 'unknown', label: 'Unknown Devices', severity: 'critical', count: '847', icon: '' },
-  { id: 'shadow-ot', label: 'Shadow OT', severity: 'critical', count: '143', icon: '' },
-  { id: 'stale-cmdb', label: 'Stale CMDB Records', severity: 'warning', count: '2,341', icon: '' },
-  { id: 'unsupported', label: 'Unsupported Protocols', severity: 'warning', count: '31', icon: '' },
-  { id: 'dup-signals', label: 'Duplicate Signals', severity: 'warning', count: '1,204', icon: '' },
-  { id: 'dark-zones', label: 'Dark Operational Zones', severity: 'critical', count: '8', icon: '' },
-  { id: 'disconnected', label: 'Disconnected PLCs', severity: 'critical', count: '67', icon: '' },
-  { id: 'stale-fw', label: 'EOL Firmware', severity: 'warning', count: '312', icon: '' },
+  { id: 'unknown', label: 'Unknown Devices', severity: 'critical', count: '847', icon: 'help-circle' },
+  { id: 'shadow-ot', label: 'Shadow OT', severity: 'critical', count: '143', icon: 'eye-off' },
+  { id: 'stale-cmdb', label: 'Stale CMDB Records', severity: 'warning', count: '2,341', icon: 'database' },
+  { id: 'unsupported', label: 'Unsupported Protocols', severity: 'warning', count: '31', icon: 'alert-triangle' },
+  { id: 'dup-signals', label: 'Duplicate Signals', severity: 'warning', count: '1,204', icon: 'copy' },
+  { id: 'dark-zones', label: 'Dark Operational Zones', severity: 'critical', count: '8', icon: 'lock' },
+  { id: 'disconnected', label: 'Disconnected PLCs', severity: 'critical', count: '67', icon: 'unplug' },
+  { id: 'stale-fw', label: 'EOL Firmware', severity: 'warning', count: '312', icon: 'clock' },
 ];
 
 export const visibilityCapabilities = [
-  { id: 'discovery', label: 'OT Asset Discovery', desc: 'Passive network scanning with zero operational impact', kpi: '85%+ asset coverage', icon: '' },
-  { id: 'cmdb', label: 'OT CMDB', desc: 'Auto-populated, continuously reconciled asset registry', kpi: 'Near-complete sync', icon: '' },
-  { id: 'fingerprint', label: 'Device Fingerprinting', desc: 'Vendor, firmware, and behavior-based identity', kpi: '600+ vendors supported', icon: '' },
-  { id: 'monitoring', label: 'OT Monitoring', desc: 'Real-time telemetry from all Purdue levels', kpi: 'Sub-second latency', icon: '' },
-  { id: 'drift', label: 'Drift Detection', desc: 'Configuration change detection with audit trail', kpi: 'Near-real-time detection', icon: '' },
-  { id: 'protocol', label: 'Protocol Awareness', desc: '150+ industrial protocols decoded and normalized', kpi: '150+ protocols', icon: '' },
-  { id: 'segmentation', label: 'Network Segmentation', desc: 'Purdue/IEC 62443 zone mapping and enforcement', kpi: 'Zone compliance measured', icon: '' },
-  { id: 'dmz', label: 'OT DMZ Visibility', desc: 'Full visibility into IT/OT convergence points', kpi: 'DMZ coverage: 100%', icon: '' },
+  { id: 'discovery', label: 'OT Asset Discovery', desc: 'Passive network scanning with zero operational impact', kpi: '85%+ asset coverage', icon: 'search' },
+  { id: 'cmdb', label: 'OT CMDB', desc: 'Auto-populated, continuously reconciled asset registry', kpi: 'Near-complete sync', icon: 'database' },
+  { id: 'fingerprint', label: 'Device Fingerprinting', desc: 'Vendor, firmware, and behavior-based identity', kpi: '600+ vendors supported', icon: 'scan' },
+  { id: 'monitoring', label: 'OT Monitoring', desc: 'Real-time telemetry from all Purdue levels', kpi: 'Sub-second latency', icon: 'activity' },
+  { id: 'drift', label: 'Drift Detection', desc: 'Configuration change detection with audit trail', kpi: 'Near-real-time detection', icon: 'git-branch' },
+  { id: 'protocol', label: 'Protocol Awareness', desc: '150+ industrial protocols decoded and normalized', kpi: '150+ protocols', icon: 'network' },
+  { id: 'segmentation', label: 'Network Segmentation', desc: 'Purdue/IEC 62443 zone mapping and enforcement', kpi: 'Zone compliance measured', icon: 'layers' },
+  { id: 'dmz', label: 'OT DMZ Visibility', desc: 'Full visibility into IT/OT convergence points', kpi: 'DMZ coverage: 100%', icon: 'shield' },
 ];
 
 export const twinTypes = [
-  { id: 'asset', label: 'Asset Twin', desc: 'Individual equipment - motor, pump, heat exchanger', color: '#005EB8', icon: '' },
-  { id: 'process', label: 'Process Twin', desc: 'Production line or chemical process simulation', color: '#00A3E0', icon: '' },
-  { id: 'factory', label: 'Factory Twin', desc: 'Complete facility with all systems and flows', color: '#12B3A8', icon: '' },
-  { id: 'carbon', label: 'Carbon Twin', desc: 'Real-time emissions model with optimization loops', color: '#34D399', icon: '' },
-  { id: 'worker', label: 'Worker Twin', desc: 'Workforce safety, ergonomics, and productivity', color: '#F5A623', icon: '' },
-  { id: 'sustainability', label: 'Sustainability Twin', desc: 'ESG metrics, energy flows, circular economy', color: '#10B981', icon: '' },
-  { id: 'operational', label: 'Operational Twin', desc: 'Live operational state with autonomous control loops', color: '#003B73', icon: '' },
+  { id: 'asset', label: 'Asset Twin', desc: 'Individual equipment - motor, pump, heat exchanger', color: '#005EB8', icon: 'package' },
+  { id: 'process', label: 'Process Twin', desc: 'Production line or chemical process simulation', color: '#00A3E0', icon: 'workflow' },
+  { id: 'factory', label: 'Factory Twin', desc: 'Complete facility with all systems and flows', color: '#12B3A8', icon: 'factory' },
+  { id: 'carbon', label: 'Carbon Twin', desc: 'Real-time emissions model with optimization loops', color: '#34D399', icon: 'leaf' },
+  { id: 'worker', label: 'Worker Twin', desc: 'Workforce safety, ergonomics, and productivity', color: '#F5A623', icon: 'users' },
+  { id: 'sustainability', label: 'Sustainability Twin', desc: 'ESG metrics, energy flows, circular economy', color: '#10B981', icon: 'recycle' },
+  { id: 'operational', label: 'Operational Twin', desc: 'Live operational state with autonomous control loops', color: '#003B73', icon: 'gauge' },
 ];
 
 export const autonomousScenarios = [
@@ -321,7 +321,7 @@ export const autonomousScenarios = [
     ],
     outcome: 'Downtime avoided. Estimated saving: $47,000',
     severity: 'warning',
-    icon: '',
+    icon: 'activity',
   },
   {
     id: 'unauthorized',
@@ -338,7 +338,7 @@ export const autonomousScenarios = [
     ],
     outcome: 'Threat contained. Zero production impact.',
     severity: 'critical',
-    icon: '',
+    icon: 'shield',
   },
   {
     id: 'energy',
@@ -355,7 +355,7 @@ export const autonomousScenarios = [
     ],
     outcome: 'Energy waste recovered. €3,200/day saved.',
     severity: 'warning',
-    icon: '',
+    icon: 'zap',
   },
   {
     id: 'overheating',
@@ -372,7 +372,7 @@ export const autonomousScenarios = [
     ],
     outcome: 'Machine saved. Controlled intervention. No scrap.',
     severity: 'critical',
-    icon: '',
+    icon: 'gauge',
   },
 ];
 
@@ -427,22 +427,22 @@ export const sceneLens: Record<number, Partial<Record<string, { icon: string; in
 };
 
 export const storyScenes = [
-  { id: 'hero',     label: 'Start Here',               icon: '', short: 'Intro'    },
-  { id: 'scene1',  label: 'The Invisible Factory',     icon: '', short: 'Problem'  },
-  { id: 'scene2',  label: 'OT Visibility',             icon: '',  short: 'Visibility'},
-  { id: 'scene3',  label: 'Operational Graph',         icon: '', short: 'Context'  },
-  { id: 'scene4',  label: 'Digital Twin',              icon: '', short: 'Twin'     },
-  { id: 'scene5',      label: 'Autonomous Ops',            icon: '', short: 'Autonomy' },
-  { id: 'bigpicture',  label: 'Ecosystem Map',             icon: '', short: 'Map'      },
-  { id: 'value-chain', label: 'Visibility to Value',       icon: '', short: 'Journey'  },
-  { id: 'fof',         label: 'Factory of the Future',     icon: '', short: 'FoF'      },
-  { id: 'target',  label: 'Target State Blueprint',    icon: '', short: 'Target'   },
-  { id: 'scene6',  label: 'OT Services',               icon: '', short: 'Services' },
-  { id: 'scene7',  label: 'Global Governance',         icon: '', short: 'Govern'   },
-  { id: 'roadmap', label: 'Transformation Roadmap',    icon: '', short: 'Roadmap'  },
-  { id: 'deloitte',label: 'Programme Structure',        icon: '', short: 'Programme'},
-  { id: 'scene8',  label: 'Use Case Studio',           icon: '', short: 'Use Cases'},
-  { id: 'cio',     label: 'Command Center',            icon: '', short: 'Cockpit'  },
+  { id: 'hero',     label: 'Start Here',               icon: 'home', short: 'Intro'    },
+  { id: 'scene1',  label: 'The Invisible Factory',     icon: 'factory', short: 'Problem'  },
+  { id: 'scene2',  label: 'OT Visibility',             icon: 'eye', short: 'Visibility'},
+  { id: 'scene3',  label: 'Operational Graph',         icon: 'network', short: 'Context'  },
+  { id: 'scene4',  label: 'Digital Twin',              icon: 'cpu', short: 'Twin'     },
+  { id: 'scene5',      label: 'Autonomous Ops',            icon: 'bot', short: 'Autonomy' },
+  { id: 'bigpicture',  label: 'Ecosystem Map',             icon: 'map', short: 'Map'      },
+  { id: 'value-chain', label: 'Visibility to Value',       icon: 'layers', short: 'Journey'  },
+  { id: 'fof',         label: 'Factory of the Future',     icon: 'building-2', short: 'FoF'      },
+  { id: 'target',  label: 'Target State Blueprint',    icon: 'target', short: 'Target'   },
+  { id: 'scene6',  label: 'OT Services',               icon: 'package', short: 'Services' },
+  { id: 'scene7',  label: 'Global Governance',         icon: 'globe', short: 'Govern'   },
+  { id: 'roadmap', label: 'Transformation Roadmap',    icon: 'map-pin', short: 'Roadmap'  },
+  { id: 'deloitte',label: 'Programme Structure',        icon: 'briefcase', short: 'Programme'},
+  { id: 'scene8',  label: 'Use Case Studio',           icon: 'bar-chart-2', short: 'Use Cases'},
+  { id: 'cio',     label: 'Command Center',            icon: 'layout-dashboard', short: 'Cockpit'  },
 ];
 
 export const globalKPIs = {
@@ -462,7 +462,7 @@ export const fofUseCases = [
   {
     id: 'digital-twin',
     number: 1,
-    icon: '',
+    icon: 'cpu',
     title: 'Digital Twins',
     tagline: 'The living operational mirror - not a 3D model',
     description: 'Asset visibility provides the continuous data feed that makes digital twins alive and accurate. Without knowing what assets exist, how they connect, and their real-time state, a twin is a static model that decays from day one.',
@@ -478,7 +478,7 @@ export const fofUseCases = [
   {
     id: 'predictive-maint',
     number: 2,
-    icon: '',
+    icon: 'wrench',
     title: 'Predictive Maintenance',
     tagline: 'Fix before it fails - zero production surprises',
     description: 'Real-time asset telemetry feeds ML failure models that predict equipment degradation days before breakdown. Maintenance becomes a planned activity, not an emergency scramble that halts production.',
@@ -494,7 +494,7 @@ export const fofUseCases = [
   {
     id: 'carbon-twin',
     number: 3,
-    icon: '',
+    icon: 'leaf',
     title: 'Carbon & Energy Twin',
     tagline: 'Scope 1/2 emissions tracked, modelled, and optimised in real time',
     description: 'A carbon twin requires knowing exactly where energy flows through every asset, process, and utility. Visibility enables closed-loop carbon control that turns ESG commitments into an engineering problem you can solve.',
@@ -510,7 +510,7 @@ export const fofUseCases = [
   {
     id: 'ai-quality',
     number: 4,
-    icon: '',
+    icon: 'scan',
     title: 'AI Quality Inspection',
     tagline: 'Zero defects at line speed - full traceability to root cause',
     description: 'Computer vision + process-parameter correlation catches defects the moment they form. Asset visibility provides the process context that turns a detection signal into a root-cause-linked intervention - critical in GxP-regulated manufacturing.',
@@ -526,7 +526,7 @@ export const fofUseCases = [
   {
     id: 'autonomous-ops',
     number: 5,
-    icon: '',
+    icon: 'bot',
     title: 'Autonomous Operations',
     tagline: 'The factory that responds, adapts, and self-heals without operator intervention',
     description: 'Autonomous operations is the convergence of visibility, context, twins, and intelligence. Every automated decision is only trustworthy if it is grounded in accurate, real-time operational state. Visibility is the prerequisite for trust in automation.',
@@ -543,7 +543,7 @@ export const fofUseCases = [
 
 export const marketProofPoints = [
   {
-    icon: '',
+    icon: 'flask-conical',
     sector: 'Pharma & Life Sciences',
     company: 'Global Top-10 Pharmaceutical Manufacturer',
     headline: 'Comprehensive OT asset visibility achieved within first year',
@@ -551,7 +551,7 @@ export const marketProofPoints = [
     quote: 'We could not activate a single digital twin until we knew what we had. Visibility was the unlock.',
   },
   {
-    icon: '',
+    icon: 'settings',
     sector: 'Industrial Equipment',
     company: 'European Life Sciences Equipment Producer',
     headline: 'Autonomous quality inspection across 3 lines',
@@ -559,7 +559,7 @@ export const marketProofPoints = [
     quote: 'Our FDA audit preparation time dropped from 3 weeks to 2 hours once every asset and process was digitally traceable.',
   },
   {
-    icon: '',
+    icon: 'leaf',
     sector: 'Specialty Chemicals',
     company: 'Mid-size European Chemical Manufacturer',
     headline: 'Carbon twin enables measurable Scope 1 reduction',
@@ -571,14 +571,14 @@ export const marketProofPoints = [
 // ─── Target State Blueprint ───────────────────────────────────────────────────
 
 export const targetStateKPIs = [
-  { metric: 'OT Asset Visibility',      current: 'Partial / estimated',  target: '≥ 85% confirmed',         months: 6,  color: '#005EB8', icon: ''  },
-  { metric: 'Unplanned Downtime',        current: 'Baseline',             target: '−30 to −40%',             months: 18, color: '#00A3E0', icon: ''  },
-  { metric: 'Active Digital Twins',      current: 'None',                 target: 'Critical assets covered', months: 24, color: '#12B3A8', icon: '' },
-  { metric: 'Scope 1 Emissions',         current: 'Baseline (measured)',  target: 'Measurable reduction',    months: 30, color: '#10B981', icon: ''  },
-  { metric: 'Mean Time to Repair',       current: 'Baseline',             target: '−25 to −35%',             months: 18, color: '#F5A623', icon: '' },
-  { metric: 'OT Security Compliance',   current: 'Partial / ad hoc',     target: 'IEC 62443 Level 2–3',     months: 12, color: '#D64545', icon: ''  },
-  { metric: 'Batch Release Cycle',       current: 'Baseline',             target: '−15 to −25%',             months: 24, color: '#6366F1', icon: '' },
-  { metric: 'GxP Audit Readiness',       current: 'Manual / weeks',       target: 'Structured / days',       months: 18, color: '#003B73', icon: '' },
+  { metric: 'OT Asset Visibility',      current: 'Partial / estimated',  target: '≥ 85% confirmed',         months: 6,  color: '#005EB8', icon: 'eye'  },
+  { metric: 'Unplanned Downtime',        current: 'Baseline',             target: '−30 to −40%',             months: 18, color: '#00A3E0', icon: 'alert-triangle'  },
+  { metric: 'Active Digital Twins',      current: 'None',                 target: 'Critical assets covered', months: 24, color: '#12B3A8', icon: 'cpu' },
+  { metric: 'Scope 1 Emissions',         current: 'Baseline (measured)',  target: 'Measurable reduction',    months: 30, color: '#10B981', icon: 'leaf'  },
+  { metric: 'Mean Time to Repair',       current: 'Baseline',             target: '−25 to −35%',             months: 18, color: '#F5A623', icon: 'clock' },
+  { metric: 'OT Security Compliance',   current: 'Partial / ad hoc',     target: 'IEC 62443 Level 2–3',     months: 12, color: '#D64545', icon: 'shield'  },
+  { metric: 'Batch Release Cycle',       current: 'Baseline',             target: '−15 to −25%',             months: 24, color: '#6366F1', icon: 'flask-conical' },
+  { metric: 'GxP Audit Readiness',       current: 'Manual / weeks',       target: 'Structured / days',       months: 18, color: '#003B73', icon: 'check-circle' },
 ];
 
 export const peerBenchmarks = [
@@ -590,12 +590,12 @@ export const peerBenchmarks = [
 ];
 
 export const lifeSciencesCapabilities = [
-  { icon: '', title: 'FDA 21 CFR Part 11', desc: 'Electronic records and audit trail for every automated action and system change' },
-  { icon: '', title: 'GxP Digital Thread', desc: 'End-to-end data integrity from raw material receipt to batch release - fully traceable' },
-  { icon: '', title: 'Cleanroom OT Visibility', desc: 'Passive asset discovery with zero cleanroom contamination risk - qualified approach' },
-  { icon: '', title: 'Batch Process Twin', desc: 'Digital twin for bioprocess fermentation with parameter-to-quality correlation' },
-  { icon: '', title: 'PAT Integration', desc: 'Process Analytical Technology data feeds into quality twin for real-time release decisions' },
-  { icon: '', title: 'Annex 11 Compliance', desc: 'EU GMP computerised systems validation built into the platform from day one' },
+  { icon: 'file-check', title: 'FDA 21 CFR Part 11', desc: 'Electronic records and audit trail for every automated action and system change' },
+  { icon: 'git-merge', title: 'GxP Digital Thread', desc: 'End-to-end data integrity from raw material receipt to batch release - fully traceable' },
+  { icon: 'search', title: 'Cleanroom OT Visibility', desc: 'Passive asset discovery with zero cleanroom contamination risk - qualified approach' },
+  { icon: 'cpu', title: 'Batch Process Twin', desc: 'Digital twin for bioprocess fermentation with parameter-to-quality correlation' },
+  { icon: 'flask-conical', title: 'PAT Integration', desc: 'Process Analytical Technology data feeds into quality twin for real-time release decisions' },
+  { icon: 'check-circle', title: 'Annex 11 Compliance', desc: 'EU GMP computerised systems validation built into the platform from day one' },
 ];
 
 // ─── Transformation Roadmap ───────────────────────────────────────────────────
@@ -609,7 +609,7 @@ export const roadmapPhases = [
     duration: '0 – 6 Months',
     color: '#F5A623',
     bg: '#FFFBEB',
-    icon: '',
+    icon: 'layers',
     summary: 'Establish the operational truth layer. Every asset discovered, mapped, and governed before a single twin is activated.',
     milestones: [
       { week: 4,  label: 'OT Asset Discovery',      detail: 'Passive scan across all Purdue levels - asset fingerprinting with zero production impact' },
@@ -641,7 +641,7 @@ export const roadmapPhases = [
     duration: '6 – 18 Months',
     color: '#005EB8',
     bg: '#EAF4FF',
-    icon: '',
+    icon: 'cpu',
     summary: 'Activate digital twins, build the operational knowledge graph, and deploy predictive intelligence across critical asset classes.',
     milestones: [
       { week: 28, label: 'Operational Knowledge Graph', detail: 'Semantic relationships between assets, processes, quality parameters, and maintenance records' },
@@ -673,7 +673,7 @@ export const roadmapPhases = [
     duration: '18 – 36 Months',
     color: '#12B3A8',
     bg: '#E6FAF8',
-    icon: '',
+    icon: 'bot',
     summary: 'Deploy autonomous orchestration, self-healing operations, and continuous GxP compliance monitoring across the full manufacturing network.',
     milestones: [
       { week: 80,  label: 'Autonomous Event Response',  detail: 'Majority of operational events resolved without human intervention - validated governance framework active' },
@@ -709,50 +709,50 @@ export const deloitteData = {
     {
       phase: 'Foundation (0–6 months)',
       color: '#F5A623',
-      icon: '',
+      icon: 'layers',
       services: [
-        { name: 'OT Maturity Assessment',      icon: '', desc: 'Benchmarked assessment of current OT state against life sciences industry peers with quantified gap analysis', duration: '4 weeks' },
-        { name: 'Target Architecture Design',  icon: '',  desc: 'Reference architecture tailored to the manufacturing environment with GxP compliance, IEC 62443 zoning, and cloud connectivity built in', duration: '6 weeks' },
-        { name: 'OT Security Assessment',      icon: '',  desc: 'IEC 62443 gap analysis, network segmentation review, zero-trust OT access roadmap', duration: '6 weeks' },
-        { name: 'Asset Discovery & CMDB',      icon: '', desc: 'Deployment and tuning of passive OT discovery with GxP inventory qualification across all facilities', duration: '8 weeks' },
+        { name: 'OT Maturity Assessment',      icon: 'search', desc: 'Benchmarked assessment of current OT state against life sciences industry peers with quantified gap analysis', duration: '4 weeks' },
+        { name: 'Target Architecture Design',  icon: 'layers',  desc: 'Reference architecture tailored to the manufacturing environment with GxP compliance, IEC 62443 zoning, and cloud connectivity built in', duration: '6 weeks' },
+        { name: 'OT Security Assessment',      icon: 'shield',  desc: 'IEC 62443 gap analysis, network segmentation review, zero-trust OT access roadmap', duration: '6 weeks' },
+        { name: 'Asset Discovery & CMDB',      icon: 'database', desc: 'Deployment and tuning of passive OT discovery with GxP inventory qualification across all facilities', duration: '8 weeks' },
       ],
     },
     {
       phase: 'Intelligence (6–18 months)',
       color: '#005EB8',
-      icon: '',
+      icon: 'cpu',
       services: [
-        { name: 'Digital Twin Activation',    icon: '', desc: 'Twin modelling, data pipeline build, behavioural baseline - using our Twin Activate™ accelerator', duration: '12 weeks' },
-        { name: 'Predictive Maintenance',     icon: '', desc: 'ML model development, sensor integration, alert workflow - pre-validated for GxP environments', duration: '10 weeks' },
-        { name: 'GxP Digital Thread',          icon: '', desc: 'FDA 21 CFR Part 11 compliant data governance, electronic batch records, and full audit-trail framework', duration: '8 weeks' },
-        { name: 'Carbon & Sustainability Twin',icon: '',  desc: 'Scope 1/2/3 measurement framework with closed-loop optimisation using our Carbon Lens™ platform', duration: '10 weeks' },
+        { name: 'Digital Twin Activation',    icon: 'cpu', desc: 'Twin modelling, data pipeline build, behavioural baseline - using our Twin Activate™ accelerator', duration: '12 weeks' },
+        { name: 'Predictive Maintenance',     icon: 'wrench', desc: 'ML model development, sensor integration, alert workflow - pre-validated for GxP environments', duration: '10 weeks' },
+        { name: 'GxP Digital Thread',          icon: 'git-merge', desc: 'FDA 21 CFR Part 11 compliant data governance, electronic batch records, and full audit-trail framework', duration: '8 weeks' },
+        { name: 'Carbon & Sustainability Twin',icon: 'leaf',  desc: 'Scope 1/2/3 measurement framework with closed-loop optimisation using our Carbon Lens™ platform', duration: '10 weeks' },
       ],
     },
     {
       phase: 'Autonomy (18–36 months)',
       color: '#12B3A8',
-      icon: '',
+      icon: 'bot',
       services: [
-        { name: 'Autonomous Ops Platform',    icon: '', desc: 'Orchestration, self-healing workflows, and human-in-loop governance framework with GxP sign-off', duration: '16 weeks' },
-        { name: 'Factory Copilot Deploy',      icon: '', desc: 'LLM over the operational graph - natural-language factory intelligence, compliant with data privacy requirements', duration: '8 weeks' },
-        { name: 'Global Platform Governance', icon: '', desc: 'Multi-site rollout, StackSets deployment, global policy enforcement with drift detection', duration: '20 weeks' },
-        { name: 'Operate & Optimise',         icon: '', desc: 'Managed operations, continuous model improvement, KPI measurement, and quarterly value reviews', duration: 'Ongoing' },
+        { name: 'Autonomous Ops Platform',    icon: 'bot', desc: 'Orchestration, self-healing workflows, and human-in-loop governance framework with GxP sign-off', duration: '16 weeks' },
+        { name: 'Factory Copilot Deploy',      icon: 'zap', desc: 'LLM over the operational graph - natural-language factory intelligence, compliant with data privacy requirements', duration: '8 weeks' },
+        { name: 'Global Platform Governance', icon: 'globe', desc: 'Multi-site rollout, StackSets deployment, global policy enforcement with drift detection', duration: '20 weeks' },
+        { name: 'Operate & Optimise',         icon: 'settings', desc: 'Managed operations, continuous model improvement, KPI measurement, and quarterly value reviews', duration: 'Ongoing' },
       ],
     },
   ],
 
   differentiators: [
-    { icon: '', title: 'OT + IT + Strategy. One Team.', desc: 'No handoffs between OT engineering, cyber, cloud architecture, and business strategy. One integrated Deloitte team owns the full transformation journey.' },
-    { icon: '', title: 'Life Sciences Manufacturing Depth', desc: 'Dedicated GxP, FDA 21 CFR Part 11, and EudraLex Annex 11 expertise. Completed OT transformations in pharma, biotech, and life sciences equipment manufacturing with the same compliance profile.' },
-    { icon: '', title: 'Proven Accelerators Cut Time to Value', desc: 'OT Clarity™ for asset discovery, Twin Activate™ for digital twin deployment, GxP DataGuard™ for data governance, and Carbon Lens™ for sustainability - pre-built and pre-validated to reduce delivery time compared to starting from scratch.' },
-    { icon: '', title: 'Global Scale, Local Delivery', desc: 'Practitioners available globally including all major manufacturing regions. Global architecture, local implementation expertise, consistent delivery standards.' },
+    { icon: 'users', title: 'OT + IT + Strategy. One Team.', desc: 'No handoffs between OT engineering, cyber, cloud architecture, and business strategy. One integrated Deloitte team owns the full transformation journey.' },
+    { icon: 'flask-conical', title: 'Life Sciences Manufacturing Depth', desc: 'Dedicated GxP, FDA 21 CFR Part 11, and EudraLex Annex 11 expertise. Completed OT transformations in pharma, biotech, and life sciences equipment manufacturing with the same compliance profile.' },
+    { icon: 'zap', title: 'Proven Accelerators Cut Time to Value', desc: 'OT Clarity™ for asset discovery, Twin Activate™ for digital twin deployment, GxP DataGuard™ for data governance, and Carbon Lens™ for sustainability - pre-built and pre-validated to reduce delivery time compared to starting from scratch.' },
+    { icon: 'globe', title: 'Global Scale, Local Delivery', desc: 'Practitioners available globally including all major manufacturing regions. Global architecture, local implementation expertise, consistent delivery standards.' },
   ],
 
   accelerators: [
-    { name: 'OT Clarity™',      icon: '', desc: 'Asset discovery and visualisation accelerator - deployed and delivering insights in under 2 weeks, zero production impact' },
-    { name: 'Twin Activate™',   icon: '', desc: 'Digital twin activation framework with 40+ pre-built asset twin templates for pharma, biotech, and process manufacturing' },
-    { name: 'GxP DataGuard™',  icon: '', desc: 'FDA 21 CFR Part 11 / Annex 11 compliant data governance and audit trail framework - pre-validated for life sciences' },
-    { name: 'Carbon Lens™',     icon: '',  desc: 'Scope 1/2/3 measurement and closed-loop carbon twin platform with EU Taxonomy and CDP reporting integration' },
+    { name: 'OT Clarity™',      icon: 'search', desc: 'Asset discovery and visualisation accelerator - deployed and delivering insights in under 2 weeks, zero production impact' },
+    { name: 'Twin Activate™',   icon: 'cpu', desc: 'Digital twin activation framework with 40+ pre-built asset twin templates for pharma, biotech, and process manufacturing' },
+    { name: 'GxP DataGuard™',  icon: 'shield', desc: 'FDA 21 CFR Part 11 / Annex 11 compliant data governance and audit trail framework - pre-validated for life sciences' },
+    { name: 'Carbon Lens™',     icon: 'leaf',  desc: 'Scope 1/2/3 measurement and closed-loop carbon twin platform with EU Taxonomy and CDP reporting integration' },
   ],
 };
 
@@ -764,10 +764,10 @@ export const otMaturitySteps = [
     id: 'visibility',
     number: 1,
     title: 'Asset Visibility',
+    icon: 'eye',
     tagline: 'What exists at all?',
     color: '#F5A623',
     bg: '#FFFBEB',
-    icon: '',
     goal: 'Complete transparency over all OT assets and systems - making the invisible factory visible.',
     activities: [
       'OT Discovery & Passive Asset Scanning',
@@ -787,10 +787,10 @@ export const otMaturitySteps = [
     id: 'context',
     number: 2,
     title: 'Operational Context',
+    icon: 'network',
     tagline: 'How does it all connect?',
     color: '#6366F1',
     bg: '#F0F0FF',
-    icon: '',
     goal: 'Understanding asset relationships, criticality scoring, and the full dependency graph across OT and IT.',
     activities: [
       'Asset Relationships & Network Topology Graph',
@@ -810,10 +810,10 @@ export const otMaturitySteps = [
     id: 'workflow',
     number: 3,
     title: 'Workflow Intelligence',
+    icon: 'git-branch',
     tagline: 'How do we respond automatically?',
     color: '#005EB8',
     bg: '#EAF4FF',
-    icon: '',
     goal: 'Standardised, automated OT service and change processes - closing the gap between OT floor and IT service desk.',
     activities: [
       'Incident, Problem & Change Management (OT-native)',
@@ -833,10 +833,10 @@ export const otMaturitySteps = [
     id: 'excellence',
     number: 4,
     title: 'Operational Excellence',
+    icon: 'bar-chart-2',
     tagline: 'How do we continuously optimise?',
     color: '#12B3A8',
     bg: '#E6FAF8',
-    icon: '',
     goal: 'Higher availability, operational efficiency, and continuously lower cost-per-unit produced across all facilities.',
     activities: [
       'Real-Time Performance Monitoring & OEE/MTTR/Downtime KPIs',
@@ -856,10 +856,10 @@ export const otMaturitySteps = [
     id: 'autonomy',
     number: 5,
     title: 'Digital Twin & Autonomy',
+    icon: 'bot',
     tagline: 'How do we simulate and control autonomously?',
     color: '#003B73',
     bg: 'rgba(0,59,115,0.04)',
-    icon: '',
     goal: 'Autonomous, self-optimising and resilient factory operations - the plant monitors, decides, and improves itself.',
     activities: [
       'Real-Time Digital Twin & Live 3D Simulation',
@@ -883,7 +883,7 @@ export const otMaturitySteps = [
 export const otValuePillars = [
   {
     id: 'ops',
-    icon: '',
+    icon: 'activity',
     title: 'Operations Excellence',
     subtitle: 'Better real-time decisions',
     example: 'Real-time condition monitoring of all plant assets with instant anomaly detection, prioritisation, and response dispatch.',
@@ -895,7 +895,7 @@ export const otValuePillars = [
   },
   {
     id: 'maintenance',
-    icon: '',
+    icon: 'wrench',
     title: 'Maintenance Optimisation',
     subtitle: 'From reactive to proactive',
     example: 'Predictive condition monitoring enables maintenance to be scheduled before failure - not called after breakdown.',
@@ -907,7 +907,7 @@ export const otValuePillars = [
   },
   {
     id: 'automation',
-    icon: '',
+    icon: 'settings',
     title: 'Automation & Efficiency',
     subtitle: 'Less manual work, faster throughput',
     example: 'Automated workflows for incidents, change requests, and approvals - guided runbooks replace manual triage entirely.',
@@ -919,7 +919,7 @@ export const otValuePillars = [
   },
   {
     id: 'performance',
-    icon: '',
+    icon: 'line-chart',
     title: 'Performance & Profitability',
     subtitle: 'Higher output, lower total cost',
     example: 'Continuous KPI tracking (OEE, MTTR, Downtime) feeds improvement loops - gains compound month over month.',
@@ -931,7 +931,7 @@ export const otValuePillars = [
   },
   {
     id: 'compliance',
-    icon: '',
+    icon: 'check-circle',
     title: 'Governance & Compliance',
     subtitle: 'Traceable, auditable, defensible',
     example: 'Full audit trail on all asset changes and access events - NIS2, GxP, and IEC 62443 compliance tracked continuously.',
@@ -943,7 +943,7 @@ export const otValuePillars = [
   },
   {
     id: 'future',
-    icon: '',
+    icon: 'cpu',
     title: 'Digital Twin & Future Readiness',
     subtitle: 'The non-negotiable foundation',
     example: 'No digital twin, no AI, no autonomous operations without complete asset visibility - it is the prerequisite for everything.',
@@ -959,12 +959,12 @@ export const otValuePillars = [
 // Based on "From OT Visibility to Digital Twin" framework (Claroty + ServiceNow + SAP)
 
 export const digitalTwinPrereqs = [
-  { id: 'visibility', label: 'Full Visibility',        icon: '',  desc: 'All OT assets discovered, classified, and streaming real-time telemetry.', color: '#F5A623' },
-  { id: 'data',       label: 'Reliable Data',          icon: '',  desc: 'High-quality historical and real-time data normalised and validated from all Purdue levels.', color: '#6366F1' },
-  { id: 'context',    label: 'Context & Relationships', icon: '', desc: 'Deep asset relationship graph, process dependencies, and operational topology understood.', color: '#005EB8' },
-  { id: 'integration',label: 'Integrated Processes',   icon: '',  desc: 'Incidents, maintenance, and workflows end-to-end integrated across OT and IT systems.', color: '#12B3A8' },
-  { id: 'governance', label: 'Governance & Trust',     icon: '',  desc: 'Data security, access controls, compliance validation, and full audit trail active.', color: '#10B981' },
-  { id: 'analytics',  label: 'Analytics & Simulation', icon: '',  desc: 'AI/ML models, simulation environments, and decision engines trained on operational data.', color: '#003B73' },
+  { id: 'visibility', label: 'Full Visibility',        icon: 'eye',  desc: 'All OT assets discovered, classified, and streaming real-time telemetry.', color: '#F5A623' },
+  { id: 'data',       label: 'Reliable Data',          icon: 'database',  desc: 'High-quality historical and real-time data normalised and validated from all Purdue levels.', color: '#6366F1' },
+  { id: 'context',    label: 'Context & Relationships', icon: 'network', desc: 'Deep asset relationship graph, process dependencies, and operational topology understood.', color: '#005EB8' },
+  { id: 'integration',label: 'Integrated Processes',   icon: 'workflow',  desc: 'Incidents, maintenance, and workflows end-to-end integrated across OT and IT systems.', color: '#12B3A8' },
+  { id: 'governance', label: 'Governance & Trust',     icon: 'shield',  desc: 'Data security, access controls, compliance validation, and full audit trail active.', color: '#10B981' },
+  { id: 'analytics',  label: 'Analytics & Simulation', icon: 'bar-chart-2',  desc: 'AI/ML models, simulation environments, and decision engines trained on operational data.', color: '#003B73' },
 ];
 
 // ─── Technology Platform Stack ────────────────────────────────────────────────
@@ -975,7 +975,7 @@ export const techStack = [
     id: 'discovery',
     name: 'OT Asset Discovery',
     product: 'Claroty xDome',
-    icon: '',
+    icon: 'search',
     color: '#F5A623',
     role: 'Foundation - See Everything',
     capabilities: [
@@ -990,7 +990,7 @@ export const techStack = [
     id: 'management',
     name: 'OT Service Management',
     product: 'ServiceNow OTSM',
-    icon: '',
+    icon: 'workflow',
     color: '#005EB8',
     role: 'Intelligence - Act on Knowledge',
     capabilities: [
@@ -1005,7 +1005,7 @@ export const techStack = [
     id: 'execution',
     name: 'Maintenance Management',
     product: 'SAP S/4HANA',
-    icon: '',
+    icon: 'settings',
     color: '#12B3A8',
     role: 'Execution - Deliver Outcomes',
     capabilities: [
@@ -1025,7 +1025,7 @@ export const nis2Domains = [
   {
     domain: 'Risk Management',
     color: '#F5A623',
-    icon: '',
+    icon: 'alert-triangle',
     items: [
       { label: 'Risk Analysis',                  it: 3, ot: 2, target: 4 },
       { label: 'Information Security Policies',  it: 2, ot: 1, target: 4 },
@@ -1035,7 +1035,7 @@ export const nis2Domains = [
   {
     domain: 'Security Management',
     color: '#D64545',
-    icon: '',
+    icon: 'shield',
     items: [
       { label: 'Cryptography & Encryption',      it: 3, ot: 2, target: 4 },
       { label: 'Identity & Access Management',   it: 4, ot: 3, target: 5 },
@@ -1048,7 +1048,7 @@ export const nis2Domains = [
   {
     domain: 'Incident Management',
     color: '#6366F1',
-    icon: '',
+    icon: 'activity',
     items: [
       { label: 'Incident Detection',             it: 4, ot: 3, target: 5 },
       { label: 'Incident Categorisation',        it: 4, ot: 3, target: 5 },
@@ -1059,7 +1059,7 @@ export const nis2Domains = [
   {
     domain: 'Resilience Management',
     color: '#10B981',
-    icon: '',
+    icon: 'zap',
     items: [
       { label: 'Business Impact Analysis',       it: 2, ot: 0, target: 4 },
       { label: 'Business Continuity Mgmt',       it: 2, ot: 0, target: 4 },

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { cioKPIs, maturityJourney } from '../content';
+import { OTIcon } from '../components/OTIcon';
 
 function AnimatedCounter({ target, suffix = '' }: { target: string; suffix?: string }) {
   const numericPart = parseFloat(target);
@@ -163,10 +164,11 @@ export function CIOCommandCenter() {
               {maturityJourney.map((step, i) => (
                 <div key={step.id} className="flex items-center gap-2 shrink-0">
                   <div
-                    className="px-3 py-1.5 rounded-full text-xs font-bold text-white"
+                    className="px-3 py-1.5 rounded-full text-xs font-bold text-white flex items-center gap-1.5"
                     style={{ background: step.color, opacity: i <= 3 ? 1 : 0.4 }}
                   >
-                    {step.icon} {step.label}
+                    <OTIcon name={step.icon} size={12} color="white" />
+                    {step.label}
                   </div>
                   {i < maturityJourney.length - 1 && (
                     <span className="text-[#9CA3AF] text-sm">→</span>

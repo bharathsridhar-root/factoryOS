@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Bot, Wrench, Zap, Shield, Activity, GitBranch, Network, AlertTriangle, Cpu, Users, type LucideIcon } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
+import { OTIcon } from '../components/OTIcon';
 import { autonomousScenarios } from '../content';
 
 function ScenarioTimeline({ steps, color }: { steps: string[]; color: string }) {
@@ -58,13 +60,13 @@ function ScenarioTimeline({ steps, color }: { steps: string[]; color: string }) 
   );
 }
 
-const autonomousCapabilities = [
-  { label: 'AI-Assisted Operations', icon: '', desc: 'LLM-powered decision support with operational context' },
-  { label: 'Autonomous Maintenance', icon: '', desc: 'Zero-touch work order generation and parts staging' },
-  { label: 'Event-Driven Orchestration', icon: '', desc: 'Real-time event streams triggering operational workflows' },
-  { label: 'Self-Healing OT', icon: '', desc: 'Automatic configuration restoration and fault recovery' },
-  { label: 'Operational Resilience', icon: '', desc: 'Continuous health monitoring with proactive mitigation' },
-  { label: 'Intelligent Workflows', icon: '', desc: 'Context-aware automation that adapts to operational state' },
+const autonomousCapabilities: { label: string; Icon: LucideIcon; desc: string; color: string }[] = [
+  { label: 'AI-Assisted Operations',    Icon: Bot,          desc: 'LLM-powered decision support with operational context',              color: '#6366F1' },
+  { label: 'Autonomous Maintenance',    Icon: Wrench,       desc: 'Zero-touch work order generation and parts staging',                 color: '#005EB8' },
+  { label: 'Event-Driven Orchestration',Icon: Zap,          desc: 'Real-time event streams triggering operational workflows',           color: '#F5A623' },
+  { label: 'Self-Healing OT',           Icon: Shield,       desc: 'Automatic configuration restoration and fault recovery',            color: '#D64545' },
+  { label: 'Operational Resilience',    Icon: Activity,     desc: 'Continuous health monitoring with proactive mitigation',            color: '#12B3A8' },
+  { label: 'Intelligent Workflows',     Icon: GitBranch,    desc: 'Context-aware automation that adapts to operational state',         color: '#00A3E0' },
 ];
 
 export function Scene5Autonomous() {
@@ -102,7 +104,7 @@ export function Scene5Autonomous() {
                 color: activeScenario === i ? 'white' : '#4A6B8A',
               }}
             >
-              <span>{s.icon}</span>
+              <OTIcon name={s.icon} size={14} color={activeScenario === i ? 'white' : (s.severity === 'critical' ? '#D64545' : '#F5A623')} />
               <span>{s.title}</span>
             </button>
           ))}
@@ -125,7 +127,9 @@ export function Scene5Autonomous() {
                 animate={{ opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <span className="text-2xl">{scenario.icon}</span>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${color}20` }}>
+                  <OTIcon name={scenario.icon} size={20} color={color} />
+                </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color }}>
                     Anomaly Detected
@@ -154,14 +158,14 @@ export function Scene5Autonomous() {
             <div className="glass rounded-2xl p-6 mb-6">
               <h3 className="text-sm font-bold text-[#003B73] mb-4">Autonomous Response Architecture</h3>
               <div className="space-y-3">
-                {[
-                  { label: 'Correlate Topology', icon: '', desc: 'Trace impact through operational graph' },
-                  { label: 'Evaluate Impact', icon: '', desc: 'Calculate production, quality, and safety risk' },
-                  { label: 'Simulate Outcomes', icon: '', desc: 'Digital twin runs failure trajectory models' },
-                  { label: 'Trigger Remediation', icon: '', desc: 'Autonomous action or human escalation' },
-                  { label: 'Update Twin', icon: '', desc: 'Operational state reflected in real time' },
-                  { label: 'Inform Stakeholders', icon: '', desc: 'Contextual alerts with recommended actions' },
-                ].map((step, i) => (
+                {([
+                  { label: 'Correlate Topology',  Icon: Network,       desc: 'Trace impact through operational graph',              color: '#005EB8' },
+                  { label: 'Evaluate Impact',      Icon: AlertTriangle, desc: 'Calculate production, quality, and safety risk',     color: '#F5A623' },
+                  { label: 'Simulate Outcomes',    Icon: Cpu,           desc: 'Digital twin runs failure trajectory models',        color: '#6366F1' },
+                  { label: 'Trigger Remediation',  Icon: Zap,           desc: 'Autonomous action or human escalation',             color: '#D64545' },
+                  { label: 'Update Twin',          Icon: GitBranch,     desc: 'Operational state reflected in real time',           color: '#12B3A8' },
+                  { label: 'Inform Stakeholders',  Icon: Users,         desc: 'Contextual alerts with recommended actions',         color: '#00A3E0' },
+                ] as const).map((step, i) => (
                   <motion.div
                     key={step.label}
                     initial={{ opacity: 0, x: 16 }}
@@ -171,7 +175,9 @@ export function Scene5Autonomous() {
                     className="flex items-center gap-3 p-3 rounded-xl"
                     style={{ background: 'rgba(234,244,255,0.7)', border: '1px solid rgba(0,94,184,0.08)' }}
                   >
-                    <span className="text-xl w-8 text-center">{step.icon}</span>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${step.color}12` }}>
+                      <step.Icon size={16} color={step.color} strokeWidth={1.8} />
+                    </div>
                     <div>
                       <div className="text-sm font-semibold text-[#003B73]">{step.label}</div>
                       <div className="text-xs text-[#6B7E9E]">{step.desc}</div>
@@ -195,7 +201,9 @@ export function Scene5Autonomous() {
               transition={{ delay: i * 0.08 }}
               className="glass rounded-2xl p-5 card-lift"
             >
-              <div className="text-3xl mb-3">{cap.icon}</div>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: `${cap.color}12` }}>
+                <cap.Icon size={20} color={cap.color} strokeWidth={1.8} />
+              </div>
               <div className="font-semibold text-[#003B73] mb-1 text-sm">{cap.label}</div>
               <div className="text-xs text-[#6B7E9E]">{cap.desc}</div>
             </motion.div>

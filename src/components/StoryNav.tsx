@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { storyScenes } from '../content';
+import { OTIcon } from './OTIcon';
 
 export function StoryNav() {
   const [activeScene, setActiveScene] = useState('hero');
@@ -96,7 +97,7 @@ export function StoryNav() {
                   className="glass rounded-lg px-3 py-1.5 min-w-[130px]"
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-sm">{scene.icon}</span>
+                    <OTIcon name={scene.icon} size={14} color={isActive ? '#005EB8' : isPast ? '#4A6B8A' : '#9CA3AF'} />
                     <div>
                       <div
                         className="text-xs font-semibold leading-none"

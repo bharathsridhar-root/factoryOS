@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
+import { OTIcon } from '../components/OTIcon';
 import { targetStateKPIs, peerBenchmarks, lifeSciencesCapabilities, nis2Domains } from '../content';
 
 // Maturity level labels + colours (0=Absent … 5=Optimised)
@@ -206,7 +207,9 @@ export function SceneTargetState() {
                 transition={{ delay: i * 0.08 }}
                 className="glass rounded-2xl p-5 flex gap-4 card-lift"
               >
-                <span className="text-2xl shrink-0">{cap.icon}</span>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: '#005EB810' }}>
+                  <OTIcon name={cap.icon} size={18} color="#005EB8" />
+                </div>
                 <div>
                   <div className="text-sm font-bold text-[#003B73] mb-1">{cap.title}</div>
                   <div className="text-xs text-[#6B7E9E] leading-relaxed">{cap.desc}</div>
@@ -291,7 +294,7 @@ function NIS2ComplianceSection() {
               }}
             >
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-base">{dom.icon}</span>
+                <OTIcon name={dom.icon} size={14} color={dom.color} />
                 <span className="text-sm font-bold text-[#003B73]">{dom.domain}</span>
               </div>
               <div className="flex items-center gap-2 text-[10px] text-[#6B7E9E]">
@@ -331,7 +334,9 @@ function NIS2ComplianceSection() {
               className="px-6 py-4 flex items-center gap-3"
               style={{ background: `${domain.color}08`, borderBottom: `1px solid ${domain.color}20` }}
             >
-              <span className="text-2xl">{domain.icon}</span>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${domain.color}15` }}>
+                <OTIcon name={domain.icon} size={18} color={domain.color} />
+              </div>
               <div>
                 <div className="text-sm font-bold text-[#003B73]">{domain.domain}</div>
                 <div className="text-xs text-[#6B7E9E]">IT vs OT maturity · Target: Level 4 (Managed)</div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
+import { OTIcon } from '../components/OTIcon';
 import { roadmapPhases } from '../content';
 
 export function SceneRoadmap() {
@@ -60,10 +61,10 @@ export function SceneRoadmap() {
             >
               <div className="flex items-center gap-3 mb-3">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                   style={{ background: `${p.color}15` }}
                 >
-                  {p.icon}
+                  <OTIcon name={p.icon} size={20} color={p.color} />
                 </div>
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-wide" style={{ color: p.color }}>Phase {p.number}</div>
@@ -97,7 +98,9 @@ export function SceneRoadmap() {
             {/* Panel header */}
             <div className="px-8 pt-6 pb-4 flex flex-wrap items-center justify-between gap-4" style={{ background: `${phase.color}08` }}>
               <div className="flex items-center gap-3">
-                <span className="text-3xl">{phase.icon}</span>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${phase.color}15` }}>
+                  <OTIcon name={phase.icon} size={22} color={phase.color} />
+                </div>
                 <div>
                   <div className="text-sm font-bold text-[#003B73]">Phase {phase.number}: {phase.title}</div>
                   <div className="text-xs text-[#6B7E9E]">{phase.deliverables.length} key deliverables</div>

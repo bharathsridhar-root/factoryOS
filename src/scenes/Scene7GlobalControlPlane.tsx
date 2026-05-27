@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Package, Eye, Cpu, AlertTriangle } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 import { plantSites, globalKPIs } from '../content';
 import { useAppStore } from '../store';
@@ -98,10 +99,10 @@ export function Scene7GlobalControlPlane() {
         {/* Global KPIs */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
-            { label: 'Total Assets', value: globalKPIs.totalAssets.toLocaleString(), icon: '', color: '#005EB8', roi: '$18.4M value under management' },
-            { label: 'Managed Assets', value: `${globalKPIs.visibilityScore}%`, icon: '', color: '#12B3A8', roi: '$2.1M/yr saved vs unmanaged baseline' },
-            { label: 'Active Twins', value: globalKPIs.activeTwins, icon: '', color: '#00A3E0', roi: '34% faster root cause identification' },
-            { label: 'Active Incidents', value: globalKPIs.activeIncidents, icon: '', color: '#F5A623', roi: '$420K avg incident cost exposure' },
+            { label: 'Total Assets', value: globalKPIs.totalAssets.toLocaleString(), Icon: Package, color: '#005EB8', roi: '$18.4M value under management' },
+            { label: 'Managed Assets', value: `${globalKPIs.visibilityScore}%`, Icon: Eye, color: '#12B3A8', roi: '$2.1M/yr saved vs unmanaged baseline' },
+            { label: 'Active Twins', value: globalKPIs.activeTwins, Icon: Cpu, color: '#00A3E0', roi: '34% faster root cause identification' },
+            { label: 'Active Incidents', value: globalKPIs.activeIncidents, Icon: AlertTriangle, color: '#F5A623', roi: '$420K avg incident cost exposure' },
           ].map((kpi) => (
             <motion.div
               key={kpi.label}
@@ -110,7 +111,9 @@ export function Scene7GlobalControlPlane() {
               viewport={{ once: true }}
               className="glass rounded-2xl p-5 card-lift"
             >
-              <div className="text-2xl mb-2">{kpi.icon}</div>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-3" style={{ background: `${kpi.color}12` }}>
+                <kpi.Icon size={18} color={kpi.color} strokeWidth={1.8} />
+              </div>
               <div className="text-2xl font-bold mb-1" style={{ color: kpi.color }}>{kpi.value}</div>
               <div className="text-xs text-[#6B7E9E]">{kpi.label}</div>
               <AnimatePresence>

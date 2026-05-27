@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
+import { OTIcon } from '../components/OTIcon';
 import { visibilityCapabilities, otAssetFields, sampleAssets } from '../content';
 import { useAppStore } from '../store';
 
@@ -224,7 +225,9 @@ export function Scene2Visibility() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{cap.icon}</span>
+                    <span className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0" style={{ background: activeCapability === i ? '#005EB815' : 'rgba(0,94,184,0.06)' }}>
+                      <OTIcon name={cap.icon} size={18} color="#005EB8" />
+                    </span>
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold text-[#003B73]">{cap.label}</div>
                       {activeCapability === i && (

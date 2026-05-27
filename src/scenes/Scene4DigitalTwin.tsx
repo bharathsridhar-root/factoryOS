@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
+import { OTIcon } from '../components/OTIcon';
+import { Cpu, Radio, Database, GitBranch, Zap, Activity, Server } from 'lucide-react';
 import { twinTypes } from '../content';
 
 const flowLayers = [
@@ -10,45 +12,45 @@ const flowLayers = [
     label: 'Sensor / Input',
     color: '#003B73',
     items: ['Vibration Sensors', 'Thermal Arrays', 'Flow Meters', 'PLCs/RTUs', 'SCADA Tags', 'Worker Wearables'],
-    icon: '',
+    Icon: Activity,
   },
   {
     id: 'edge',
     label: 'Edge Processing',
     color: '#005EB8',
     items: ['Edge Gateway', 'Azure IoT Edge', 'Local Inferencing', 'Event Filtering', 'Data Buffering', 'Protocol Normalization'],
-    icon: '',
+    Icon: Radio,
   },
   {
     id: 'cloud',
     label: 'Manufacturing Data Platform',
     color: '#00A3E0',
     items: ['Azure Data Explorer', 'OT Data Lake', 'Semantic Layer', 'Data Governance', 'AI/ML Pipelines', 'Digital Twin Feed'],
-    icon: '',
+    Icon: Database,
   },
   {
     id: 'decision',
     label: 'Decision Logic',
     color: '#12B3A8',
     items: ['Rules Engine', 'Event Orchestration', 'Autonomous Workflows', 'Threshold Intelligence', 'Predictive Triggers', 'LLM Reasoning'],
-    icon: '',
+    Icon: GitBranch,
   },
   {
     id: 'outcome',
     label: 'Action / Outcome',
     color: '#F5A623',
     items: ['Maintenance Ticket', 'Shutdown Rec.', 'Runtime Optimization', 'Operator Alert', 'Self-Healing Action', 'Twin State Update'],
-    icon: '',
+    Icon: Zap,
   },
 ];
 
 const twinGrowthSources = [
-  { label: 'OT Asset Data', icon: '', delay: 0 },
-  { label: 'Operational Topology', icon: '', delay: 0.1 },
-  { label: 'Live Telemetry', icon: '', delay: 0.2 },
-  { label: 'Maintenance Records', icon: '', delay: 0.3 },
-  { label: 'Process Workflows', icon: '', delay: 0.4 },
-  { label: 'Energy Signals', icon: '', delay: 0.5 },
+  { label: 'OT Asset Data',        Icon: Server,     delay: 0 },
+  { label: 'Operational Topology', Icon: GitBranch,  delay: 0.1 },
+  { label: 'Live Telemetry',       Icon: Activity,   delay: 0.2 },
+  { label: 'Maintenance Records',  Icon: Database,   delay: 0.3 },
+  { label: 'Process Workflows',    Icon: Cpu,        delay: 0.4 },
+  { label: 'Energy Signals',       Icon: Zap,        delay: 0.5 },
 ];
 
 export function Scene4DigitalTwin() {
@@ -87,7 +89,7 @@ export function Scene4DigitalTwin() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              <span>{twin.icon}</span>
+              <OTIcon name={twin.icon} size={15} />
               <span>{twin.label}</span>
             </motion.button>
           ))}
@@ -133,7 +135,7 @@ export function Scene4DigitalTwin() {
                       border: `2px solid ${twinActivated ? twinTypes[activeTwinType].color : 'rgba(0,94,184,0.15)'}`,
                     }}
                   >
-                    <span className="text-3xl mb-1">{twinTypes[activeTwinType].icon}</span>
+                    <OTIcon name={twinTypes[activeTwinType].icon} size={28} color={twinActivated ? 'white' : '#9CA3AF'} />
                     <span className="text-[11px]">{twinActivated ? 'ACTIVE' : 'ACTIVATE'}</span>
                   </div>
                 </motion.button>
@@ -153,7 +155,7 @@ export function Scene4DigitalTwin() {
                       border: `1px solid ${twinActivated ? twinTypes[activeTwinType].color : 'rgba(0,94,184,0.1)'}30`,
                     }}
                   >
-                    <span className="text-lg">{source.icon}</span>
+                    <source.Icon size={14} color={twinActivated ? twinTypes[activeTwinType].color : '#9CA3AF'} strokeWidth={2} />
                     <span className="text-xs font-medium text-[#4A6B8A]">{source.label}</span>
                     {twinActivated && (
                       <motion.div
@@ -186,7 +188,9 @@ export function Scene4DigitalTwin() {
                   }}
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{twinTypes[activeTwinType].icon}</span>
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${twinTypes[activeTwinType].color}15` }}>
+                      <OTIcon name={twinTypes[activeTwinType].icon} size={20} color={twinTypes[activeTwinType].color} />
+                    </div>
                     <div>
                       <div className="font-semibold text-[#003B73]">{twinTypes[activeTwinType].label}</div>
                       <div className="text-xs" style={{ color: twinTypes[activeTwinType].color }}>Active · Syncing</div>
@@ -223,10 +227,10 @@ export function Scene4DigitalTwin() {
                         style={{ background: activeLayer === layer.id ? `${layer.color}10` : 'white' }}
                       >
                         <div
-                          className="w-9 h-9 rounded-lg flex items-center justify-center text-xl"
+                          className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
                           style={{ background: `${layer.color}15` }}
                         >
-                          {layer.icon}
+                          <layer.Icon size={18} color={layer.color} strokeWidth={1.8} />
                         </div>
                         <div className="flex-1">
                           <div className="text-sm font-bold" style={{ color: layer.color }}>

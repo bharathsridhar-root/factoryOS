@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Factory, Search, Cpu, Zap, Cloud, Building2, CheckCircle, Shield, Leaf,
+  Network, GitMerge, Map, type LucideIcon,
+} from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -8,7 +12,7 @@ interface EcoNode {
   id: string;
   label: string;
   short: string;
-  icon: string;
+  Icon: LucideIcon;
   color: string;
   bg: string;
   cx: number;   // % of SVG width  (0-100)
@@ -28,7 +32,7 @@ const nodes: EcoNode[] = [
     id: 'production',
     label: 'Production Floor',
     short: 'Production',
-    icon: '',
+    Icon: Factory,
     color: '#F5A623',
     bg: '#FFFBEB',
     cx: 7, cy: 50,
@@ -44,7 +48,7 @@ const nodes: EcoNode[] = [
     id: 'ot-visibility',
     label: 'OT Visibility & CMDB',
     short: 'OT CMDB',
-    icon: '',
+    Icon: Search,
     color: '#005EB8',
     bg: '#EAF4FF',
     cx: 26, cy: 50,
@@ -60,7 +64,7 @@ const nodes: EcoNode[] = [
     id: 'digital-core',
     label: 'Digital Core Platform',
     short: 'Digital Core',
-    icon: '',
+    Icon: Cpu,
     color: '#003B73',
     bg: '#EAF4FF',
     cx: 50, cy: 50,
@@ -77,7 +81,7 @@ const nodes: EcoNode[] = [
     id: 'use-cases',
     label: 'Use Cases & Outcomes',
     short: 'Use Cases',
-    icon: '',
+    Icon: Zap,
     color: '#12B3A8',
     bg: '#E6FAF8',
     cx: 74, cy: 50,
@@ -93,7 +97,7 @@ const nodes: EcoNode[] = [
     id: 'central-it',
     label: 'Central IT & Cloud',
     short: 'Cloud & IT',
-    icon: '',
+    Icon: Cloud,
     color: '#6366F1',
     bg: '#F0F0FF',
     cx: 50, cy: 11,
@@ -108,7 +112,7 @@ const nodes: EcoNode[] = [
     id: 'business-systems',
     label: 'Business Systems',
     short: 'ERP / MES / PLM',
-    icon: '',
+    Icon: Building2,
     color: '#003B73',
     bg: '#EAF4FF',
     cx: 77, cy: 16,
@@ -123,7 +127,7 @@ const nodes: EcoNode[] = [
     id: 'quality-gxp',
     label: 'Quality & GxP Compliance',
     short: 'Quality & GxP',
-    icon: '',
+    Icon: CheckCircle,
     color: '#10B981',
     bg: '#F0FDF4',
     cx: 77, cy: 84,
@@ -138,7 +142,7 @@ const nodes: EcoNode[] = [
     id: 'ot-security',
     label: 'OT Security & Governance',
     short: 'OT Security',
-    icon: '',
+    Icon: Shield,
     color: '#D64545',
     bg: '#FFF1F1',
     cx: 23, cy: 84,
@@ -153,7 +157,7 @@ const nodes: EcoNode[] = [
     id: 'sustainability',
     label: 'Sustainability & ESG',
     short: 'Sustainability',
-    icon: '',
+    Icon: Leaf,
     color: '#34D399',
     bg: '#F0FDF4',
     cx: 50, cy: 89,
@@ -334,7 +338,7 @@ function NodeCard({ node, hovered, onHover, journeyMode }: {
 
         {/* Icon + label */}
         <div className="flex items-center gap-1.5 mb-2">
-          <span className={node.isHub ? 'text-xl' : 'text-lg'}>{node.icon}</span>
+          <node.Icon size={node.isHub ? 16 : 14} color={node.isHub ? 'white' : node.color} strokeWidth={1.8} />
           <span
             className="text-[11px] font-bold leading-tight"
             style={{ color: node.isHub ? 'white' : '#003B73' }}
@@ -422,7 +426,8 @@ export function SceneBigPicture() {
                 border: `2px solid ${n.color}40`,
               }}
             >
-              <span>{n.icon}</span> {n.journeyStep}. {n.short}
+              <n.Icon size={12} color={journeyStep === i ? 'white' : n.color} strokeWidth={1.8} />
+              {n.journeyStep}. {n.short}
             </button>
           ))}
           <span className="text-xs text-[#9CA3AF] ml-2">Hover any node to explore · Click to pin</span>
@@ -551,10 +556,10 @@ export function SceneBigPicture() {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center text-2xl"
+                        className="w-10 h-10 rounded-xl flex items-center justify-center"
                         style={{ background: `${activeDetail.color}15` }}
                       >
-                        {activeDetail.icon}
+                        <activeDetail.Icon size={20} color={activeDetail.color} strokeWidth={1.8} />
                       </div>
                       <div>
                         <div
@@ -637,7 +642,8 @@ export function SceneBigPicture() {
                                 className="flex items-center gap-1 text-[10px] px-2 py-1 rounded-lg font-medium transition-all hover:scale-105"
                                 style={{ background: `${other.color}10`, color: other.color, border: `1px solid ${other.color}20` }}
                               >
-                                {other.icon} {other.short}
+                                <other.Icon size={10} color={other.color} strokeWidth={1.8} className="inline mr-1" />
+                                {other.short}
                               </button>
                             ) : null;
                           })}
@@ -679,7 +685,7 @@ export function SceneBigPicture() {
                     {n.journeyStep}
                   </div>
                   <span className="text-[10px] font-semibold text-[#003B73]">{n.short}</span>
-                  <span className="text-[9px] ml-auto" style={{ color: n.color }}>{n.icon}</span>
+                  <n.Icon size={10} color={n.color} strokeWidth={1.8} className="ml-auto shrink-0" />
                 </motion.button>
               ))}
             </div>
@@ -693,14 +699,16 @@ export function SceneBigPicture() {
           viewport={{ once: true }}
           className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {[
-            { icon: '', value: '9', label: 'Ecosystem Clusters', sub: 'All interconnected', color: '#005EB8' },
-            { icon: '↔',  value: '11', label: 'Data Flows',         sub: 'Bidirectional intelligence', color: '#00A3E0' },
-            { icon: '',  value: '4',  label: 'Journey Steps',      sub: 'Floor → Outcomes',  color: '#12B3A8' },
-            { icon: '',  value: '7',  label: 'Use Cases Enabled',  sub: 'By the full platform', color: '#F5A623' },
-          ].map(s => (
+          {([
+            { Icon: Network,    value: '9',  label: 'Ecosystem Clusters', sub: 'All interconnected',         color: '#005EB8' },
+            { Icon: GitMerge,  value: '11', label: 'Data Flows',          sub: 'Bidirectional intelligence', color: '#00A3E0' },
+            { Icon: Map,       value: '4',  label: 'Journey Steps',       sub: 'Floor → Outcomes',           color: '#12B3A8' },
+            { Icon: Zap,       value: '7',  label: 'Use Cases Enabled',   sub: 'By the full platform',       color: '#F5A623' },
+          ] as const).map(s => (
             <div key={s.label} className="glass rounded-2xl p-4 text-center card-lift">
-              <div className="text-xl mb-1">{s.icon}</div>
+              <div className="flex justify-center mb-2">
+                <s.Icon size={20} color={s.color} strokeWidth={1.8} />
+              </div>
               <div className="text-2xl font-bold" style={{ color: s.color }}>{s.value}</div>
               <div className="text-xs font-semibold text-[#003B73]">{s.label}</div>
               <div className="text-[10px] text-[#9CA3AF]">{s.sub}</div>

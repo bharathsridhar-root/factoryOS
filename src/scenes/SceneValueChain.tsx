@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
+import { OTIcon } from '../components/OTIcon';
 import { otMaturitySteps, otValuePillars, digitalTwinPrereqs, techStack } from '../content';
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -23,7 +24,9 @@ function StepTab({ step, active, onClick }: { step: typeof otMaturitySteps[0]; a
       >
         {step.number}
       </div>
-      <span className="text-xl">{step.icon}</span>
+      <div className="w-8 h-8 flex items-center justify-center">
+        <OTIcon name={step.icon} size={20} color={active ? 'rgba(255,255,255,0.9)' : step.color} />
+      </div>
       <div className="text-[11px] font-bold leading-tight" style={{ color: active ? 'white' : '#003B73' }}>
         {step.title}
       </div>
@@ -56,7 +59,9 @@ function ValuePillarCard({ pillar, i }: { pillar: typeof otValuePillars[0]; i: n
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">{pillar.icon}</span>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${pillar.color}15` }}>
+              <OTIcon name={pillar.icon} size={16} color={pillar.color} />
+            </div>
             <div>
               <div className="text-sm font-bold text-[#003B73]">{pillar.title}</div>
               <div className="text-[10px] font-medium" style={{ color: pillar.color }}>{pillar.subtitle}</div>
@@ -150,10 +155,10 @@ export function SceneValueChain() {
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{ background: `${step.color}20` }}
                   >
-                    {step.icon}
+                    <OTIcon name={step.icon} size={22} color={step.color} />
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest" style={{ color: step.color }}>
@@ -390,7 +395,11 @@ export function SceneValueChain() {
                 className="glass rounded-2xl p-4 text-center card-lift"
                 style={{ borderTop: `3px solid ${req.color}` }}
               >
-                <div className="text-2xl mb-2">{req.icon}</div>
+                <div className="flex justify-center mb-2">
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${req.color}15` }}>
+                    <OTIcon name={req.icon} size={18} color={req.color} />
+                  </div>
+                </div>
                 <div className="text-[10px] font-bold text-[#003B73] mb-1 leading-tight">{req.label}</div>
                 <div className="text-[9px] text-[#6B7E9E] leading-relaxed">{req.desc}</div>
               </motion.div>
@@ -465,10 +474,10 @@ export function SceneValueChain() {
                       <div className="p-5">
                         <div className="flex items-center gap-3 mb-3">
                           <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
+                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                             style={{ background: `${platform.color}12` }}
                           >
-                            {platform.icon}
+                            <OTIcon name={platform.icon} size={20} color={platform.color} />
                           </div>
                           <div>
                             <div className="text-[9px] font-black uppercase tracking-wide" style={{ color: platform.color }}>
