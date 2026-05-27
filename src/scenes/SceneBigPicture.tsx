@@ -166,10 +166,10 @@ const nodes: EcoNode[] = [
   },
 ];
 
-// SVG viewBox: 0 0 1000 600
+// SVG viewBox: 0 0 1000 720
 // Convert % → SVG coordinate
 const sx = (pct: number) => (pct / 100) * 1000;
-const sy = (pct: number) => (pct / 100) * 600;
+const sy = (pct: number) => (pct / 100) * 720;
 
 const nodeMap = Object.fromEntries(nodes.map(n => [n.id, n]));
 
@@ -433,7 +433,7 @@ export function SceneBigPicture() {
           <div
             className="flex-1 relative rounded-3xl overflow-hidden"
             style={{
-              height: 620,
+              height: 720,
               background: 'linear-gradient(135deg, #F0F6FF 0%, #E8F0FA 50%, #EEF8FF 100%)',
               border: '1px solid rgba(0,94,184,0.12)',
               boxShadow: 'inset 0 2px 40px rgba(0,59,115,0.04)',
@@ -452,9 +452,8 @@ export function SceneBigPicture() {
 
             {/* SVG overlay for connections */}
             <svg
-              viewBox="0 0 1000 600"
+              viewBox="0 0 1000 720"
               className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{ overflow: 'visible' }}
             >
               <defs>
                 <marker id="arrowBlue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -468,9 +467,9 @@ export function SceneBigPicture() {
               {/* Zone labels */}
               {[
                 { x: 500, y: 22, label: '─────── Enterprise IT & Business ───────', color: '#6366F1' },
-                { x: 500, y: 580, label: '──────── Sustainability & ESG ────────', color: '#34D399' },
-                { x: 68, y: 300, label: 'OT Floor', color: '#F5A623', rotate: -90 },
-                { x: 935, y: 300, label: 'Business Value', color: '#12B3A8', rotate: 90 },
+                { x: 500, y: 700, label: '──────── Sustainability & ESG ────────', color: '#34D399' },
+                { x: 68, y: 360, label: 'OT Floor', color: '#F5A623', rotate: -90 },
+                { x: 935, y: 360, label: 'Business Value', color: '#12B3A8', rotate: 90 },
               ].map(z => (
                 <text
                   key={z.label}
@@ -493,7 +492,7 @@ export function SceneBigPicture() {
                   d={`M ${sx(7)} ${sy(50)} L ${sx(93)} ${sy(50)}`}
                   fill="none"
                   stroke="#005EB820"
-                  strokeWidth="60"
+                  strokeWidth="70"
                   strokeLinecap="round"
                 />
               )}

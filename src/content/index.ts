@@ -3,7 +3,7 @@ import type { ServiceCard, UseCase, OTNode, PlantSite, KPI } from '../types';
 export const stakeholderProfiles = {
   CIO: {
     headline: 'From Operational Fragmentation to Industrial Intelligence',
-    subhead: 'Transform your factory estate into a governed digital platform that scales autonomously.',
+    subhead: 'Build a governed digital platform from the factory floor up - one that improves as it grows.',
     kpis: ['Operational Cost Reduction', 'MTTR Improvement', 'Deployment Velocity', 'OT Coverage'],
     focus: 'Business value and governance at enterprise scale',
   },
@@ -15,7 +15,7 @@ export const stakeholderProfiles = {
   },
   PlantManager: {
     headline: 'Every Asset. Every Signal. Every Decision - In Context.',
-    subhead: 'Your factory becomes self-aware, self-optimizing, and self-healing.',
+    subhead: 'Your factory operates with accurate, real-time awareness of every asset, process, and event.',
     kpis: ['OEE Improvement', 'Unplanned Downtime', 'Energy Per Unit', 'Quality Defect Rate'],
     focus: 'Operational efficiency and production reliability',
   },
