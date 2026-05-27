@@ -88,7 +88,7 @@ export function Scene2Visibility() {
           scene={2}
           tag="OT Visibility Foundation"
           title="The factory gradually illuminates."
-          subtitle="OT visibility is not an IT project. It is the prerequisite for every digital transformation initiative — the operational foundation that makes everything else possible."
+          subtitle="OT visibility is not an IT project. It is the prerequisite for every digital transformation initiative - the operational foundation that makes everything else possible."
           accent="#005EB8"
         />
 
@@ -168,7 +168,7 @@ export function Scene2Visibility() {
                             className="flex items-center gap-2 mt-1 overflow-hidden"
                           >
                             <span className="text-xs font-bold" style={{ color: '#12B3A8' }}>
-                              💰 {roiByZone[zone.level].saving}
+                               {roiByZone[zone.level].saving}
                             </span>
                             <span className="text-[10px] text-[#6B7E9E]">{roiByZone[zone.level].detail}</span>
                           </motion.div>
@@ -198,7 +198,7 @@ export function Scene2Visibility() {
               className="mt-6 p-4 rounded-2xl flex items-center gap-4"
               style={{ background: 'rgba(18,179,168,0.08)', border: '1px solid rgba(18,179,168,0.2)' }}
             >
-              <div className="text-3xl">🏛</div>
+              <div className="text-3xl"></div>
               <div>
                 <div className="text-sm font-semibold text-[#12B3A8]">IEC 62443 Zone Compliance</div>
                 <div className="text-xs text-[#4A6B8A] mt-1">All zones mapped and enforced. DMZ architecture active. IT/OT convergence secured.</div>
@@ -295,10 +295,10 @@ function AssetSchemaSection() {
     >
       <div className="text-center mb-8">
         <h3 className="text-xl font-bold text-[#003B73] mb-2">
-          What Gets Captured — The OT Asset Data Schema
+          What Gets Captured - The OT Asset Data Schema
         </h3>
         <p className="text-sm text-[#6B7E9E] max-w-2xl mx-auto">
-          Passive discovery auto-populates {otAssetFields.length}+ attributes for every OT device — no agents, no interruptions.
+          Passive discovery auto-populates {otAssetFields.length}+ attributes for every OT device - no agents, no interruptions.
           This is the data foundation that makes digital twins, predictive maintenance, and compliance possible.
         </p>
       </div>
@@ -384,7 +384,7 @@ function AssetInventorySection() {
             Sample Discovered Asset Inventory
           </h3>
           <p className="text-sm text-[#6B7E9E]">
-            {sampleAssets.length} assets across 2 manufacturing sites — discovered passively in under 6 weeks.
+            {sampleAssets.length} assets across 2 manufacturing sites - discovered passively in under 6 weeks.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">

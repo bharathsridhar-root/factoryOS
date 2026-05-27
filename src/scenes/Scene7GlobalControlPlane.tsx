@@ -64,7 +64,7 @@ export function Scene7GlobalControlPlane() {
 
       <div className="max-w-screen-xl mx-auto px-6">
         <SectionHeader
-          scene={7}
+          scene={11}
           tag="Global Industrial Control Plane"
           title="Enterprise-scale governance. One platform."
           subtitle="Every plant. Every deployment. Every policy. Governed from a single operational control plane that sees across your entire industrial estate in real time."
@@ -81,7 +81,7 @@ export function Scene7GlobalControlPlane() {
               className="mb-8 rounded-2xl p-4 flex items-center gap-4"
               style={{ background: 'rgba(0,94,184,0.06)', border: '2px solid rgba(0,94,184,0.2)' }}
             >
-              <span className="text-2xl">🏛</span>
+              <span className="text-2xl"></span>
               <div>
                 <div className="text-sm font-bold text-[#005EB8]">Governance Enforcement View</div>
                 <div className="text-xs text-[#4A6B8A] mt-0.5">Policy status, compliance drift and remediation priorities are highlighted. Red = immediate action required.</div>
@@ -98,10 +98,10 @@ export function Scene7GlobalControlPlane() {
         {/* Global KPIs */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
-            { label: 'Total Assets', value: globalKPIs.totalAssets.toLocaleString(), icon: '⚙', color: '#005EB8', roi: '$18.4M value under management' },
-            { label: 'Managed Assets', value: `${globalKPIs.visibilityScore}%`, icon: '✓', color: '#12B3A8', roi: '$2.1M/yr saved vs unmanaged baseline' },
-            { label: 'Active Twins', value: globalKPIs.activeTwins, icon: '🧬', color: '#00A3E0', roi: '34% faster root cause identification' },
-            { label: 'Active Incidents', value: globalKPIs.activeIncidents, icon: '⚠', color: '#F5A623', roi: '$420K avg incident cost exposure' },
+            { label: 'Total Assets', value: globalKPIs.totalAssets.toLocaleString(), icon: '', color: '#005EB8', roi: '$18.4M value under management' },
+            { label: 'Managed Assets', value: `${globalKPIs.visibilityScore}%`, icon: '', color: '#12B3A8', roi: '$2.1M/yr saved vs unmanaged baseline' },
+            { label: 'Active Twins', value: globalKPIs.activeTwins, icon: '', color: '#00A3E0', roi: '34% faster root cause identification' },
+            { label: 'Active Incidents', value: globalKPIs.activeIncidents, icon: '', color: '#F5A623', roi: '$420K avg incident cost exposure' },
           ].map((kpi) => (
             <motion.div
               key={kpi.label}
@@ -122,7 +122,7 @@ export function Scene7GlobalControlPlane() {
                     className="mt-2 text-[10px] font-medium overflow-hidden"
                     style={{ color: '#12B3A8' }}
                   >
-                    💰 {kpi.roi}
+                     {kpi.roi}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -138,7 +138,7 @@ export function Scene7GlobalControlPlane() {
               className="relative rounded-2xl overflow-hidden"
               style={{ height: 380, background: 'linear-gradient(135deg, #EAF4FF 0%, #E0F0FF 100%)', border: '1px solid rgba(0,94,184,0.1)' }}
             >
-              {/* Accurate simplified world map — equirectangular 1000×500 */}
+              {/* Accurate simplified world map - equirectangular 1000×500 */}
               {/* x=(lng+180)/360*1000  y=(90-lat)/180*500 */}
               <svg viewBox="0 0 1000 500" className="absolute inset-0 w-full h-full" style={{ opacity: 0.18 }}>
                 {/* North America */}
@@ -295,28 +295,6 @@ export function Scene7GlobalControlPlane() {
               </div>
             </div>
 
-            <h3 className="text-sm font-bold text-[#003B73] mb-3">Governance Capabilities</h3>
-            <div className="space-y-2">
-              {[
-                { label: 'StackSets — Multi-site deployment', icon: '📦' },
-                { label: 'Service Catalog — Approved services', icon: '📚' },
-                { label: 'Fleet Operations — Centralized ops', icon: '🌐' },
-                { label: 'Zero Trust OT — Identity-first', icon: '🔐' },
-                { label: 'Policy Drift Detection', icon: '📏' },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 p-3 rounded-xl glass"
-                >
-                  <span className="text-lg">{item.icon}</span>
-                  <span className="text-xs font-medium text-[#4A6B8A]">{item.label}</span>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

@@ -27,14 +27,14 @@ export function SceneTargetState() {
 
       <div className="max-w-screen-xl mx-auto px-6">
         <SectionHeader
-          scene={10}
+          scene={9}
           tag="Target State Blueprint"
-          title="What Sartorius looks like in 36 months."
-          subtitle="A life sciences manufacturing environment where every asset is known, every process is optimised, and every quality event is predicted before it occurs — GxP-compliant, carbon-measured, and autonomously maintained."
+          title="What a well-run OT programme produces."
+          subtitle="A manufacturing environment where every asset is known, every process is traceable, and quality events are caught before they become problems. These targets are grounded in what life sciences manufacturers have achieved through structured programmes."
           accent="#003B73"
         />
 
-        {/* Life sciences identity banner */}
+        {/* Regulatory context banner */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,11 +42,10 @@ export function SceneTargetState() {
           className="mb-12 rounded-2xl p-5 flex flex-wrap items-center gap-4"
           style={{ background: 'rgba(0,59,115,0.04)', border: '1px solid rgba(0,59,115,0.15)' }}
         >
-          <div className="text-3xl">🧬</div>
           <div className="flex-1 min-w-0">
-            <div className="text-sm font-bold text-[#003B73] mb-1">Sartorius-Specific Context: Life Sciences Manufacturing</div>
+            <div className="text-sm font-bold text-[#003B73] mb-1">Regulatory Context: Life Sciences Manufacturing</div>
             <div className="text-xs text-[#4A6B8A]">
-              This target state is designed for a precision life sciences equipment manufacturer operating under GxP, FDA 21 CFR Part 11, EU GMP Annex 11, and IEC 62443 — with cleanroom OT environments, batch manufacturing processes, and critical quality attributes that demand full digital traceability.
+              This target state applies to precision life sciences equipment manufacturers operating under GxP, FDA 21 CFR Part 11, EU GMP Annex 11, and IEC 62443. The OT environment includes cleanrooms, batch manufacturing processes, and quality attributes that require full digital traceability.
             </div>
           </div>
           <div className="flex flex-wrap gap-2 shrink-0">
@@ -59,7 +58,7 @@ export function SceneTargetState() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
           {/* KPI Targets */}
           <div>
-            <h3 className="text-lg font-bold text-[#003B73] mb-6">KPI Targets — Current State vs 36-Month Target</h3>
+            <h3 className="text-lg font-bold text-[#003B73] mb-6">Target KPIs - Current State vs Programme Target</h3>
             <div className="space-y-3">
               {targetStateKPIs.map((kpi, i) => (
                 <motion.button
@@ -73,15 +72,14 @@ export function SceneTargetState() {
                   style={{ border: activeKPI === i ? `2px solid ${kpi.color}` : '2px solid transparent' }}
                 >
                   <div className="flex items-center gap-3 p-3">
-                    <span className="text-xl shrink-0">{kpi.icon}</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs font-semibold text-[#003B73]">{kpi.metric}</span>
-                        <span className="text-[10px] font-medium text-[#9CA3AF]">Month {kpi.months}</span>
+                        <span className="text-[10px] font-medium text-[#9CA3AF]">Phase {kpi.months <= 6 ? '1' : kpi.months <= 18 ? '2' : '3'}</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="text-[11px] text-[#9CA3AF] line-through">{kpi.current}</span>
-                        <span className="text-xs font-bold" style={{ color: kpi.color }}>→ {kpi.target}</span>
+                        <span className="text-xs font-bold" style={{ color: kpi.color }}>{kpi.target}</span>
                       </div>
                     </div>
                     <div
@@ -99,8 +97,8 @@ export function SceneTargetState() {
                       >
                         <div className="h-px bg-[rgba(0,94,184,0.1)] mb-2" />
                         <p className="text-[11px] text-[#6B7E9E]">
-                          Target achievable by month {kpi.months} through the Phase {kpi.months <= 6 ? '1 Foundation' : kpi.months <= 18 ? '2 Intelligence' : '3 Autonomy'} programme.
-                          Requires {kpi.months <= 6 ? 'OT asset discovery, CMDB population, and connectivity layer' : kpi.months <= 18 ? 'digital twin activation and intelligence layer deployment' : 'autonomous orchestration and multi-site governance rollout'}.
+                          This target is achievable in Phase {kpi.months <= 6 ? '1 (Foundation)' : kpi.months <= 18 ? '2 (Intelligence)' : '3 (Autonomy)'}.
+                          It requires {kpi.months <= 6 ? 'OT asset discovery, CMDB population, and the connectivity layer to be in place' : kpi.months <= 18 ? 'the manufacturing data platform and digital twin activation to be complete' : 'autonomous orchestration and multi-site rollout to be running'}.
                         </p>
                       </motion.div>
                     )}
@@ -112,7 +110,7 @@ export function SceneTargetState() {
 
           {/* Peer Benchmark */}
           <div>
-            <h3 className="text-lg font-bold text-[#003B73] mb-2">Where Sartorius sits vs. industry peers</h3>
+            <h3 className="text-lg font-bold text-[#003B73] mb-2">How this programme compares to industry peers</h3>
             <p className="text-xs text-[#6B7E9E] mb-4">Benchmarked against life sciences manufacturing maturity data</p>
 
             {/* Dimension tabs */}
@@ -137,7 +135,7 @@ export function SceneTargetState() {
               {peerBenchmarks.map((peer, i) => {
                 const val = peer[activeBenchmark as keyof typeof peer] as number;
                 const max = maxValues[activeBenchmark];
-                const isSartorius = peer.org.includes('Sartorius');
+                const isHighlighted = peer.org === 'Current State' || peer.org === 'Target State';
                 return (
                   <motion.div
                     key={peer.org}
@@ -146,7 +144,7 @@ export function SceneTargetState() {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
                     className="glass rounded-xl p-4"
-                    style={isSartorius ? { boxShadow: `0 0 0 2px ${peer.color}`, outline: `2px solid ${peer.color}` } : {}}
+                    style={isHighlighted ? { boxShadow: `0 0 0 2px ${peer.color}`, outline: `2px solid ${peer.color}` } : {}}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div>
@@ -181,11 +179,11 @@ export function SceneTargetState() {
               style={{ background: 'rgba(0,94,184,0.06)', border: '1px solid rgba(0,94,184,0.15)' }}
             >
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-base">📈</span>
+                <span className="text-base"></span>
                 <span className="text-xs font-bold text-[#005EB8]">The opportunity gap</span>
               </div>
               <p className="text-[11px] text-[#4A6B8A] leading-relaxed">
-                Sartorius currently operates below the life sciences industry average on most maturity dimensions. The 36-month programme closes this gap entirely and positions Sartorius in the top 5% of life sciences manufacturers globally.
+                Most life sciences manufacturers operate below the industry frontier on OT maturity. The three-phase programme is designed to close this gap progressively - each phase delivering measurable improvement before the next begins.
               </p>
             </motion.div>
           </div>
@@ -227,20 +225,19 @@ export function SceneTargetState() {
           style={{ background: 'linear-gradient(135deg, rgba(0,59,115,0.04), rgba(0,94,184,0.04))' }}
         >
           <div className="text-center mb-6">
-            <div className="text-sm font-bold uppercase tracking-widest text-[#9CA3AF] mb-2">The Autonomous Sartorius Plant — 36 Months</div>
+            <div className="text-sm font-bold uppercase tracking-widest text-[#9CA3AF] mb-2">Target State - End of Programme</div>
             <h4 className="text-2xl font-bold text-[#003B73]">
               "A manufacturing environment where every asset is known, every process is optimised, and every quality event is predicted before it occurs."
             </h4>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: '👁',  label: 'Full Asset Visibility',     value: '98%',           color: '#005EB8' },
-              { icon: '🧬', label: 'Digital Twins Active',       value: '80+',            color: '#00A3E0' },
-              { icon: '⚡', label: 'Autonomous Event Resolution', value: '92%',           color: '#12B3A8' },
-              { icon: '📋', label: 'Audit Readiness',             value: '< 2 hours',     color: '#003B73' },
+              { label: 'Asset Visibility',              value: 'Comprehensive',  color: '#005EB8' },
+              { label: 'Digital Twins Active',          value: 'All critical',   color: '#00A3E0' },
+              { label: 'Autonomous Event Resolution',   value: 'Majority',       color: '#12B3A8' },
+              { label: 'Audit Readiness',               value: 'On demand',      color: '#003B73' },
             ].map(s => (
               <div key={s.label} className="glass rounded-2xl p-4 text-center">
-                <div className="text-2xl mb-1">{s.icon}</div>
                 <div className="text-xl font-bold mb-0.5" style={{ color: s.color }}>{s.value}</div>
                 <div className="text-xs text-[#6B7E9E]">{s.label}</div>
               </div>
@@ -272,11 +269,11 @@ function NIS2ComplianceSection() {
     >
       <div className="text-center mb-8">
         <h3 className="text-xl font-bold text-[#003B73] mb-2">
-          Cybersecurity Compliance Gap — NIS2 / IEC 62443
+          Cybersecurity Compliance Gap - NIS2 / IEC 62443
         </h3>
         <p className="text-sm text-[#6B7E9E] max-w-2xl mx-auto">
           Current OT security maturity vs. NIS2 compliance target (Level 4 Managed). Red items represent critical gaps where OT is
-          significantly behind IT — and behind regulatory requirements.
+          significantly behind IT - and behind regulatory requirements.
         </p>
       </div>
 
@@ -314,7 +311,7 @@ function NIS2ComplianceSection() {
           >
             <div className="text-2xl font-bold text-[#D64545]">{totalGaps}</div>
             <div className="text-xs text-[#4A6B8A] font-semibold">Critical OT Gaps</div>
-            <div className="text-[9px] text-[#9CA3AF] mt-0.5">(OT maturity ≤ 1 — Absent or Initial)</div>
+            <div className="text-[9px] text-[#9CA3AF] mt-0.5">(OT maturity ≤ 1 - Absent or Initial)</div>
           </div>
         </div>
 
@@ -372,7 +369,7 @@ function NIS2ComplianceSection() {
                       <span className="text-[11px] font-semibold text-[#003B73]">{item.label}</span>
                       {isGap && (
                         <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white bg-[#D64545]">
-                          ⚠ Gap
+                           Gap
                         </span>
                       )}
                     </div>

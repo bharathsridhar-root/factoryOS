@@ -6,12 +6,12 @@ import { fragmentationProblems, otNodes } from '../content';
 
 // Purdue Model: L4 Enterprise at TOP → L0 Field at BOTTOM (standard diagram orientation)
 const zones = [
-  { id: 'L4',  label: 'Level 4 — Enterprise',  color: '#003B73', y: 2  },
-  { id: 'L3',  label: 'Level 3 — Operations',   color: '#005EB8', y: 18 },
+  { id: 'L4',  label: 'Level 4 - Enterprise',  color: '#003B73', y: 2  },
+  { id: 'L3',  label: 'Level 3 - Operations',   color: '#005EB8', y: 18 },
   { id: 'DMZ', label: 'OT / IT DMZ',            color: '#12B3A8', y: 34 },
-  { id: 'L2',  label: 'Level 2 — Supervisory',  color: '#00A3E0', y: 50 },
-  { id: 'L1',  label: 'Level 1 — Control',      color: '#F5A623', y: 66 },
-  { id: 'L0',  label: 'Level 0 — Field',        color: '#D64545', y: 82 },
+  { id: 'L2',  label: 'Level 2 - Supervisory',  color: '#00A3E0', y: 50 },
+  { id: 'L1',  label: 'Level 1 - Control',      color: '#F5A623', y: 66 },
+  { id: 'L0',  label: 'Level 0 - Field',        color: '#D64545', y: 82 },
 ];
 
 function NodeDot({ node, revealed }: { node: typeof otNodes[0]; revealed: boolean }) {
@@ -75,7 +75,7 @@ export function Scene1InvisibleFactory() {
           scene={1}
           tag="The Invisible Factory"
           title="You cannot transform what you cannot see."
-          subtitle="Most industrial organizations are operating in the dark. Thousands of assets exist in a state of permanent ambiguity — unmanaged, unmonitored, and unaccounted for."
+          subtitle="Most industrial organizations are operating in the dark. Thousands of assets exist in a state of permanent ambiguity - unmanaged, unmonitored, and unaccounted for."
           accent="#D64545"
         />
 
@@ -143,7 +143,7 @@ export function Scene1InvisibleFactory() {
             >
               <p className="text-sm font-semibold text-[#D64545] mb-2">The transformation failure pattern:</p>
               <p className="text-sm text-[#4A6B8A] leading-relaxed">
-                Organizations invest in AI, predictive maintenance, and digital twins — before solving asset visibility, operational topology, and governance. These initiatives cannot succeed without a visible foundation.
+                Organizations invest in AI, predictive maintenance, and digital twins - before solving asset visibility, operational topology, and governance. These initiatives cannot succeed without a visible foundation.
               </p>
             </motion.div>
           </div>
@@ -161,11 +161,11 @@ export function Scene1InvisibleFactory() {
                   boxShadow: `0 4px 16px ${revealed ? '#12B3A880' : '#D6454580'}`,
                 }}
               >
-                {revealed ? '✓ Assets Discovered' : '⚡ Run Discovery'}
+                {revealed ? ' Assets Discovered' : ' Run Discovery'}
               </button>
             </div>
 
-            {/* Zone key — vertical legend on left */}
+            {/* Zone key - vertical legend on left */}
             <div className="mb-3 flex items-center gap-2 flex-wrap">
               {zones.map(z => (
                 <div key={z.id} className="flex items-center gap-1">
@@ -179,7 +179,7 @@ export function Scene1InvisibleFactory() {
             <div className="relative rounded-2xl overflow-hidden border border-[rgba(0,94,184,0.1)]"
               style={{ height: 400, background: 'linear-gradient(180deg, #EAF4FF 0%, #F7FAFC 100%)' }}>
 
-              {/* Zone bands — each covers ~16% height */}
+              {/* Zone bands - each covers ~16% height */}
               {zones.map((zone) => (
                 <div
                   key={zone.id}
@@ -203,7 +203,7 @@ export function Scene1InvisibleFactory() {
                 <NodeDot key={node.id} node={node} revealed={revealed} />
               ))}
 
-              {/* Overlay for dark zones — in L1 and L2 layers */}
+              {/* Overlay for dark zones - in L1 and L2 layers */}
               {!revealed && (
                 <div className="absolute inset-0 pointer-events-none">
                   {[

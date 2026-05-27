@@ -15,40 +15,28 @@ export function SceneRoadmap() {
 
       <div className="max-w-screen-xl mx-auto px-6">
         <SectionHeader
-          scene={11}
+          scene={12}
           tag="Transformation Roadmap"
-          title="From today to the Autonomous Plant — a concrete path."
-          subtitle="Three structured phases with clear milestones, integration prerequisites, quick wins, and governance gates. A programme you can start in 30 days."
+          title="A structured path from current state to autonomous operations."
+          subtitle="Three sequential phases, each building on the previous. Each phase has defined entry criteria, deliverables, and integration prerequisites before the next phase can begin."
           accent="#005EB8"
         />
 
-        {/* Timeline bar */}
+        {/* Phase bands - no timeline dates */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="relative flex items-center justify-between max-w-2xl mx-auto mb-2">
-            <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-[rgba(0,94,184,0.1)]" />
-            {['Today', '6 Months', '18 Months', '36 Months'].map((label, i) => (
-              <div key={label} className="relative flex flex-col items-center gap-1 z-10">
-                <div className="w-3 h-3 rounded-full border-2 border-white" style={{
-                  background: i === 0 ? '#D64545' : i === 1 ? '#F5A623' : i === 2 ? '#005EB8' : '#12B3A8'
-                }} />
-                <span className="text-[10px] font-semibold text-[#6B7E9E] whitespace-nowrap">{label}</span>
-              </div>
-            ))}
-          </div>
-          {/* Phase bands */}
-          <div className="flex gap-1 max-w-2xl mx-auto mt-2 rounded-xl overflow-hidden">
+          <div className="flex gap-1 max-w-2xl mx-auto rounded-xl overflow-hidden">
             {roadmapPhases.map(p => (
               <div
                 key={p.id}
-                className="flex-1 py-1.5 text-center text-[10px] font-bold"
+                className="flex-1 py-2 text-center text-[10px] font-bold"
                 style={{ background: `${p.color}20`, color: p.color }}
               >
-                {p.title}
+                Phase {p.number} - {p.title}
               </div>
             ))}
           </div>
@@ -78,7 +66,7 @@ export function SceneRoadmap() {
                   {p.icon}
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-wide" style={{ color: p.color }}>Phase {p.number} · {p.duration}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-wide" style={{ color: p.color }}>Phase {p.number}</div>
                   <div className="text-sm font-bold text-[#003B73]">{p.title}</div>
                 </div>
               </div>
@@ -111,16 +99,16 @@ export function SceneRoadmap() {
               <div className="flex items-center gap-3">
                 <span className="text-3xl">{phase.icon}</span>
                 <div>
-                  <div className="text-sm font-bold text-[#003B73]">Phase {phase.number}: {phase.title} — {phase.duration}</div>
+                  <div className="text-sm font-bold text-[#003B73]">Phase {phase.number}: {phase.title}</div>
                   <div className="text-xs text-[#6B7E9E]">{phase.deliverables.length} key deliverables</div>
                 </div>
               </div>
               {/* Tabs */}
               <div className="flex gap-1 bg-[rgba(0,59,115,0.06)] rounded-xl p-1">
                 {([
-                  { key: 'milestones',    label: '📅 Milestones' },
-                  { key: 'quickwins',     label: '⚡ Quick Wins' },
-                  { key: 'prerequisites', label: '🔑 Prerequisites' },
+                  { key: 'milestones',    label: ' Milestones' },
+                  { key: 'quickwins',     label: ' Quick Wins' },
+                  { key: 'prerequisites', label: ' Prerequisites' },
                 ] as const).map(tab => (
                   <button
                     key={tab.key}
@@ -155,13 +143,13 @@ export function SceneRoadmap() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.07 }}
                         className="flex items-start gap-4 p-4 rounded-xl"
-                        style={{ background: m.label.includes('✓') ? `${phase.color}08` : 'rgba(0,59,115,0.03)', border: m.label.includes('✓') ? `1px solid ${phase.color}30` : '1px solid transparent' }}
+                        style={{ background: m.label.includes('') ? `${phase.color}08` : 'rgba(0,59,115,0.03)', border: m.label.includes('') ? `1px solid ${phase.color}30` : '1px solid transparent' }}
                       >
                         <div
                           className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold shrink-0"
-                          style={{ background: m.label.includes('✓') ? phase.color : `${phase.color}15`, color: m.label.includes('✓') ? 'white' : phase.color }}
+                          style={{ background: m.label.includes('') ? phase.color : `${phase.color}15`, color: m.label.includes('') ? 'white' : phase.color }}
                         >
-                          {m.label.includes('✓') ? '✓' : `W${m.week}`}
+                          {m.label.includes('') ? '' : `W${m.week}`}
                         </div>
                         <div>
                           <div className="text-sm font-semibold text-[#003B73]">{m.label}</div>
@@ -221,7 +209,7 @@ export function SceneRoadmap() {
                   >
                     <div>
                       <h4 className="text-sm font-bold text-[#003B73] mb-3 flex items-center gap-2">
-                        <span>🔑</span> Phase Prerequisites
+                        <span></span> Phase Prerequisites
                       </h4>
                       <div className="space-y-2">
                         {phase.prerequisites.map((p, i) => (
@@ -243,7 +231,7 @@ export function SceneRoadmap() {
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-[#003B73] mb-3 flex items-center gap-2">
-                        <span>🔌</span> System Integrations Required
+                        <span></span> System Integrations Required
                       </h4>
                       <div className="space-y-2">
                         {phase.integrations.map((intg, i) => (
@@ -255,14 +243,14 @@ export function SceneRoadmap() {
                             className="flex items-center gap-3 p-3 rounded-xl"
                             style={{ background: `${phase.color}08`, border: `1px solid ${phase.color}20` }}
                           >
-                            <span className="text-sm">🔌</span>
+                            <span className="text-sm"></span>
                             <span className="text-xs font-medium text-[#003B73]">{intg}</span>
                           </motion.div>
                         ))}
                       </div>
 
                       <h4 className="text-sm font-bold text-[#003B73] mt-5 mb-3 flex items-center gap-2">
-                        <span>📦</span> Phase Deliverables
+                        <span></span> Phase Deliverables
                       </h4>
                       <div className="space-y-1.5">
                         {phase.deliverables.map((d, i) => (
@@ -288,21 +276,19 @@ export function SceneRoadmap() {
           className="mt-12 glass rounded-3xl p-8 text-center"
           style={{ background: 'linear-gradient(135deg, rgba(0,94,184,0.06), rgba(18,179,168,0.04))' }}
         >
-          <div className="text-3xl mb-3">🚀</div>
-          <h3 className="text-xl font-bold text-[#003B73] mb-2">You can start Phase 1 in 30 days</h3>
+          <h3 className="text-xl font-bold text-[#003B73] mb-2">Phase 1 has a low barrier to entry</h3>
           <p className="text-sm text-[#4A6B8A] max-w-xl mx-auto mb-6">
-            OT asset discovery requires only network read access — no production changes, no downtime risk, no architecture decisions before you start. Within 30 days you will have a complete picture of your OT estate for the first time.
+            OT asset discovery requires only network read access. There are no production changes, no downtime risk, and no architecture decisions needed before starting. The first meaningful output - a complete asset inventory - arrives early in Phase 1.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              { icon: '✅', label: 'Zero production risk', sub: 'Passive discovery — no traffic injection' },
-              { icon: '📅', label: '30-day first insight', sub: 'Complete asset inventory in one month' },
-              { icon: '💰', label: 'ROI from week 4', sub: 'Unknown risks quantified immediately' },
+              { label: 'Zero production risk',    sub: 'Passive discovery - no traffic injection' },
+              { label: 'Low entry requirements',  sub: 'Network read access is sufficient to begin' },
+              { label: 'Early value delivery',    sub: 'Unknown risks and assets quantified quickly' },
             ].map(item => (
               <div key={item.label} className="glass rounded-xl px-4 py-3 text-center min-w-[140px]">
-                <div className="text-lg mb-1">{item.icon}</div>
                 <div className="text-xs font-bold text-[#003B73]">{item.label}</div>
-                <div className="text-[10px] text-[#9CA3AF]">{item.sub}</div>
+                <div className="text-[10px] text-[#9CA3AF] mt-1">{item.sub}</div>
               </div>
             ))}
           </div>

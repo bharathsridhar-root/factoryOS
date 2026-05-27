@@ -4,15 +4,15 @@ import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
 
 const graphNodes = [
-  { id: 'motor', label: 'Motor B-7', type: 'asset', x: 50, y: 45, icon: '⚙', status: 'online', color: '#005EB8' },
-  { id: 'plc', label: 'PLC Line 3', type: 'plc', x: 25, y: 25, icon: '🔌', status: 'online', color: '#00A3E0' },
-  { id: 'hmi', label: 'HMI Station', type: 'hmi', x: 75, y: 25, icon: '🖥', status: 'warning', color: '#F5A623' },
-  { id: 'historian', label: 'PI Historian', type: 'server', x: 20, y: 70, icon: '📊', status: 'online', color: '#12B3A8' },
-  { id: 'mes', label: 'MES SAP', type: 'server', x: 80, y: 70, icon: '🏭', status: 'online', color: '#003B73' },
-  { id: 'operator', label: 'Operator-J12', type: 'worker', x: 50, y: 80, icon: '👷', status: 'online', color: '#F5A623' },
-  { id: 'erp', label: 'ERP Oracle', type: 'cloud', x: 50, y: 10, icon: '☁', status: 'online', color: '#6B7E9E' },
-  { id: 'energy', label: 'Energy Meter', type: 'sensor', x: 10, y: 45, icon: '⚡', status: 'online', color: '#12B3A8' },
-  { id: 'maintenance', label: 'Maint Records', type: 'data', x: 90, y: 45, icon: '🔧', status: 'online', color: '#9CA3AF' },
+  { id: 'motor', label: 'Motor B-7', type: 'asset', x: 50, y: 45, icon: '', status: 'online', color: '#005EB8' },
+  { id: 'plc', label: 'PLC Line 3', type: 'plc', x: 25, y: 25, icon: '', status: 'online', color: '#00A3E0' },
+  { id: 'hmi', label: 'HMI Station', type: 'hmi', x: 75, y: 25, icon: '', status: 'warning', color: '#F5A623' },
+  { id: 'historian', label: 'PI Historian', type: 'server', x: 20, y: 70, icon: '', status: 'online', color: '#12B3A8' },
+  { id: 'mes', label: 'MES SAP', type: 'server', x: 80, y: 70, icon: '', status: 'online', color: '#003B73' },
+  { id: 'operator', label: 'Operator-J12', type: 'worker', x: 50, y: 80, icon: '', status: 'online', color: '#F5A623' },
+  { id: 'erp', label: 'ERP Oracle', type: 'cloud', x: 50, y: 10, icon: '', status: 'online', color: '#6B7E9E' },
+  { id: 'energy', label: 'Energy Meter', type: 'sensor', x: 10, y: 45, icon: '', status: 'online', color: '#12B3A8' },
+  { id: 'maintenance', label: 'Maint Records', type: 'data', x: 90, y: 45, icon: '', status: 'online', color: '#9CA3AF' },
 ];
 
 const edges = [
@@ -40,7 +40,7 @@ const nodeDetails: Record<string, {
     vulnerabilities: 0,
     energyKW: '18.4 kW',
     lastMaint: '32 days ago',
-    twinState: 'Active — Health 82%',
+    twinState: 'Active - Health 82%',
     dependencies: ['PLC Line 3', 'Energy Meter', 'PI Historian'],
   },
   plc: {
@@ -48,18 +48,18 @@ const nodeDetails: Record<string, {
     vulnerabilities: 2,
     energyKW: '0.4 kW',
     lastMaint: '90 days ago',
-    twinState: 'Active — Fully synced',
+    twinState: 'Active - Fully synced',
     dependencies: ['Motor B-7', 'HMI Station', 'Safety System'],
   },
 };
 
 const technologies = [
-  { label: 'Unified Namespace', desc: 'Single semantic topic hierarchy for all OT data', icon: '🌐', color: '#005EB8' },
-  { label: 'Asset Administration Shell', desc: 'IEC 63278 digital identity for every asset', icon: '🪪', color: '#00A3E0' },
-  { label: 'OPC UA', desc: 'Secure, platform-independent data exchange', icon: '🔌', color: '#12B3A8' },
-  { label: 'MQTT Sparkplug B', desc: 'Lightweight, stateful industrial messaging', icon: '📡', color: '#F5A623' },
-  { label: 'Digital Thread', desc: 'Continuous data lineage from design to disposal', icon: '🧵', color: '#003B73' },
-  { label: 'Knowledge Graph', desc: 'Semantic relationship model of your operations', icon: '🕸', color: '#9CA3AF' },
+  { label: 'Unified Namespace', desc: 'Single semantic topic hierarchy for all OT data', icon: '', color: '#005EB8' },
+  { label: 'Asset Administration Shell', desc: 'IEC 63278 digital identity for every asset', icon: '', color: '#00A3E0' },
+  { label: 'OPC UA', desc: 'Secure, platform-independent data exchange', icon: '', color: '#12B3A8' },
+  { label: 'MQTT Sparkplug B', desc: 'Lightweight, stateful industrial messaging', icon: '', color: '#F5A623' },
+  { label: 'Digital Thread', desc: 'Continuous data lineage from design to disposal', icon: '', color: '#003B73' },
+  { label: 'Knowledge Graph', desc: 'Semantic relationship model of your operations', icon: '', color: '#9CA3AF' },
 ];
 
 export function Scene3OperationalGraph() {
@@ -83,7 +83,7 @@ export function Scene3OperationalGraph() {
           scene={3}
           tag="Living Operational Graph"
           title="The factory evolves into a living knowledge graph."
-          subtitle="Operational context is the semantic layer that turns raw telemetry into industrial intelligence. Every asset, every relationship, every workflow — connected and queryable."
+          subtitle="Operational context is the semantic layer that turns raw telemetry into industrial intelligence. Every asset, every relationship, every workflow - connected and queryable."
           accent="#00A3E0"
         />
 
@@ -218,10 +218,10 @@ export function Scene3OperationalGraph() {
 
                     <div className="grid grid-cols-2 gap-3">
                       {[
-                        { label: 'Energy', value: details.energyKW, icon: '⚡' },
-                        { label: 'Last Maint.', value: details.lastMaint, icon: '🔧' },
-                        { label: 'Twin State', value: details.twinState, icon: '🧬' },
-                        { label: 'CVEs', value: details.vulnerabilities.toString(), icon: '🛡' },
+                        { label: 'Energy', value: details.energyKW, icon: '' },
+                        { label: 'Last Maint.', value: details.lastMaint, icon: '' },
+                        { label: 'Twin State', value: details.twinState, icon: '' },
+                        { label: 'CVEs', value: details.vulnerabilities.toString(), icon: '' },
                       ].map(item => (
                         <div key={item.label} className="bg-[#EAF4FF] rounded-xl p-3">
                           <div className="text-lg mb-1">{item.icon}</div>

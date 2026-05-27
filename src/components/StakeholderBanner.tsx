@@ -17,9 +17,9 @@ const stakeholderColors: Record<string, { bg: string; border: string; accent: st
 };
 
 const stakeholderIcons: Record<string, string> = {
-  CIO: '💼', CTO: '🔬', PlantManager: '🏭', ManufacturingIT: '🔌',
-  OTArchitect: '🏗', CISO: '🛡', ReliabilityEngineer: '🔧',
-  SustainabilityOfficer: '🌱', OperationsLead: '📊', PlatformEngineeringLead: '🚀',
+  CIO: '', CTO: '', PlantManager: '', ManufacturingIT: '',
+  OTArchitect: '', CISO: '', ReliabilityEngineer: '',
+  SustainabilityOfficer: '', OperationsLead: '', PlatformEngineeringLead: '',
 };
 
 export function StakeholderBanner() {

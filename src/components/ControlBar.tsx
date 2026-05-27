@@ -10,30 +10,30 @@ const stakeholders: Stakeholder[] = [
 ];
 
 const stakeholderMeta: Record<Stakeholder, { label: string; icon: string; color: string; focus: string }> = {
-  CIO:                   { label: 'CIO',           icon: '💼', color: '#005EB8', focus: 'Business & Governance' },
-  CTO:                   { label: 'CTO',           icon: '🔬', color: '#003B73', focus: 'Technical Architecture' },
-  PlantManager:          { label: 'Plant Manager', icon: '🏭', color: '#D97706', focus: 'Operational Efficiency' },
-  ManufacturingIT:       { label: 'Mfg IT',        icon: '🔌', color: '#12B3A8', focus: 'IT/OT Integration' },
-  OTArchitect:           { label: 'OT Architect',  icon: '🏗', color: '#00A3E0', focus: 'Architecture & Zoning' },
-  CISO:                  { label: 'CISO',          icon: '🛡', color: '#D64545', focus: 'Security Posture' },
-  ReliabilityEngineer:   { label: 'Reliability',   icon: '🔧', color: '#10B981', focus: 'Asset Reliability' },
-  SustainabilityOfficer: { label: 'Sustainability', icon: '🌱', color: '#34D399', focus: 'Carbon & ESG' },
-  OperationsLead:        { label: 'Operations',    icon: '📊', color: '#F5A623', focus: 'Operational Performance' },
-  PlatformEngineeringLead:{ label: 'Platform Eng', icon: '🚀', color: '#6366F1', focus: 'Platform & Reusability' },
+  CIO:                   { label: 'CIO',           icon: '', color: '#005EB8', focus: 'Business & Governance' },
+  CTO:                   { label: 'CTO',           icon: '', color: '#003B73', focus: 'Technical Architecture' },
+  PlantManager:          { label: 'Plant Manager', icon: '', color: '#D97706', focus: 'Operational Efficiency' },
+  ManufacturingIT:       { label: 'Mfg IT',        icon: '', color: '#12B3A8', focus: 'IT/OT Integration' },
+  OTArchitect:           { label: 'OT Architect',  icon: '', color: '#00A3E0', focus: 'Architecture & Zoning' },
+  CISO:                  { label: 'CISO',          icon: '', color: '#D64545', focus: 'Security Posture' },
+  ReliabilityEngineer:   { label: 'Reliability',   icon: '', color: '#10B981', focus: 'Asset Reliability' },
+  SustainabilityOfficer: { label: 'Sustainability', icon: '', color: '#34D399', focus: 'Carbon & ESG' },
+  OperationsLead:        { label: 'Operations',    icon: '', color: '#F5A623', focus: 'Operational Performance' },
+  PlatformEngineeringLead:{ label: 'Platform Eng', icon: '', color: '#6366F1', focus: 'Platform & Reusability' },
 };
 
 const depthOptions: TechDepth[] = ['Executive', 'Architecture', 'Engineering'];
 
 const depthMeta: Record<TechDepth, { desc: string }> = {
-  Executive:    { desc: 'Business outcomes, KPIs and strategic value — no technical detail.' },
+  Executive:    { desc: 'Business outcomes, KPIs and strategic value - no technical detail.' },
   Architecture: { desc: 'System architecture, zones, integration patterns and data flows.' },
   Engineering:  { desc: 'Protocol-level detail, firmware, port maps and implementation specs.' },
 };
 
 const modeMeta = {
-  Governance:  { icon: '🏛', desc: 'Highlights compliance status, policy drift and regulatory coverage across every scene.' },
-  Simulation:  { icon: '⚡', desc: 'Activates scenario simulators and "what-if" controls in autonomous operations and twin views.' },
-  ROI:         { icon: '💰', desc: 'Overlays financial impact metrics — cost avoidance, efficiency gains, payback timelines.' },
+  Governance:  { icon: '', desc: 'Highlights compliance status, policy drift and regulatory coverage across every section.' },
+  Simulation:  { icon: '', desc: 'Activates scenario simulators and "what-if" controls in autonomous operations and twin views.' },
+  ROI:         { icon: '', desc: 'Overlays financial impact metrics - cost avoidance, efficiency gains, payback timelines.' },
 };
 
 function ModeTooltip({ text }: { text: string }) {
@@ -145,7 +145,7 @@ export function ControlBar() {
                           <div className="text-[10px] text-[#9CA3AF]">{m.focus}</div>
                         </div>
                         {stakeholder === s && (
-                          <span className="ml-auto text-xs" style={{ color: m.color }}>✓</span>
+                          <span className="ml-auto text-xs" style={{ color: m.color }}></span>
                         )}
                       </button>
                     );
@@ -194,7 +194,7 @@ export function ControlBar() {
                 }`}
                 style={active ? { background: color, borderColor: color } : {}}
               >
-                {modeMeta[key as keyof typeof modeMeta].icon} {active ? '✓ ' : ''}{label}
+                {modeMeta[key as keyof typeof modeMeta].icon} {active ? ' ' : ''}{label}
               </button>
               <AnimatePresence>
                 {tooltip === `mode-${key}` && <ModeTooltip text={modeMeta[key as keyof typeof modeMeta].desc} />}

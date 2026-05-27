@@ -114,7 +114,7 @@ export function SceneValueChain() {
           scene={7}
           tag="From Asset Visibility to Autonomous Factory"
           title="How OT Visibility unlocks the Factory of the Future."
-          subtitle="Five measurable maturity stages — each building on the previous, each delivering immediate and compounding business value. This is the proven path from invisible infrastructure to autonomous operations."
+          subtitle="Five measurable maturity stages - each building on the previous, each delivering immediate and compounding business value. This is the proven path from invisible infrastructure to autonomous operations."
           accent="#005EB8"
         />
 
@@ -238,7 +238,7 @@ export function SceneValueChain() {
                       className="px-4 py-2 text-[9px] font-black uppercase tracking-widest"
                       style={{ background: step.color, color: 'white' }}
                     >
-                      📌 {step.exampleTitle}
+                       {step.exampleTitle}
                     </div>
                     <div className="px-4 py-3 text-[11px] text-[#4A6B8A] leading-relaxed">
                       {step.example}
@@ -323,7 +323,7 @@ export function SceneValueChain() {
               What OT Visibility Unlocks
             </h3>
             <p className="text-sm text-[#6B7E9E] max-w-2xl mx-auto">
-              Security is only the starting point — OT Visibility creates measurable value across every dimension of manufacturing operations.
+              Security is only the starting point - OT Visibility creates measurable value across every dimension of manufacturing operations.
             </p>
           </motion.div>
 
@@ -342,7 +342,7 @@ export function SceneValueChain() {
             style={{ background: 'linear-gradient(135deg, rgba(0,59,115,0.04), rgba(0,94,184,0.02))' }}
           >
             <div className="text-[9px] font-black uppercase tracking-widest text-center text-[#9CA3AF] mb-4">
-              Benchmarked Impact — Industry Average Across Life Sciences & Process Manufacturing
+              Benchmarked Impact - Industry Average Across Life Sciences & Process Manufacturing
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
               {[
@@ -374,7 +374,7 @@ export function SceneValueChain() {
               What a Digital Twin Actually Requires
             </h3>
             <p className="text-sm text-[#6B7E9E] max-w-2xl mx-auto">
-              Digital twins are not bought — they are earned. Every prerequisite must be satisfied before the twin delivers value.
+              Digital twins are not bought - they are earned. Every prerequisite must be satisfied before the twin delivers value.
             </p>
           </div>
 
@@ -416,7 +416,7 @@ export function SceneValueChain() {
               ))}
               <span className="text-[#9CA3AF] mx-2">=</span>
               <span className="text-lg font-black text-[#003B73] flex items-center gap-2">
-                <span>🧬</span> Trusted Digital Twin
+                <span></span> Trusted Digital Twin
               </span>
             </div>
           </div>
@@ -434,10 +434,10 @@ export function SceneValueChain() {
             style={{ border: '1px solid rgba(0,94,184,0.12)' }}
           >
             <div className="flex items-center gap-3">
-              <span className="text-xl">🏗</span>
+              <span className="text-xl"></span>
               <div className="text-left">
                 <div className="text-sm font-bold text-[#003B73]">The Technology Platform That Makes It Possible</div>
-                <div className="text-xs text-[#6B7E9E]">Three integrated platforms — one shared CMDB as the source of truth</div>
+                <div className="text-xs text-[#6B7E9E]">Three integrated platforms - one shared CMDB as the source of truth</div>
               </div>
             </div>
             <span className="text-[#9CA3AF] text-lg">{showTechStack ? '▲' : '▼'}</span>
@@ -503,11 +503,11 @@ export function SceneValueChain() {
                   style={{ border: '2px solid rgba(0,59,115,0.15)', background: 'rgba(0,59,115,0.03)' }}
                 >
                   <div className="flex items-center justify-center gap-3">
-                    <span className="text-xl">🗄</span>
+                    <span className="text-xl"></span>
                     <div>
                       <div className="text-sm font-bold text-[#003B73]">Shared CMDB + Time Series Database</div>
                       <div className="text-xs text-[#6B7E9E]">
-                        One source of truth — Asset hierarchy, standard operations, events history, relationships, maintenance status, performance data — shared across all three platforms in real-time.
+                        One source of truth - Asset hierarchy, standard operations, events history, relationships, maintenance status, performance data - shared across all three platforms in real-time.
                       </div>
                     </div>
                   </div>

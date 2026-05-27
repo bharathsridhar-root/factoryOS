@@ -14,11 +14,11 @@ function UseCaseFlow({ uc }: { uc: UseCase }) {
   const [activePhase, setActivePhase] = useState<string | null>(null);
 
   const phases = [
-    { id: 'inputs', label: 'Sensor / Input', items: uc.inputs, color: '#003B73', icon: '📡' },
-    { id: 'edge', label: 'Edge Processing', items: uc.edgeProcessing, color: '#005EB8', icon: '🖥' },
-    { id: 'cloud', label: 'Cloud Analytics', items: uc.cloudAnalytics, color: '#00A3E0', icon: '☁' },
-    { id: 'decision', label: 'Decision Logic', items: uc.decisionLogic, color: '#12B3A8', icon: '🧠' },
-    { id: 'outcomes', label: 'Action / Outcome', items: uc.outcomes, color: '#F5A623', icon: '⚡' },
+    { id: 'inputs', label: 'Sensor / Input', items: uc.inputs, color: '#003B73', icon: '' },
+    { id: 'edge', label: 'Edge Processing', items: uc.edgeProcessing, color: '#005EB8', icon: '' },
+    { id: 'cloud', label: 'Cloud Analytics', items: uc.cloudAnalytics, color: '#00A3E0', icon: '' },
+    { id: 'decision', label: 'Decision Logic', items: uc.decisionLogic, color: '#12B3A8', icon: '' },
+    { id: 'outcomes', label: 'Action / Outcome', items: uc.outcomes, color: '#F5A623', icon: '' },
   ];
 
   return (
@@ -83,10 +83,10 @@ export function Scene8UseCaseStudio() {
 
       <div className="max-w-screen-xl mx-auto px-6">
         <SectionHeader
-          scene={8}
+          scene={14}
           tag="Use Case Transformation Studio"
           title="Interactive use-case simulation and ROI analysis."
-          subtitle="Every transformation use case deconstructed — from sensor signal to business outcome. Explore complexity, ROI, and deployment feasibility for each."
+          subtitle="Every transformation use case deconstructed - from sensor signal to business outcome. Explore complexity, ROI, and deployment feasibility for each."
           accent="#005EB8"
         />
 

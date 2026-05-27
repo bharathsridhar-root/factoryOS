@@ -10,45 +10,45 @@ const flowLayers = [
     label: 'Sensor / Input',
     color: '#003B73',
     items: ['Vibration Sensors', 'Thermal Arrays', 'Flow Meters', 'PLCs/RTUs', 'SCADA Tags', 'Worker Wearables'],
-    icon: '📡',
+    icon: '',
   },
   {
     id: 'edge',
     label: 'Edge Processing',
     color: '#005EB8',
-    items: ['Edge Gateway', 'AWS Greengrass', 'Local Inferencing', 'Event Filtering', 'Data Buffering', 'Protocol Normalization'],
-    icon: '🖥',
+    items: ['Edge Gateway', 'Azure IoT Edge', 'Local Inferencing', 'Event Filtering', 'Data Buffering', 'Protocol Normalization'],
+    icon: '',
   },
   {
     id: 'cloud',
-    label: 'Cloud Analytics',
+    label: 'Manufacturing Data Platform',
     color: '#00A3E0',
-    items: ['AWS TwinMaker', 'SiteWise', 'Lookout for Equip.', 'Digital Thread', 'AI/ML Pipelines', 'Carbon Twin'],
-    icon: '☁',
+    items: ['Azure Data Explorer', 'OT Data Lake', 'Semantic Layer', 'Data Governance', 'AI/ML Pipelines', 'Digital Twin Feed'],
+    icon: '',
   },
   {
     id: 'decision',
     label: 'Decision Logic',
     color: '#12B3A8',
     items: ['Rules Engine', 'Event Orchestration', 'Autonomous Workflows', 'Threshold Intelligence', 'Predictive Triggers', 'LLM Reasoning'],
-    icon: '🧠',
+    icon: '',
   },
   {
     id: 'outcome',
     label: 'Action / Outcome',
     color: '#F5A623',
     items: ['Maintenance Ticket', 'Shutdown Rec.', 'Runtime Optimization', 'Operator Alert', 'Self-Healing Action', 'Twin State Update'],
-    icon: '⚡',
+    icon: '',
   },
 ];
 
 const twinGrowthSources = [
-  { label: 'OT Asset Data', icon: '⚙', delay: 0 },
-  { label: 'Operational Topology', icon: '🔗', delay: 0.1 },
-  { label: 'Live Telemetry', icon: '📡', delay: 0.2 },
-  { label: 'Maintenance Records', icon: '🔧', delay: 0.3 },
-  { label: 'Process Workflows', icon: '🔄', delay: 0.4 },
-  { label: 'Energy Signals', icon: '⚡', delay: 0.5 },
+  { label: 'OT Asset Data', icon: '', delay: 0 },
+  { label: 'Operational Topology', icon: '', delay: 0.1 },
+  { label: 'Live Telemetry', icon: '', delay: 0.2 },
+  { label: 'Maintenance Records', icon: '', delay: 0.3 },
+  { label: 'Process Workflows', icon: '', delay: 0.4 },
+  { label: 'Energy Signals', icon: '', delay: 0.5 },
 ];
 
 export function Scene4DigitalTwin() {
@@ -65,7 +65,7 @@ export function Scene4DigitalTwin() {
           scene={4}
           tag="Digital Twin Activation"
           title="Digital twins emerge from operational truth."
-          subtitle="A digital twin is not a 3D visualization. It is an operational decision system — grown from real asset data, topology, and behavior. Not from CAD files alone."
+          subtitle="A digital twin is not a 3D visualization. It is an operational decision system - grown from real asset data, topology, and behavior. Not from CAD files alone."
           accent="#12B3A8"
         />
 
@@ -168,7 +168,7 @@ export function Scene4DigitalTwin() {
               </div>
 
               <div className="text-center mt-4 text-xs text-[#9AAFBE]">
-                Click the twin to activate — data sources come alive
+                Click the twin to activate - data sources come alive
               </div>
             </div>
 
@@ -283,6 +283,97 @@ export function Scene4DigitalTwin() {
           </div>
         </div>
 
+        {/* Manufacturing Data Platform - precursor to Digital Twin and AI */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="text-center mb-8">
+            <div className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3" style={{ background: '#005EB820', color: '#005EB8' }}>
+              The Foundation Layer
+            </div>
+            <h3 className="text-xl font-bold text-[#003B73]">Manufacturing Data Platform - the step before Digital Twin and AI</h3>
+            <p className="text-sm text-[#6B7E9E] mt-2 max-w-2xl mx-auto">
+              Before a Digital Twin can be meaningful - and before any AI model can be trusted - there needs to be a structured, unified, and governed layer for manufacturing data. This is the Manufacturing Data Platform.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-6">
+            {[
+              {
+                step: '1',
+                label: 'OT Asset Data',
+                desc: 'Raw data from sensors, PLCs, HMIs, and SCADA systems. Fragmented, multi-protocol, varying quality.',
+                color: '#F5A623',
+                note: 'Starting point',
+              },
+              {
+                step: '2',
+                label: 'Manufacturing Data Platform',
+                desc: 'Unified layer that ingests, cleanses, contextualises, and governs operational data. Includes OT CMDB, data lineage, and a semantic model.',
+                color: '#005EB8',
+                note: 'The critical enabler',
+              },
+              {
+                step: '3',
+                label: 'Digital Twin',
+                desc: 'Fed by the MDP, the twin reflects real operational state and can simulate outcomes. Only as good as the data beneath it.',
+                color: '#12B3A8',
+                note: 'Requires MDP',
+              },
+              {
+                step: '4',
+                label: 'AI and Autonomous Operations',
+                desc: 'Models trained and served against clean, contextualised MDP data. Without MDP governance, AI outputs are unreliable.',
+                color: '#6366F1',
+                note: 'Requires Digital Twin + MDP',
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative glass rounded-2xl p-5"
+                style={{ borderTop: `3px solid ${item.color}` }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ background: item.color }}>
+                    {item.step}
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wide" style={{ color: item.color }}>{item.note}</span>
+                </div>
+                <div className="text-sm font-bold text-[#003B73] mb-2">{item.label}</div>
+                <p className="text-xs text-[#6B7E9E] leading-relaxed">{item.desc}</p>
+                {i < 3 && (
+                  <div className="hidden md:block absolute -right-1.5 top-1/2 -translate-y-1/2 text-[#9CA3AF] text-lg font-bold z-10">
+                    ›
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="glass rounded-2xl p-5 max-w-3xl mx-auto" style={{ border: '1px solid rgba(0,94,184,0.15)', background: 'rgba(0,94,184,0.03)' }}>
+            <div className="text-xs font-bold uppercase tracking-widest text-[#005EB8] mb-2">What the Manufacturing Data Platform does</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { label: 'Ingest and normalise', desc: 'Pulls from PLCs, SCADA, MES, ERP - normalised to a common schema regardless of protocol or vendor.' },
+                { label: 'Contextualise and govern', desc: 'Applies the OT CMDB context - location, criticality, maintenance history, compliance status - to every data point.' },
+                { label: 'Expose and serve', desc: 'Provides a clean, governed, API-accessible data layer that Digital Twins and AI models can consume reliably.' },
+              ].map(item => (
+                <div key={item.label}>
+                  <div className="text-xs font-semibold text-[#003B73] mb-1">{item.label}</div>
+                  <div className="text-xs text-[#6B7E9E] leading-relaxed">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
         {/* Twin insight */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -291,9 +382,8 @@ export function Scene4DigitalTwin() {
           className="text-center p-8 rounded-3xl max-w-3xl mx-auto"
           style={{ background: 'linear-gradient(135deg, rgba(0,59,115,0.04), rgba(0,163,224,0.06))', border: '1px solid rgba(0,94,184,0.12)' }}
         >
-          <div className="text-4xl mb-4">🧬</div>
           <p className="text-xl font-bold text-[#003B73] mb-3">"Digital twins are not dashboards."</p>
-          <p className="text-lg text-[#4A6B8A]">"They are operational decision systems — alive with context, capable of simulation, and wired for autonomous action."</p>
+          <p className="text-lg text-[#4A6B8A]">"They are operational decision systems - alive with context, capable of simulation, and wired for autonomous action."</p>
         </motion.div>
       </div>
     </section>

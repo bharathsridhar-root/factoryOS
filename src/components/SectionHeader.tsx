@@ -23,7 +23,7 @@ export function SectionHeader({ scene, tag, title, subtitle, accent = '#005EB8' 
           className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
           style={{ color: accent, background: `${accent}18`, border: `1px solid ${accent}30` }}
         >
-          Scene {scene} · {tag}
+          Section {scene} · {tag}
         </span>
         <div className="h-px flex-1 max-w-16" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
       </div>

@@ -77,7 +77,7 @@ function ServiceDetailModal({ service, onClose }: { service: ServiceCard; onClos
               {service.deploymentComplexity} Complexity
             </div>
             <div className="text-xs text-[#6B7E9E] mt-1">
-              Twin: {service.twinIntegration ? '✓ Integrated' : '— Not Required'}
+              Twin: {service.twinIntegration ? ' Integrated' : '— Not Required'}
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@ function ServiceDetailModal({ service, onClose }: { service: ServiceCard; onClos
         <div className="flex gap-3">
           {actionState === 'done' ? (
             <div className="flex-1 py-3 rounded-xl text-sm font-semibold text-center text-white" style={{ background: '#12B3A8' }}>
-              ✓ Deployment queued!
+               Deployment queued!
             </div>
           ) : actionState === 'installing' ? (
             <div className="flex-1 py-3 rounded-xl text-sm font-semibold text-center text-white" style={{ background: '#005EB8' }}>
@@ -109,13 +109,13 @@ function ServiceDetailModal({ service, onClose }: { service: ServiceCard; onClos
                 className="flex-1 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
                 style={{ background: 'linear-gradient(135deg, #005EB8, #00A3E0)' }}
               >
-                ⚡ Install Service
+                 Install Service
               </button>
               <button
                 onClick={() => handleAction('deploy')}
                 className="flex-1 py-3 rounded-xl text-sm font-semibold border border-[rgba(0,94,184,0.2)] text-[#005EB8] hover:bg-[#EAF4FF] transition-all active:scale-95"
               >
-                📦 Deploy Blueprint
+                 Deploy Blueprint
               </button>
             </>
           )}
@@ -139,7 +139,7 @@ export function Scene6ServicesInABox() {
 
       <div className="max-w-screen-xl mx-auto px-6">
         <SectionHeader
-          scene={6}
+          scene={10}
           tag="OT Services in a Box"
           title="Industrial capabilities marketplace."
           subtitle="Modular, composable OT services that accelerate every transformation use case. Install. Subscribe. Deploy. Each service knows its architecture footprint, KPI contribution, and twin integration."

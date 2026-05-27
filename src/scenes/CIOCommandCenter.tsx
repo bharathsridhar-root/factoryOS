@@ -40,12 +40,12 @@ const maturityMilestones = [
 ];
 
 const recentEvents = [
-  { time: '2s ago', msg: 'Motor B-7 anomaly resolved — autonomous maintenance triggered', type: 'success' },
-  { time: '4m ago', msg: 'Stuttgart Werk patch compliance reached 99% — IEC 62443 compliant', type: 'success' },
+  { time: '2s ago', msg: 'Motor B-7 anomaly resolved - autonomous maintenance triggered', type: 'success' },
+  { time: '4m ago', msg: 'Stuttgart Werk patch compliance reached 99% - IEC 62443 compliant', type: 'success' },
   { time: '12m ago', msg: 'Unauthorized device isolated in Singapore Plant Zone 2', type: 'warning' },
   { time: '1h ago', msg: 'Carbon Twin: Scope 1 emissions -14% this shift vs. target', type: 'success' },
   { time: '2h ago', msg: 'Digital Product Passport #DPP-44129 issued for Line 3', type: 'info' },
-  { time: '3h ago', msg: 'Worker Safety Twin: Zone 4 ergonomic risk elevated — intervention sent', type: 'warning' },
+  { time: '3h ago', msg: 'Worker Safety Twin: Zone 4 ergonomic risk elevated - intervention sent', type: 'warning' },
 ];
 
 export function CIOCommandCenter() {

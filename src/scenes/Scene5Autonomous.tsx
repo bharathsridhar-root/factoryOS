@@ -48,7 +48,7 @@ function ScenarioTimeline({ steps, color }: { steps: string[]; color: string }) 
                 color: activeStep >= i ? 'white' : '#9CA3AF',
               }}
             >
-              {activeStep >= i ? '✓' : i + 1}
+              {activeStep >= i ? '' : i + 1}
             </div>
             <span className="text-xs text-[#4A6B8A] leading-relaxed">{step}</span>
           </motion.div>
@@ -59,12 +59,12 @@ function ScenarioTimeline({ steps, color }: { steps: string[]; color: string }) 
 }
 
 const autonomousCapabilities = [
-  { label: 'AI-Assisted Operations', icon: '🤖', desc: 'LLM-powered decision support with operational context' },
-  { label: 'Autonomous Maintenance', icon: '🔧', desc: 'Zero-touch work order generation and parts staging' },
-  { label: 'Event-Driven Orchestration', icon: '🔄', desc: 'Real-time event streams triggering operational workflows' },
-  { label: 'Self-Healing OT', icon: '💊', desc: 'Automatic configuration restoration and fault recovery' },
-  { label: 'Operational Resilience', icon: '🛡', desc: 'Continuous health monitoring with proactive mitigation' },
-  { label: 'Intelligent Workflows', icon: '⚡', desc: 'Context-aware automation that adapts to operational state' },
+  { label: 'AI-Assisted Operations', icon: '', desc: 'LLM-powered decision support with operational context' },
+  { label: 'Autonomous Maintenance', icon: '', desc: 'Zero-touch work order generation and parts staging' },
+  { label: 'Event-Driven Orchestration', icon: '', desc: 'Real-time event streams triggering operational workflows' },
+  { label: 'Self-Healing OT', icon: '', desc: 'Automatic configuration restoration and fault recovery' },
+  { label: 'Operational Resilience', icon: '', desc: 'Continuous health monitoring with proactive mitigation' },
+  { label: 'Intelligent Workflows', icon: '', desc: 'Context-aware automation that adapts to operational state' },
 ];
 
 export function Scene5Autonomous() {
@@ -83,7 +83,7 @@ export function Scene5Autonomous() {
           scene={5}
           tag="Autonomous Operations"
           title="Self-healing industrial systems."
-          subtitle="When visibility, context, and intelligence converge — the factory responds autonomously. No operator intervention required. No delays. No blind spots."
+          subtitle="When visibility, context, and intelligence converge - the factory responds autonomously. No operator intervention required. No delays. No blind spots."
           accent="#12B3A8"
         />
 
@@ -142,7 +142,7 @@ export function Scene5Autonomous() {
                 style={{ background: 'rgba(18,179,168,0.08)', border: '1px solid rgba(18,179,168,0.2)' }}
               >
                 <div className="flex items-center gap-2">
-                  <span>✅</span>
+                  <span></span>
                   <span className="text-sm font-semibold text-[#12B3A8]">{scenario.outcome}</span>
                 </div>
               </motion.div>
@@ -155,12 +155,12 @@ export function Scene5Autonomous() {
               <h3 className="text-sm font-bold text-[#003B73] mb-4">Autonomous Response Architecture</h3>
               <div className="space-y-3">
                 {[
-                  { label: 'Correlate Topology', icon: '🔗', desc: 'Trace impact through operational graph' },
-                  { label: 'Evaluate Impact', icon: '📊', desc: 'Calculate production, quality, and safety risk' },
-                  { label: 'Simulate Outcomes', icon: '🧮', desc: 'Digital twin runs failure trajectory models' },
-                  { label: 'Trigger Remediation', icon: '⚡', desc: 'Autonomous action or human escalation' },
-                  { label: 'Update Twin', icon: '🔄', desc: 'Operational state reflected in real time' },
-                  { label: 'Inform Stakeholders', icon: '📣', desc: 'Contextual alerts with recommended actions' },
+                  { label: 'Correlate Topology', icon: '', desc: 'Trace impact through operational graph' },
+                  { label: 'Evaluate Impact', icon: '', desc: 'Calculate production, quality, and safety risk' },
+                  { label: 'Simulate Outcomes', icon: '', desc: 'Digital twin runs failure trajectory models' },
+                  { label: 'Trigger Remediation', icon: '', desc: 'Autonomous action or human escalation' },
+                  { label: 'Update Twin', icon: '', desc: 'Operational state reflected in real time' },
+                  { label: 'Inform Stakeholders', icon: '', desc: 'Contextual alerts with recommended actions' },
                 ].map((step, i) => (
                   <motion.div
                     key={step.label}

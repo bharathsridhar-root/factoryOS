@@ -5,7 +5,7 @@ const modeConfig = {
   governance: {
     label: 'Governance Lens Active',
     detail: 'Compliance status and policy drift highlighted throughout',
-    icon: '🏛',
+    icon: '',
     color: '#005EB8',
     bg: '#EAF4FF',
     border: 'rgba(0,94,184,0.25)',
@@ -13,7 +13,7 @@ const modeConfig = {
   simulation: {
     label: 'Simulation Mode Active',
     detail: 'Scenario controls and what-if simulators enabled',
-    icon: '⚡',
+    icon: '',
     color: '#00A3E0',
     bg: '#E0F4FF',
     border: 'rgba(0,163,224,0.25)',
@@ -21,7 +21,7 @@ const modeConfig = {
   roi: {
     label: 'ROI Overlay Active',
     detail: 'Financial impact, cost avoidance and payback metrics visible',
-    icon: '💰',
+    icon: '',
     color: '#12B3A8',
     bg: '#E6FAF8',
     border: 'rgba(18,179,168,0.25)',
@@ -29,9 +29,9 @@ const modeConfig = {
 };
 
 const depthConfig = {
-  Executive:    { icon: '📈', desc: 'Business outcomes & KPI view' },
-  Architecture: { icon: '🏗',  desc: 'Architecture & integration view' },
-  Engineering:  { icon: '🔩', desc: 'Protocol & implementation detail' },
+  Executive:    { icon: '', desc: 'Business outcomes & KPI view' },
+  Architecture: { icon: '',  desc: 'Architecture & integration view' },
+  Engineering:  { icon: '', desc: 'Protocol & implementation detail' },
 };
 
 export function ModeIndicator() {

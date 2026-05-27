@@ -28,7 +28,7 @@ const nodes: EcoNode[] = [
     id: 'production',
     label: 'Production Floor',
     short: 'Production',
-    icon: '🏭',
+    icon: '',
     color: '#F5A623',
     bg: '#FFFBEB',
     cx: 7, cy: 50,
@@ -36,7 +36,7 @@ const nodes: EcoNode[] = [
     badge: 'Source',
     items: ['Bioreactors & Fermenters', 'Filling & Packaging Lines', 'Assembly Cells', 'CNC Machines', 'Cleanroom Assets'],
     tools: ['PLCs (Siemens, Rockwell, ABB)', 'Sensors & Actuators', 'HMI / SCADA', 'DCS Systems'],
-    desc: 'The physical manufacturing estate — hundreds of OT assets across all Purdue levels generating continuous operational telemetry. In life sciences: cleanrooms, bioreactors, filling lines, and precision assembly cells.',
+    desc: 'The physical manufacturing estate - hundreds of OT assets across all Purdue levels generating continuous operational telemetry. In life sciences: cleanrooms, bioreactors, filling lines, and precision assembly cells.',
     dataIn: 'Production schedules, maintenance plans, quality specs',
     dataOut: 'Raw telemetry, alarms, process parameters, energy readings, operational events',
   },
@@ -44,7 +44,7 @@ const nodes: EcoNode[] = [
     id: 'ot-visibility',
     label: 'OT Visibility & CMDB',
     short: 'OT CMDB',
-    icon: '👁',
+    icon: '',
     color: '#005EB8',
     bg: '#EAF4FF',
     cx: 26, cy: 50,
@@ -52,7 +52,7 @@ const nodes: EcoNode[] = [
     badge: 'Foundation',
     items: ['Passive Asset Discovery', 'Device Fingerprinting', 'CMDB Auto-Population', 'Network Topology', 'Firmware & CVE Tracking'],
     tools: ['Claroty / Nozomi Networks', 'OT Asset CMDB', 'Protocol Analyser', 'Vulnerability Engine'],
-    desc: 'The non-negotiable first step. Passive, zero-impact discovery and classification of every OT asset — making the invisible factory visible. No twins, no AI, no autonomy without this foundation.',
+    desc: 'The non-negotiable first step. Passive, zero-impact discovery and classification of every OT asset - making the invisible factory visible. No twins, no AI, no autonomy without this foundation.',
     dataIn: 'Network traffic (passive), CMDB feeds, AD sync',
     dataOut: 'Asset inventory, vulnerability data, topology map, compliance state, GxP asset register',
   },
@@ -60,7 +60,7 @@ const nodes: EcoNode[] = [
     id: 'digital-core',
     label: 'Digital Core Platform',
     short: 'Digital Core',
-    icon: '🧬',
+    icon: '',
     color: '#003B73',
     bg: '#EAF4FF',
     cx: 50, cy: 50,
@@ -68,7 +68,7 @@ const nodes: EcoNode[] = [
     journeyStep: 3,
     badge: 'Hub',
     items: ['Digital Twin Engine', 'OT Data Platform', 'Operational Knowledge Graph', 'AI / ML Pipeline', 'LLM Reasoning Layer', 'Event Orchestration'],
-    tools: ['AWS IoT TwinMaker', 'AWS SiteWise', 'Graph DB', 'ML Platform', 'Factory Copilot', 'Event Bus'],
+    tools: ['Azure Digital Twins', 'Azure Data Explorer (ADX)', 'Graph DB', 'ML Platform', 'Factory Copilot', 'Event Bus'],
     desc: 'The central intelligence platform where raw asset data becomes operational knowledge, predictions, and autonomous decisions. Every other node either feeds into it or receives intelligence from it.',
     dataIn: 'Asset inventory, telemetry streams, business context, cloud services',
     dataOut: 'Twin state, failure predictions, autonomous actions, carbon data, recommendations, audit trail',
@@ -77,7 +77,7 @@ const nodes: EcoNode[] = [
     id: 'use-cases',
     label: 'Use Cases & Outcomes',
     short: 'Use Cases',
-    icon: '⚡',
+    icon: '',
     color: '#12B3A8',
     bg: '#E6FAF8',
     cx: 74, cy: 50,
@@ -93,13 +93,13 @@ const nodes: EcoNode[] = [
     id: 'central-it',
     label: 'Central IT & Cloud',
     short: 'Cloud & IT',
-    icon: '☁',
+    icon: '',
     color: '#6366F1',
     bg: '#F0F0FF',
     cx: 50, cy: 11,
     badge: 'Infrastructure',
-    items: ['AWS / Azure Cloud', 'Data Lake & Warehouse', 'API Gateway', 'Identity & Access', 'SD-WAN / OT Network', 'CI/CD & DevOps'],
-    tools: ['AWS', 'Azure', 'ServiceNow', 'Active Directory', 'Palo Alto Networks'],
+    items: ['Azure Cloud', 'Data Lake & Warehouse', 'API Gateway', 'Identity & Access', 'SD-WAN / OT Network', 'CI/CD & DevOps'],
+    tools: ['Azure', 'Azure', 'ServiceNow', 'Active Directory', 'Palo Alto Networks'],
     desc: 'Enterprise IT backbone providing cloud compute, secure data storage, and the network infrastructure for OT/IT convergence. The "highway" on which OT data travels.',
     dataIn: 'OT telemetry, identity requests, application data',
     dataOut: 'Cloud services, data persistence, IAM, network policy enforcement',
@@ -108,14 +108,14 @@ const nodes: EcoNode[] = [
     id: 'business-systems',
     label: 'Business Systems',
     short: 'ERP / MES / PLM',
-    icon: '💼',
+    icon: '',
     color: '#003B73',
     bg: '#EAF4FF',
     cx: 77, cy: 16,
     badge: 'Enterprise',
     items: ['SAP S/4HANA (ERP)', 'MES / Opcenter', 'PLM (Teamcenter)', 'LIMS (LabWare)', 'EAM / SAP PM', 'Supply Chain'],
     tools: ['SAP', 'Siemens Opcenter', 'Teamcenter', 'LabWare LIMS', 'SAP PM / Maximo'],
-    desc: 'Enterprise systems that both consume operational intelligence from the Digital Core and provide business context back into it — closing the loop between shop floor and top floor.',
+    desc: 'Enterprise systems that both consume operational intelligence from the Digital Core and provide business context back into it - closing the loop between shop floor and top floor.',
     dataIn: 'Operational insights, twin state, quality events, maintenance predictions',
     dataOut: 'Work orders, production schedules, quality specs, maintenance plans, BOM data',
   },
@@ -123,14 +123,14 @@ const nodes: EcoNode[] = [
     id: 'quality-gxp',
     label: 'Quality & GxP Compliance',
     short: 'Quality & GxP',
-    icon: '📋',
+    icon: '',
     color: '#10B981',
     bg: '#F0FDF4',
     cx: 77, cy: 84,
     badge: 'Compliance',
     items: ['GxP Digital Thread', 'FDA 21 CFR Part 11', 'Electronic Batch Records', 'Audit Trail Engine', 'CAPA Management', 'Annex 11 Compliance'],
     tools: ['eQMS', 'Electronic Batch Records', 'Audit Trail Engine', 'Validation Suite (IQ/OQ/PQ)'],
-    desc: 'Life sciences regulatory compliance continuously automated through the Digital Core — turning weeks-long audit preparation into a 2-hour exercise. Full traceability from raw material to batch release.',
+    desc: 'Life sciences regulatory compliance continuously automated through the Digital Core - turning weeks-long audit preparation into a 2-hour exercise. Full traceability from raw material to batch release.',
     dataIn: 'Process parameters, asset events, twin state, operational graph data',
     dataOut: 'Compliance certificates, electronic batch records, audit packs, CAPA reports, deviation records',
   },
@@ -138,14 +138,14 @@ const nodes: EcoNode[] = [
     id: 'ot-security',
     label: 'OT Security & Governance',
     short: 'OT Security',
-    icon: '🛡',
+    icon: '',
     color: '#D64545',
     bg: '#FFF1F1',
     cx: 23, cy: 84,
     badge: 'Security',
     items: ['IEC 62443 Compliance', 'Zero Trust OT Access', 'Patch Management', 'Incident Response', 'PAM / Session Recording', 'Policy Drift Detection'],
     tools: ['Firewall / DMZ', 'Privileged Access Mgmt', 'SIEM / OT SOC', 'Vulnerability Manager', 'Zero Trust Engine'],
-    desc: 'Security posture and governance built directly on operational truth. You can only protect what you can see — which is why OT Visibility is the prerequisite for everything, including security.',
+    desc: 'Security posture and governance built directly on operational truth. You can only protect what you can see - which is why OT Visibility is the prerequisite for everything, including security.',
     dataIn: 'Asset inventory from OT CMDB, network topology, vulnerability data',
     dataOut: 'Security alerts, compliance scores, incident logs, patch status, threat intelligence',
   },
@@ -153,14 +153,14 @@ const nodes: EcoNode[] = [
     id: 'sustainability',
     label: 'Sustainability & ESG',
     short: 'Sustainability',
-    icon: '🌱',
+    icon: '',
     color: '#34D399',
     bg: '#F0FDF4',
     cx: 50, cy: 89,
     badge: 'ESG',
     items: ['Carbon Twin', 'Scope 1/2/3 Tracking', 'Energy Optimisation', 'ESG Reporting', 'EU Taxonomy', 'Carbon Credit Management'],
     tools: ['Carbon Lens™', 'Energy Metering Grid', 'Grid API', 'CDP / GHG Protocol', 'EU Taxonomy Engine'],
-    desc: 'Carbon and energy intelligence driven by real-time operational data — sustainability as an engineering discipline, not a reporting obligation. The carbon twin knows exactly where every gram of CO₂ originates.',
+    desc: 'Carbon and energy intelligence driven by real-time operational data - sustainability as an engineering discipline, not a reporting obligation. The carbon twin knows exactly where every gram of CO₂ originates.',
     dataIn: 'Energy readings, production data, asset states, process parameters from Digital Core',
     dataOut: 'Carbon reports, energy savings actions, ESG dashboard, regulatory submissions, offset calculations',
   },
@@ -392,9 +392,9 @@ export function SceneBigPicture() {
       <div className="max-w-screen-2xl mx-auto px-6">
         <SectionHeader
           scene={6}
-          tag="Ecosystem Map — Wimmelbild"
+          tag="Ecosystem Map - Wimmelbild"
           title="The complete OT transformation landscape."
-          subtitle="Every function, system, and data flow — from production floor to autonomous outcomes. Hover any node to explore its role, tools, and connections in the Sartorius transformation."
+          subtitle="Every function, system, and data flow - from production floor to autonomous outcomes. Hover any node to explore its role, tools, and connections across the transformation."
           accent="#005EB8"
         />
 
@@ -409,7 +409,7 @@ export function SceneBigPicture() {
               border: `2px solid ${journeyMode ? '#005EB8' : 'rgba(0,94,184,0.2)'}`,
             }}
           >
-            {journeyMode ? '✓' : ''} Journey Mode
+            {journeyMode ? '' : ''} Journey Mode
           </button>
           {journeyMode && journeyNodes.map((n, i) => (
             <button
@@ -652,7 +652,7 @@ export function SceneBigPicture() {
                   animate={{ opacity: 1 }}
                   className="glass rounded-3xl p-6 text-center"
                 >
-                  <div className="text-3xl mb-3">👆</div>
+                  <div className="text-3xl mb-3"></div>
                   <div className="text-sm font-semibold text-[#003B73]">Hover any node</div>
                   <div className="text-xs text-[#9CA3AF] mt-1">to explore its role and data flows</div>
                 </motion.div>
@@ -695,10 +695,10 @@ export function SceneBigPicture() {
           className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {[
-            { icon: '🔗', value: '9', label: 'Ecosystem Clusters', sub: 'All interconnected', color: '#005EB8' },
+            { icon: '', value: '9', label: 'Ecosystem Clusters', sub: 'All interconnected', color: '#005EB8' },
             { icon: '↔',  value: '11', label: 'Data Flows',         sub: 'Bidirectional intelligence', color: '#00A3E0' },
-            { icon: '🛤',  value: '4',  label: 'Journey Steps',      sub: 'Floor → Outcomes',  color: '#12B3A8' },
-            { icon: '⚡',  value: '7',  label: 'Use Cases Enabled',  sub: 'By the full platform', color: '#F5A623' },
+            { icon: '',  value: '4',  label: 'Journey Steps',      sub: 'Floor → Outcomes',  color: '#12B3A8' },
+            { icon: '',  value: '7',  label: 'Use Cases Enabled',  sub: 'By the full platform', color: '#F5A623' },
           ].map(s => (
             <div key={s.label} className="glass rounded-2xl p-4 text-center card-lift">
               <div className="text-xl mb-1">{s.icon}</div>
