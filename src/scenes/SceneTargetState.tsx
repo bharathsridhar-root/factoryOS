@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
-import { targetStateKPIs, peerBenchmarks, lifeSciencesCapabilities } from '../content';
+import { targetStateKPIs, peerBenchmarks, lifeSciencesCapabilities, nis2Domains } from '../content';
+
+// Maturity level labels + colours (0=Absent … 5=Optimised)
+const MATURITY_LABELS = ['Absent', 'Initial', 'Repeatable', 'Defined', 'Managed', 'Optimised'];
+const MATURITY_COLORS = ['#D64545', '#F5874B', '#FBBF24', '#6366F1', '#00A3E0', '#10B981'];
+const maturityColor = (level: number) => MATURITY_COLORS[Math.min(level, 5)] ?? '#9CA3AF';
+const maturityLabel = (level: number) => MATURITY_LABELS[Math.min(level, 5)] ?? '?';
 
 const benchmarkDimensions = [
   { key: 'visibility', label: 'Asset Visibility %' },
@@ -241,7 +247,196 @@ export function SceneTargetState() {
             ))}
           </div>
         </motion.div>
+        {/* NIS2 Compliance Gap Analysis */}
+        <NIS2ComplianceSection />
       </div>
     </section>
+  );
+}
+
+// ─── NIS2 Compliance Heatmap ───────────────────────────────────────────────────
+
+function NIS2ComplianceSection() {
+  const [activeDomain, setActiveDomain] = useState(0);
+  const domain = nis2Domains[activeDomain];
+
+  // Count critical gaps (OT maturity 0 or 1)
+  const totalGaps = nis2Domains.flatMap(d => d.items).filter(it => it.ot <= 1).length;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-16"
+    >
+      <div className="text-center mb-8">
+        <h3 className="text-xl font-bold text-[#003B73] mb-2">
+          Cybersecurity Compliance Gap — NIS2 / IEC 62443
+        </h3>
+        <p className="text-sm text-[#6B7E9E] max-w-2xl mx-auto">
+          Current OT security maturity vs. NIS2 compliance target (Level 4 Managed). Red items represent critical gaps where OT is
+          significantly behind IT — and behind regulatory requirements.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Domain selector */}
+        <div className="lg:col-span-1 flex flex-col gap-3">
+          {nis2Domains.map((dom, i) => (
+            <button
+              key={dom.domain}
+              onClick={() => setActiveDomain(i)}
+              className="text-left p-4 rounded-2xl transition-all card-lift"
+              style={{
+                background: activeDomain === i ? `${dom.color}10` : 'white',
+                border: `2px solid ${activeDomain === i ? dom.color : `${dom.color}20`}`,
+              }}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-base">{dom.icon}</span>
+                <span className="text-sm font-bold text-[#003B73]">{dom.domain}</span>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] text-[#6B7E9E]">
+                <span>{dom.items.length} controls</span>
+                <span>·</span>
+                <span style={{ color: '#D64545' }}>
+                  {dom.items.filter(it => it.ot <= 1).length} critical OT gaps
+                </span>
+              </div>
+            </button>
+          ))}
+
+          {/* Overall gap summary */}
+          <div
+            className="rounded-2xl p-4 text-center"
+            style={{ background: 'rgba(214,69,69,0.06)', border: '1px solid rgba(214,69,69,0.2)' }}
+          >
+            <div className="text-2xl font-bold text-[#D64545]">{totalGaps}</div>
+            <div className="text-xs text-[#4A6B8A] font-semibold">Critical OT Gaps</div>
+            <div className="text-[9px] text-[#9CA3AF] mt-0.5">(OT maturity ≤ 1 — Absent or Initial)</div>
+          </div>
+        </div>
+
+        {/* Domain detail */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={domain.domain}
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -8 }}
+            transition={{ duration: 0.25 }}
+            className="lg:col-span-2 glass rounded-3xl overflow-hidden"
+            style={{ border: `2px solid ${domain.color}25` }}
+          >
+            {/* Domain header */}
+            <div
+              className="px-6 py-4 flex items-center gap-3"
+              style={{ background: `${domain.color}08`, borderBottom: `1px solid ${domain.color}20` }}
+            >
+              <span className="text-2xl">{domain.icon}</span>
+              <div>
+                <div className="text-sm font-bold text-[#003B73]">{domain.domain}</div>
+                <div className="text-xs text-[#6B7E9E]">IT vs OT maturity · Target: Level 4 (Managed)</div>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-4">
+              {/* Legend */}
+              <div className="flex flex-wrap gap-3 mb-2">
+                {[0,1,2,3,4,5].map(l => (
+                  <div key={l} className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full" style={{ background: maturityColor(l) }} />
+                    <span className="text-[9px] text-[#6B7E9E]">{l} – {maturityLabel(l)}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Items */}
+              {domain.items.map((item, i) => {
+                const gap = item.target - item.ot;
+                const isGap = item.ot <= 1;
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="rounded-xl p-3"
+                    style={{
+                      background: isGap ? 'rgba(214,69,69,0.04)' : 'rgba(0,59,115,0.03)',
+                      border: isGap ? '1px solid rgba(214,69,69,0.2)' : '1px solid rgba(0,59,115,0.07)',
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[11px] font-semibold text-[#003B73]">{item.label}</span>
+                      {isGap && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white bg-[#D64545]">
+                          ⚠ Gap
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex gap-4 items-end">
+                      {/* IT bar */}
+                      <div className="flex-1">
+                        <div className="text-[8px] font-bold text-[#9CA3AF] uppercase mb-1">IT</div>
+                        <div className="h-2 bg-[rgba(0,59,115,0.07)] rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full rounded-full"
+                            style={{ background: maturityColor(item.it) }}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${(item.it / 5) * 100}%` }}
+                            transition={{ duration: 1, delay: i * 0.05 }}
+                          />
+                        </div>
+                        <div className="text-[8px] mt-0.5" style={{ color: maturityColor(item.it) }}>
+                          {item.it} – {maturityLabel(item.it)}
+                        </div>
+                      </div>
+                      {/* OT bar */}
+                      <div className="flex-1">
+                        <div className="text-[8px] font-bold text-[#9CA3AF] uppercase mb-1">OT</div>
+                        <div className="h-2 bg-[rgba(0,59,115,0.07)] rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full rounded-full"
+                            style={{ background: maturityColor(item.ot) }}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${(item.ot / 5) * 100}%` }}
+                            transition={{ duration: 1, delay: i * 0.05 + 0.1 }}
+                          />
+                        </div>
+                        <div className="text-[8px] mt-0.5" style={{ color: maturityColor(item.ot) }}>
+                          {item.ot} – {maturityLabel(item.ot)}
+                        </div>
+                      </div>
+                      {/* Target */}
+                      <div className="shrink-0 text-center">
+                        <div className="text-[8px] font-bold text-[#9CA3AF] uppercase mb-1">Target</div>
+                        <div
+                          className="w-8 h-5 rounded flex items-center justify-center text-[9px] font-black text-white"
+                          style={{ background: maturityColor(item.target) }}
+                        >
+                          {item.target}
+                        </div>
+                        <div className="text-[7px] text-[#9CA3AF] mt-0.5">+{gap} gap</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Bottom callout */}
+            <div
+              className="px-6 py-4 text-[11px] text-[#4A6B8A] leading-relaxed"
+              style={{ background: `${domain.color}06`, borderTop: `1px solid ${domain.color}15` }}
+            >
+              <strong>OT Visibility is the prerequisite for closing these gaps.</strong> You cannot assess, protect, or govern an asset you cannot see.
+              The Foundation Phase (Months 0–6) directly addresses the OT maturity gaps shown here.
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </motion.div>
   );
 }

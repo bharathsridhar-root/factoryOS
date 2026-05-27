@@ -2,8 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { SceneLens } from '../components/SceneLens';
-import { visibilityCapabilities } from '../content';
+import { visibilityCapabilities, otAssetFields, sampleAssets } from '../content';
 import { useAppStore } from '../store';
+
+const FIELD_CATEGORIES = ['Identity', 'OT Context', 'Compliance', 'Risk', 'Network', 'Software', 'Physical', 'Integration', 'Lifecycle'] as const;
+const CATEGORY_COLORS: Record<string, string> = {
+  Identity: '#005EB8', 'OT Context': '#F5A623', Compliance: '#10B981', Risk: '#D64545',
+  Network: '#6366F1', Software: '#00A3E0', Physical: '#12B3A8', Integration: '#003B73', Lifecycle: '#9CA3AF',
+};
 
 const kpiTargets = [
   { label: 'Asset Coverage', value: 0, target: 98, unit: '%', color: '#005EB8' },
@@ -263,7 +269,253 @@ export function Scene2Visibility() {
             </motion.div>
           </div>
         </div>
+
+        {/* ── ASSET SCHEMA EXPLORER ── */}
+        <AssetSchemaSection />
+
+        {/* ── DISCOVERED INVENTORY SAMPLE ── */}
+        <AssetInventorySection />
       </div>
     </section>
+  );
+}
+
+// ─── Asset Field Schema Explorer ──────────────────────────────────────────────
+
+function AssetSchemaSection() {
+  const [activeCategory, setActiveCategory] = useState<string>('OT Context');
+  const filtered = otAssetFields.filter(f => f.category === activeCategory);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-16"
+    >
+      <div className="text-center mb-8">
+        <h3 className="text-xl font-bold text-[#003B73] mb-2">
+          What Gets Captured — The OT Asset Data Schema
+        </h3>
+        <p className="text-sm text-[#6B7E9E] max-w-2xl mx-auto">
+          Passive discovery auto-populates {otAssetFields.length}+ attributes for every OT device — no agents, no interruptions.
+          This is the data foundation that makes digital twins, predictive maintenance, and compliance possible.
+        </p>
+      </div>
+
+      {/* Category filter tabs */}
+      <div className="flex flex-wrap gap-2 justify-center mb-5">
+        {FIELD_CATEGORIES.map(cat => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className="text-[10px] font-bold px-3 py-1.5 rounded-full transition-all"
+            style={{
+              background: activeCategory === cat ? CATEGORY_COLORS[cat] : 'white',
+              color: activeCategory === cat ? 'white' : CATEGORY_COLORS[cat],
+              border: `1px solid ${CATEGORY_COLORS[cat]}40`,
+            }}
+          >
+            {cat} ({otAssetFields.filter(f => f.category === cat).length})
+          </button>
+        ))}
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+        >
+          {filtered.map((field, i) => (
+            <motion.div
+              key={field.field}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.04 }}
+              className="glass rounded-xl p-3 flex items-start gap-3"
+              style={{ borderLeft: `3px solid ${CATEGORY_COLORS[field.category]}` }}
+            >
+              <code
+                className="text-[10px] font-mono font-bold shrink-0 px-1.5 py-0.5 rounded"
+                style={{ background: `${CATEGORY_COLORS[field.category]}12`, color: CATEGORY_COLORS[field.category] }}
+              >
+                {field.field}
+              </code>
+              <span className="text-[10px] text-[#6B7E9E] leading-relaxed">{field.desc}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+// ─── Discovered Asset Inventory Sample ────────────────────────────────────────
+
+function AssetInventorySection() {
+  const [filter, setFilter] = useState<'all' | 'Active' | 'Retired'>('all');
+  const [riskFilter, setRiskFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all');
+
+  const filtered = sampleAssets.filter(a => {
+    if (filter !== 'all' && a.status !== filter) return false;
+    if (riskFilter === 'high' && a.risk < 70) return false;
+    if (riskFilter === 'medium' && (a.risk < 40 || a.risk >= 70)) return false;
+    if (riskFilter === 'low' && a.risk >= 40) return false;
+    return true;
+  });
+
+  const riskColor = (score: number) =>
+    score >= 80 ? '#D64545' : score >= 60 ? '#F5A623' : score >= 40 ? '#FBBF24' : '#10B981';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-12"
+    >
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-5">
+        <div>
+          <h3 className="text-xl font-bold text-[#003B73] mb-1">
+            Sample Discovered Asset Inventory
+          </h3>
+          <p className="text-sm text-[#6B7E9E]">
+            {sampleAssets.length} assets across 2 manufacturing sites — discovered passively in under 6 weeks.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {(['all', 'Active', 'Retired'] as const).map(f => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className="text-[10px] font-bold px-3 py-1.5 rounded-lg transition-all"
+              style={{
+                background: filter === f ? '#005EB8' : 'white',
+                color: filter === f ? 'white' : '#6B7E9E',
+                border: '1px solid rgba(0,94,184,0.2)',
+              }}
+            >
+              {f === 'all' ? 'All' : f}
+            </button>
+          ))}
+          <div className="h-5 w-px bg-[rgba(0,94,184,0.15)]" />
+          {(['all', 'high', 'medium', 'low'] as const).map(r => (
+            <button
+              key={r}
+              onClick={() => setRiskFilter(r)}
+              className="text-[10px] font-bold px-3 py-1.5 rounded-lg transition-all"
+              style={{
+                background: riskFilter === r ? (r === 'high' ? '#D64545' : r === 'medium' ? '#F5A623' : r === 'low' ? '#10B981' : '#003B73') : 'white',
+                color: riskFilter === r ? 'white' : '#6B7E9E',
+                border: '1px solid rgba(0,94,184,0.2)',
+              }}
+            >
+              {r === 'all' ? 'All Risk' : `${r.charAt(0).toUpperCase()}${r.slice(1)} Risk`}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="glass rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(0,94,184,0.12)' }}>
+        {/* Table header */}
+        <div
+          className="grid gap-2 px-4 py-2 text-[9px] font-black uppercase tracking-widest text-[#9CA3AF]"
+          style={{ gridTemplateColumns: '2fr 1.5fr 0.7fr 0.6fr 1.2fr 0.5fr 0.5fr', background: 'rgba(0,59,115,0.04)' }}
+        >
+          <span>Asset Name</span>
+          <span>Type</span>
+          <span>Site</span>
+          <span>Purdue</span>
+          <span>OS / Firmware</span>
+          <span>Risk</span>
+          <span>CVEs</span>
+        </div>
+
+        {/* Table rows */}
+        <div className="divide-y divide-[rgba(0,59,115,0.05)] max-h-72 overflow-y-auto">
+          {filtered.map((asset, i) => (
+            <motion.div
+              key={asset.name}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: Math.min(i * 0.02, 0.3) }}
+              className="grid gap-2 px-4 py-2.5 items-center hover:bg-[rgba(0,94,184,0.03)] transition-colors"
+              style={{ gridTemplateColumns: '2fr 1.5fr 0.7fr 0.6fr 1.2fr 0.5fr 0.5fr' }}
+            >
+              <div>
+                <div className="text-[11px] font-semibold text-[#003B73] truncate">{asset.name}</div>
+                <div
+                  className="text-[8px] font-bold px-1 rounded"
+                  style={{ color: asset.status === 'Retired' ? '#D64545' : '#10B981' }}
+                >
+                  {asset.status}
+                </div>
+              </div>
+              <div className="text-[10px] text-[#6B7E9E] truncate">{asset.type}</div>
+              <div className="text-[10px] text-[#6B7E9E]">{asset.site.replace(' Site', '')}</div>
+              <div>
+                <span
+                  className="text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+                  style={{ background: 'rgba(0,94,184,0.08)', color: '#005EB8' }}
+                >
+                  {asset.purdue}
+                </span>
+              </div>
+              <div className="text-[10px] text-[#6B7E9E] truncate">{asset.os}</div>
+              <div>
+                <div className="flex items-center gap-1">
+                  <div
+                    className="w-2 h-2 rounded-full shrink-0"
+                    style={{ background: riskColor(asset.risk) }}
+                  />
+                  <span className="text-[10px] font-bold" style={{ color: riskColor(asset.risk) }}>
+                    {asset.risk}
+                  </span>
+                </div>
+              </div>
+              <div>
+                {asset.cve > 0 ? (
+                  <span
+                    className="text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+                    style={{
+                      background: asset.cve >= 10 ? 'rgba(214,69,69,0.1)' : 'rgba(245,166,35,0.1)',
+                      color: asset.cve >= 10 ? '#D64545' : '#F5A623',
+                    }}
+                  >
+                    {asset.cve}
+                  </span>
+                ) : (
+                  <span className="text-[9px] text-[#9CA3AF]">—</span>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Footer stats */}
+        <div
+          className="px-4 py-2.5 flex flex-wrap gap-4 text-[10px] text-[#6B7E9E]"
+          style={{ background: 'rgba(0,59,115,0.04)', borderTop: '1px solid rgba(0,59,115,0.08)' }}
+        >
+          <span>Showing {filtered.length} of {sampleAssets.length} assets</span>
+          <span>·</span>
+          <span style={{ color: '#D64545' }}>
+            {filtered.filter(a => a.risk >= 70).length} high-risk
+          </span>
+          <span>·</span>
+          <span style={{ color: '#F5A623' }}>
+            {filtered.filter(a => a.cve > 0).length} with open CVEs
+          </span>
+          <span>·</span>
+          <span style={{ color: '#D64545' }}>
+            {filtered.filter(a => a.status === 'Retired').length} decommissioned (still online)
+          </span>
+        </div>
+      </div>
+    </motion.div>
   );
 }

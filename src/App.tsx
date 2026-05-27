@@ -11,6 +11,7 @@ import { Scene3OperationalGraph } from './scenes/Scene3OperationalGraph';
 import { Scene4DigitalTwin } from './scenes/Scene4DigitalTwin';
 import { Scene5Autonomous } from './scenes/Scene5Autonomous';
 import { SceneBigPicture } from './scenes/SceneBigPicture';
+import { SceneValueChain } from './scenes/SceneValueChain';
 import { Scene6ServicesInABox } from './scenes/Scene6ServicesInABox';
 import { Scene7GlobalControlPlane } from './scenes/Scene7GlobalControlPlane';
 import { Scene8UseCaseStudio } from './scenes/Scene8UseCaseStudio';
@@ -67,6 +68,8 @@ function App() {
         <Scene5Autonomous />
         <SceneDivider />
         <SceneBigPicture />
+        <SceneDivider />
+        <SceneValueChain />
         <SceneDivider />
         <SceneFactoryFuture />
         <SceneDivider />
