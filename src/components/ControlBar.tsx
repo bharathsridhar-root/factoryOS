@@ -1,5 +1,10 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  LayoutDashboard, Cpu, Factory, Settings, Layers,
+  Shield, Wrench, Leaf, Activity, Server,
+  type LucideIcon,
+} from 'lucide-react';
 import { useAppStore } from '../store';
 import type { Stakeholder, TechDepth } from '../types';
 
@@ -9,17 +14,17 @@ const stakeholders: Stakeholder[] = [
   'SustainabilityOfficer', 'OperationsLead', 'PlatformEngineeringLead',
 ];
 
-const stakeholderMeta: Record<Stakeholder, { label: string; icon: string; color: string; focus: string }> = {
-  CIO:                   { label: 'CIO',           icon: '', color: '#005EB8', focus: 'Business & Governance' },
-  CTO:                   { label: 'CTO',           icon: '', color: '#003B73', focus: 'Technical Architecture' },
-  PlantManager:          { label: 'Plant Manager', icon: '', color: '#D97706', focus: 'Operational Efficiency' },
-  ManufacturingIT:       { label: 'Mfg IT',        icon: '', color: '#12B3A8', focus: 'IT/OT Integration' },
-  OTArchitect:           { label: 'OT Architect',  icon: '', color: '#00A3E0', focus: 'Architecture & Zoning' },
-  CISO:                  { label: 'CISO',          icon: '', color: '#D64545', focus: 'Security Posture' },
-  ReliabilityEngineer:   { label: 'Reliability',   icon: '', color: '#10B981', focus: 'Asset Reliability' },
-  SustainabilityOfficer: { label: 'Sustainability', icon: '', color: '#34D399', focus: 'Carbon & ESG' },
-  OperationsLead:        { label: 'Operations',    icon: '', color: '#F5A623', focus: 'Operational Performance' },
-  PlatformEngineeringLead:{ label: 'Platform Eng', icon: '', color: '#6366F1', focus: 'Platform & Reusability' },
+const stakeholderMeta: Record<Stakeholder, { label: string; Icon: LucideIcon; color: string; focus: string }> = {
+  CIO:                    { label: 'CIO',            Icon: LayoutDashboard, color: '#005EB8', focus: 'Business & Governance'    },
+  CTO:                    { label: 'CTO',            Icon: Cpu,             color: '#003B73', focus: 'Technical Architecture'   },
+  PlantManager:           { label: 'Plant Manager',  Icon: Factory,         color: '#D97706', focus: 'Operational Efficiency'   },
+  ManufacturingIT:        { label: 'Mfg IT',         Icon: Settings,        color: '#12B3A8', focus: 'IT/OT Integration'        },
+  OTArchitect:            { label: 'OT Architect',   Icon: Layers,          color: '#00A3E0', focus: 'Architecture & Zoning'    },
+  CISO:                   { label: 'CISO',           Icon: Shield,          color: '#D64545', focus: 'Security Posture'         },
+  ReliabilityEngineer:    { label: 'Reliability',    Icon: Wrench,          color: '#10B981', focus: 'Asset Reliability'        },
+  SustainabilityOfficer:  { label: 'Sustainability', Icon: Leaf,            color: '#34D399', focus: 'Carbon & ESG'             },
+  OperationsLead:         { label: 'Operations',     Icon: Activity,        color: '#F5A623', focus: 'Operational Performance'  },
+  PlatformEngineeringLead:{ label: 'Platform Eng',   Icon: Server,          color: '#6366F1', focus: 'Platform & Reusability'   },
 };
 
 const depthOptions: TechDepth[] = ['Executive', 'Architecture', 'Engineering'];
@@ -111,7 +116,7 @@ export function ControlBar() {
             }}
             layout
           >
-            <span className="text-sm">{meta.icon}</span>
+            <meta.Icon size={14} color={meta.color} strokeWidth={1.8} />
             <span>{meta.label}</span>
             <span className="text-[10px] text-[#9CA3AF] hidden sm:block">· {meta.focus}</span>
             <svg className={`w-3 h-3 transition-transform ${stakeholderOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -137,7 +142,9 @@ export function ControlBar() {
                         className="w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center gap-3 hover:bg-[#EAF4FF]"
                         style={{ background: stakeholder === s ? `${m.color}10` : undefined }}
                       >
-                        <span className="text-lg w-7 text-center">{m.icon}</span>
+                        <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${m.color}12` }}>
+                          <m.Icon size={14} color={m.color} strokeWidth={1.8} />
+                        </div>
                         <div>
                           <div className="text-xs font-semibold" style={{ color: stakeholder === s ? m.color : '#003B73' }}>
                             {m.label}

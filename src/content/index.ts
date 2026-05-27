@@ -263,14 +263,14 @@ export const plantSites: PlantSite[] = [
 ];
 
 export const cioKPIs: KPI[] = [
-  { label: 'OT Asset Visibility', value: '85+', unit: '%', trend: 'up', delta: '+40pts' },
-  { label: 'Unplanned Downtime', value: 'Reduced', unit: '', trend: 'down', delta: '-30–40%' },
-  { label: 'MTTR', value: 'Faster', unit: '', trend: 'down', delta: '-25–35%' },
-  { label: 'OT Maturity Score', value: 'Improved', unit: '', trend: 'up', delta: '+3–4 pts' },
-  { label: 'Deployment Velocity', value: 'Faster', unit: '', trend: 'down', delta: '-40–50%' },
-  { label: 'Sustainability Score', value: 'Improving', unit: '', trend: 'up', delta: '+15–25%' },
-  { label: 'Active Digital Twins', value: '40+', unit: 'twins', trend: 'up', delta: 'Phase 2+' },
-  { label: 'Operational Resilience', value: 'Higher', unit: '', trend: 'up', delta: '+15–20%' },
+  { label: 'OT Asset Visibility',   value: '85',  unit: '%',     trend: 'up',   delta: '+40 pts vs baseline'      },
+  { label: 'Unplanned Downtime',    value: '35',  unit: '%↓',    trend: 'down', delta: '−30–40% reduction'         },
+  { label: 'MTTR Improvement',      value: '30',  unit: '%↓',    trend: 'down', delta: '−25–35% faster resolution' },
+  { label: 'OT Maturity Score',     value: '3.5', unit: 'pts↑',  trend: 'up',   delta: '+3–4 pts gained'           },
+  { label: 'Deployment Velocity',   value: '45',  unit: '%↓',    trend: 'down', delta: '−40–50% faster delivery'   },
+  { label: 'Sustainability Score',  value: '20',  unit: '%↑',    trend: 'up',   delta: '+15–25% improvement'       },
+  { label: 'Active Digital Twins',  value: '40',  unit: 'twins', trend: 'up',   delta: 'Phase 2 onwards'           },
+  { label: 'Operational Resilience',value: '18',  unit: '%↑',    trend: 'up',   delta: '+15–20% stronger posture'  },
 ];
 
 export const fragmentationProblems = [

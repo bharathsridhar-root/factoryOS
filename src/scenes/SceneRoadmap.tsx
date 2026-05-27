@@ -34,10 +34,11 @@ export function SceneRoadmap() {
             {roadmapPhases.map(p => (
               <div
                 key={p.id}
-                className="flex-1 py-2 text-center text-[10px] font-bold"
+                className="flex-1 py-2.5 flex items-center justify-center gap-1.5 text-[10px] font-bold"
                 style={{ background: `${p.color}20`, color: p.color }}
               >
-                Phase {p.number} - {p.title}
+                <OTIcon name={p.icon} size={12} color={p.color} />
+                Phase {p.number} · {p.title}
               </div>
             ))}
           </div>
