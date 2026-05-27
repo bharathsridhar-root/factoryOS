@@ -95,7 +95,7 @@ export function HeroScene() {
           >
             <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full glass border border-[rgba(0,94,184,0.15)]">
               <span className="w-2 h-2 rounded-full status-online" />
-              <span className="text-xs font-semibold text-[#005EB8]">OT Intelligence Platform · {stakeholder.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-xs font-semibold text-[#005EB8]">FactoryOS · {stakeholder.replace(/([A-Z])/g, ' $1').trim()}</span>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.08] mb-6 tracking-tight">
@@ -186,7 +186,7 @@ export function HeroScene() {
           className="flex flex-col items-center gap-4"
         >
           <p className="text-sm text-[#9AAFBE] font-medium tracking-wide">
-            SCROLL TO EXPERIENCE THE INDUSTRIAL INTELLIGENCE JOURNEY
+            SCROLL TO EXPLORE THE FACTORYOS JOURNEY
           </p>
           <motion.div
             animate={{ y: [0, 6, 0] }}

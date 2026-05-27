@@ -73,7 +73,7 @@ export function CIOCommandCenter() {
         >
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass border border-[rgba(0,94,184,0.15)]">
             <span className="w-2 h-2 rounded-full status-online" />
-            <span className="text-xs font-semibold text-[#005EB8]">CIO Command Center · Live Industrial Intelligence</span>
+            <span className="text-xs font-semibold text-[#005EB8]">FactoryOS · Live Industrial Intelligence</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#003B73] mb-5 leading-tight">
             The <span className="gradient-text">Operational Cockpit</span>

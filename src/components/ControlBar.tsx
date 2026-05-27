@@ -98,10 +98,10 @@ export function ControlBar() {
       <div className="max-w-screen-xl mx-auto h-full flex items-center justify-between px-6 gap-4">
         {/* Logo */}
         <div className="flex items-center gap-2 shrink-0">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #005EB8, #00A3E0)' }}>
-            <span className="text-white text-xs font-bold">OT</span>
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #003B73, #005EB8)' }}>
+            <span className="text-white text-[10px] font-black tracking-tight">FOS</span>
           </div>
-          <span className="text-sm font-semibold text-[#003B73] hidden sm:block">Digital Twin Platform</span>
+          <span className="text-sm font-bold text-[#003B73] hidden sm:block tracking-tight">FactoryOS</span>
         </div>
 
         {/* Stakeholder selector */}
