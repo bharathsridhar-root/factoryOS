@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { LoginGate } from './components/LoginGate';
 import { ControlBar } from './components/ControlBar';
 import { StoryNav } from './components/StoryNav';
 import { StakeholderBanner } from './components/StakeholderBanner';
@@ -48,6 +49,7 @@ function SceneDivider() {
 
 function App() {
   return (
+    <LoginGate>
     <div className="min-h-screen">
       <ControlBar />
       <ModeIndicator />
@@ -88,6 +90,7 @@ function App() {
         <CIOCommandCenter />
       </main>
     </div>
+    </LoginGate>
   );
 }
 
